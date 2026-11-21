@@ -95,3 +95,15 @@ test('every Indian language in the dropdown translates the app and survives a re
   await page.locator('select.lang-select').first().selectOption('en');
   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
 });
+
+test('long words in Indian languages never push the dashboard wider than the screen', async ({ page }) => {
+  await loginAs(page, 'Sevasai – Owner');
+  for (const code of ['ta', 'ml', 'kn', 'te', 'bn', 'hi']) {
+    await page.evaluate(c => setLang(c), code);
+    await page.evaluate(() => { location.hash = 'dashboard'; });
+    await expect(page.locator('html')).toHaveAttribute('lang', code);
+    const over = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+    expect(over, code).toBeLessThanOrEqual(1);
+  }
+  await page.evaluate(() => setLang('en'));
+});

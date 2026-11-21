@@ -101,9 +101,10 @@ h2{font-size:16px;margin:0;font-weight:700}
 .go{width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--surface);display:grid;place-items:center;flex:none}
 .go svg{width:15px;height:15px}
 .dash{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-.kpis{grid-column:span 5;display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.kpi{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;flex-direction:column;min-height:138px}
+.kpis{grid-column:span 5;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.kpi{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;display:flex;flex-direction:column;min-height:138px}
 .kpi-h{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;font-size:13.5px;color:var(--muted);font-weight:500}
+.kpi-h>span{min-width:0;overflow-wrap:anywhere}
 .kpi-go{width:30px;height:30px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;color:var(--ink);flex:none}
 .kpi-go svg{width:14px;height:14px}
 .kpi-v{font-size:clamp(22px,2.3vw,30px);font-weight:700;letter-spacing:-.5px;margin-top:auto;white-space:nowrap}

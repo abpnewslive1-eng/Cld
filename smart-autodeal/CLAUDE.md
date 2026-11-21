@@ -26,6 +26,8 @@ First real customer: *Sevasai Vahan Bazar* (Bidkin, Maharashtra). Target: dealer
 3. New/changed screen or flow → add or update a Playwright test in `tests/e2e/`, and if the screen calls a new
    endpoint, add that endpoint to `dev/demo-mock.js` so the demo keeps working.
 4. Every new UI string goes into the `T` dictionary with **both** Marathi and English (`key: ['मराठी', 'English']`).
+   Then `node scripts/extract-strings.mjs` (after `npm run build:demo`), add the new keys to every `public/lang/*.json`
+   pack, and `node scripts/check-lang.mjs` must print OK for all (missing keys fall back to English at runtime).
 5. Bump `VERSION` in `public/sw.js` when frontend files change (phones cache the app).
 
 ## Architecture
@@ -51,7 +53,10 @@ First real customer: *Sevasai Vahan Bazar* (Bidkin, Maharashtra). Target: dealer
 - Receipt print = the dealer's paper format (Marathi body text; title/terms/colour editable per dealer).
 
 ## Languages
-Login page is always English. App default English; Marathi switch per device. Posters: English / हिंदी / मराठी.
+Login page is always English. App default English; language dropdown per device (Settings → Appearance, super admin top bar,
+public catalogue): English, हिन्दी, मराठी, বাংলা, తెలుగు, தமிழ், ગુજરાતી, ಕನ್ನಡ, മലയാളം, ଓଡ଼ିଆ, ਪੰਜਾਬੀ, অসমীয়া.
+English + Marathi are built into `T`; the others are packs `public/lang/<code>.json` fetched on demand (inlined in the demo build).
+Translations were machine-generated – have native speakers review them. Receipt print body is still Marathi. Posters: English / हिंदी / मराठी.
 
 ## Deployment
 Hostinger Business/Cloud "Node.js web app" (entry `server.js`, start `npm start`). See `docs/DEPLOY-HOSTINGER.md`.
@@ -59,7 +64,7 @@ Hostinger Business/Cloud "Node.js web app" (entry `server.js`, start `npm start`
 
 ## Backlog (owner's priorities, roughly in order)
 1. Receipt (delivery note) body text in English and Hindi, chosen per dealer (now Marathi only).
-2. Hindi as a third UI language.
+2. ~~Hindi as a third UI language~~ – done (11 Indian languages). Next: native-speaker review of the packs; Urdu (needs RTL).
 3. WhatsApp Cloud API: webhook `/api/whatsapp/webhook` → real inbox, auto-replies, Meta-ad attribution (`ctwa_clid`), templates.
 4. Play Store app (TWA wrapper around the PWA).
 5. Online payments (Razorpay) – today super admin records payments by hand on purpose.
