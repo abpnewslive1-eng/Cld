@@ -139,3 +139,31 @@ test('layout fits every screen from a small phone to a big monitor', async ({ pa
     if (width > 860) await expect(page.locator('#side .lbl').first()).toBeVisible(); else await expect(page.locator('#bottom')).toBeVisible();
   }
 });
+
+test('number plate text is read even with usual OCR mix-ups', async ({ page }) => {
+  const r = await page.evaluate(() => [
+    'IND MH 20 DV 4521', 'MH2O DV 452l', 'mh-20-dv-4521', 'KA 05 MN 1234', 'DL 3C AB 1234', 'TN 9 Z 0001', '22 BH 1234 AA', 'GJ01KA8888', 'random text 12', 'HELLO WORLD',
+  ].map(plateFromText));
+  expect(r).toEqual(['MH20 DV 4521', 'MH20 DV 4521', 'MH20 DV 4521', 'KA05 MN 1234', 'DL3C AB 1234', 'TN9 Z 0001', '22 BH 1234 AA', 'GJ01 KA 8888', '', '']);
+});
+
+test('scanning a number plate fills the new car form from RC', async ({ page }) => {
+  await loginAs(page, 'Sevasai – Owner');
+  await page.evaluate(() => { location.hash = 'cars'; window.PLATE_OCR = async () => 'IND\nMH 2O DV 452l'; });
+  await page.getByRole('button', { name: /Add car/ }).first().click();
+  const sheet = page.locator('#sheet');
+  await expect(sheet.getByText('Check on Parivahan')).toBeVisible();
+  await sheet.locator('.rc-bar input[type=file]').setInputFiles({ name: 'plate.jpg', mimeType: 'image/jpeg', buffer: Buffer.from([0xff, 0xd8, 0xff]) });
+  await expect(sheet.locator('#f_reg')).toHaveValue('MH20 DV 4521');
+  await expect(sheet.locator('#f_model')).not.toHaveValue('');
+  await expect(sheet.locator('#f_company')).not.toHaveValue('');
+  await expect(sheet.locator('#f_year')).not.toHaveValue('');
+  await expect(sheet.locator('#f_buyFrom')).not.toHaveValue('');
+  await expect(sheet.locator('.rc-info')).toContainText('RC owner');
+  await expect(sheet.locator('#rcStatus')).toContainText('lookups left this month');
+  // a number that cannot be read asks the dealer to type it
+  await page.evaluate(() => { window.PLATE_OCR = async () => 'blurry'; });
+  await sheet.locator('.rc-bar input[type=file]').setInputFiles({ name: 'p2.jpg', mimeType: 'image/jpeg', buffer: Buffer.from([0xff, 0xd8, 0xff]) });
+  await expect(page.locator('#toast')).toContainText('type it');
+  await page.keyboard.press('Escape');
+});

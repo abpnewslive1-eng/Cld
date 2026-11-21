@@ -92,9 +92,9 @@
   // ---- multi-dealer (tenants) ----
   const addM = (iso, months) => { const d = new Date(iso); d.setMonth(d.getMonth() + months); return d.toISOString().slice(0,10); };
   let plans = [
-    {id:'basic', name:'Basic', price:999, maxCars:30, maxStaff:2, features:{catalog:false, wa:false}},
-    {id:'pro', name:'Pro', price:1999, maxCars:100, maxStaff:5, features:{catalog:true, wa:false}},
-    {id:'premium', name:'Premium', price:3499, maxCars:0, maxStaff:10, features:{catalog:true, wa:true}} ];
+    {id:'basic', name:'Basic', price:999, maxCars:30, maxStaff:2, rcPerMonth:0, features:{catalog:false, wa:false}},
+    {id:'pro', name:'Pro', price:1999, maxCars:100, maxStaff:5, rcPerMonth:100, features:{catalog:true, wa:false}},
+    {id:'premium', name:'Premium', price:3499, maxCars:0, maxStaff:10, rcPerMonth:300, features:{catalog:true, wa:true}} ];
   const tenants = [
     {id:'sevasai', name:'सेवासाई वाहन बाजार', city:'बिडकीन, छ. संभाजीनगर', ownerName:'मालक', phone:'8669184363', username:'admin', plan:'premium', trial:false, suspended:false, expiry:D(23), features:{catalog:true, wa:true}, notes:'पहिला ग्राहक – case study', lastLogin:Date.now()-2*3600000, payments:[{date:D(-37), amount:3499, months:1, note:'UPI'},{date:D(-7), amount:3499, months:1, note:'UPI'}]},
     {id:'malhar', name:'जय मल्हार मोटर्स', city:'पैठण', ownerName:'राहुल जाधव', phone:'9822114455', username:'malhar', plan:'pro', trial:true, suspended:false, expiry:D(2), features:{catalog:true, wa:false}, notes:'डेमो दाखवला, बजेट विचारत आहेत', lastLogin:Date.now()-26*3600000, payments:[]},
@@ -124,8 +124,16 @@
   const dleft = tn => Math.round((new Date(tn.expiry) - new Date(D(0))) / 86400000);
   const tStats = tn => { const st = stores[tn.id] || new Map(); const live = col => [...st.values()].filter(r => r.col===col && !r.deleted).length;
     return {cars:live('cars'), leads:live('leads'), deals:live('deals'), staff:users.filter(u => u.tenant===tn.id && u.active).length}; };
+  // RC lookup (fake data – the real server asks the RC provider set in RC_PROVIDER)
+  const rcLog = {};
+  const rcStat = tn => { const lim = Number((plans.find(x => x.id === tn.plan) || {}).rcPerMonth) || 0; return {enabled: lim > 0, limit: lim, used: lim ? Object.keys(rcLog[tn.id] || {}).length : 0}; };
+  const RCM = [['MARUTI SUZUKI INDIA LTD','SWIFT VXI','PEARL ARCTIC WHITE','PETROL'],['HYUNDAI MOTOR INDIA LTD','CRETA 1.6 SX','PHANTOM BLACK','DIESEL'],['MAHINDRA & MAHINDRA LTD','SCORPIO S11','NAPOLI BLACK','DIESEL'],['TATA MOTORS LTD','NEXON XZ PLUS','FLAME RED','PETROL'],['TOYOTA KIRLOSKAR MOTOR PVT LTD','INNOVA CRYSTA 2.4 VX','SILVER','DIESEL']];
+  const rcFake = reg => { const h = [...reg].reduce((a, c) => a * 31 + c.charCodeAt(0) >>> 0, 7); const [mk, md, col, fuel] = RCM[h % RCM.length]; const y = 2014 + h % 9;
+    return {reg, company:mk, model:md, year:String(y), color:col, fuel:fuel.toLowerCase(), ownerNo:1 + h % 3, owner:['SANJAY DESHMUKH','RAJESH KULKARNI','ANIL PATIL'][h % 3],
+      chassis:'MA3'+String(h).slice(0,6).padEnd(6,'0')+'XXXXX', engine:'XXXX'+String(h).slice(-5), insurance:D(40 + h % 200), insurer:'NEW INDIA ASSURANCE', tax:'LTT',
+      finance: h % 2 ? 'HDFC BANK LTD' : '', regDate:y+'-0'+(1 + h % 9)+'-1'+(h % 9), rto:'AURANGABAD RTO, Maharashtra', vehicleClass:'Motor Car (LMV)', blacklisted:false}; };
   const tInfo = (tn, imp) => { const latest = news.filter(n => n.active).slice(-1)[0];
-    return {id:tn.id, name:tn.name, plan:tn.plan, status:tState(tn), daysLeft:dleft(tn), expiry:tn.expiry, features:tn.features, impersonating:!!imp, supportPhone, poster: { ...(dealerPoster[tn.id] || {}), designerApprove: posterCfg.designerApprove }, news: latest ? {id:latest.id, text:latest.text} : null}; };
+    return {id:tn.id, name:tn.name, plan:tn.plan, status:tState(tn), rc:rcStat(tn), daysLeft:dleft(tn), expiry:tn.expiry, features:tn.features, impersonating:!!imp, supportPhone, poster: { ...(dealerPoster[tn.id] || {}), designerApprove: posterCfg.designerApprove }, news: latest ? {id:latest.id, text:latest.text} : null}; };
   const pub = u => ({id:u.id,name:u.name,username:u.username,role:u.role});
   const json = (status, body) => new Response(JSON.stringify(body), {status, headers:{'Content-Type':'application/json'}});
   const orig = window.fetch.bind(window);
@@ -200,6 +208,12 @@
     if (p === '/api/stats/marketing') { const since = Date.now()-30*86400000; const by = {}; views.filter(v => v.kind==='view' && v.car).forEach(v => { by[v.car] = (by[v.car]||0)+1; }); return json(200,{views30: views.filter(v => v.kind==='view' && v.at>since).length, leads30: views.filter(v => v.kind==='lead' && v.at>since).length, byCar: by}); }
     if (p === '/api/photos' && m === 'POST') { if (!writable) return json(402,{error:'expired'}); const id = 'up'+Date.now().toString(36)+Math.random().toString(36).slice(2,6); window.DEMO_PHOTOS[id] = body.data; return json(200,{ok:true,id}); }
     if (/^\/api\/photos\//.test(p) && m === 'DELETE') return json(200,{ok:true});
+    if (p === '/api/rc/status') return ten ? json(200, rcStat(ten)) : json(403,{error:'tenant'});
+    if (p === '/api/rc/lookup' && m === 'POST') { if (!ten) return json(403,{error:'tenant'}); if (!writable) return json(402,{error:'expired'});
+      const reg = String(body.reg || '').toUpperCase().replace(/[^A-Z0-9]/g, ''); if (!/^([A-Z]{2}\d{1,2}[A-Z]{0,3}\d{4}|\d{2}BH\d{4}[A-Z]{1,2})$/.test(reg)) return json(400,{error:'rc_reg'});
+      const st = rcStat(ten); if (!st.limit) return json(403,{error:'rc_plan'}); const log = rcLog[ten.id] = rcLog[ten.id] || {};
+      if (log[reg]) return json(200,{rc:log[reg], cached:true, ...rcStat(ten)}); if (st.used >= st.limit) return json(403,{error:'rc_limit'});
+      if (reg.endsWith('0000')) return json(404,{error:'rc_nf'}); log[reg] = rcFake(reg); return json(200,{rc:log[reg], cached:false, ...rcStat(ten)}); }
     if (p === '/api/me/password') { if (body.oldPassword !== me.pw) return json(400,{error:'old'}); me.pw = body.newPassword; return json(200,{ok:true}); }
     if (p === '/api/data') { const since = Number(u.searchParams.get('since')||0); const rows = [...docs.values()].filter(r => r.updated_at > since && (since || !r.deleted) && (admin || r.col !== 'expenses')).map(r => ({col:r.col,id:r.id,deleted:r.deleted,data:r.deleted?null:JSON.parse(JSON.stringify(r.data))})); return json(200,{now:tick(),rows}); }
     let mm = p.match(/^\/api\/docs\/(\w+)\/([\w-]+)$/);

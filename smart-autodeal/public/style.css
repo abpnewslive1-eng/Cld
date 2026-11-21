@@ -597,3 +597,10 @@ label.btn{cursor:pointer}
 .bu-list input[type=date]{flex:0 0 150px}
 .bu-list .bad{border-color:var(--danger)}
 .bu-always{width:150px;text-align:center;font-weight:600}
+
+/* ---------- number plate scan / RC ---------- */
+.rc-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 2px}
+.rc-bar .btn{cursor:pointer}
+.rc-status{flex:1 1 100%}
+.rc-info{display:flex;flex-direction:column;gap:4px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:8px;font-size:14px}
+.rc-warn{color:var(--red,#d92d20)}

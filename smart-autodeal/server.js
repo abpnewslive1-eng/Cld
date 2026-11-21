@@ -28,9 +28,9 @@ const addMonths = (iso, n) => { const d = new Date(iso + 'T00:00:00Z'); d.setUTC
 const addDays = (iso, n) => { const d = new Date(iso + 'T00:00:00Z'); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
 const newId = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 9);
 const DEFAULT_PLANS = [
-  { id: 'basic', name: 'Basic', price: 999, maxCars: 30, maxStaff: 2, features: { catalog: false, wa: false } },
-  { id: 'pro', name: 'Pro', price: 1999, maxCars: 100, maxStaff: 5, features: { catalog: true, wa: false } },
-  { id: 'premium', name: 'Premium', price: 3499, maxCars: 0, maxStaff: 10, features: { catalog: true, wa: true } },
+  { id: 'basic', name: 'Basic', price: 999, maxCars: 30, maxStaff: 2, rcPerMonth: 0, features: { catalog: false, wa: false } },
+  { id: 'pro', name: 'Pro', price: 1999, maxCars: 100, maxStaff: 5, rcPerMonth: 100, features: { catalog: true, wa: false } },
+  { id: 'premium', name: 'Premium', price: 3499, maxCars: 0, maxStaff: 10, rcPerMonth: 300, features: { catalog: true, wa: true } },
 ];
 
 const pcat = (id, en, hi, mr, tier, sort) => ({ id, names: { en, hi, mr }, tier, active: true, sort });
@@ -76,6 +76,8 @@ async function migrate() {
     note VARCHAR(200) NOT NULL DEFAULT '', created_at BIGINT NOT NULL, KEY idx_t (tenant_id)) CHARACTER SET utf8mb4`);
   await q(`CREATE TABLE IF NOT EXISTS logs (
     id INT AUTO_INCREMENT PRIMARY KEY, at BIGINT NOT NULL, who VARCHAR(120) NOT NULL, what VARCHAR(300) NOT NULL, tenant_id VARCHAR(40) NULL, KEY idx_at (at)) CHARACTER SET utf8mb4`);
+  await q(`CREATE TABLE IF NOT EXISTS rc_lookups (id BIGINT AUTO_INCREMENT PRIMARY KEY, tenant_id VARCHAR(40) NOT NULL, reg VARCHAR(16) NOT NULL,
+    at BIGINT NOT NULL, data LONGTEXT NOT NULL, INDEX (tenant_id, reg), INDEX (tenant_id, at)) CHARACTER SET utf8mb4`);
   await q('CREATE TABLE IF NOT EXISTS platform (k VARCHAR(40) PRIMARY KEY, v LONGTEXT NOT NULL) CHARACTER SET utf8mb4');
 
   // upgrade from the single-dealer version: everything moves into tenant "default"
@@ -188,7 +190,7 @@ app.get('/api/me', auth, wrap(async (req, res) => {
   let tenant = null;
   if (req.tenant) {
     const news = (await platformGet('news', [])).filter(n => n.active).slice(-1)[0];
-    tenant = { id: req.tenant.id, name: req.tenant.name, plan: req.tenant.plan, status: req.state, daysLeft: daysLeft(req.tenant), expiry: req.tenant.expiry,
+    tenant = { id: req.tenant.id, name: req.tenant.name, plan: req.tenant.plan, status: req.state, rc: await rcStatus(req.tenant), daysLeft: daysLeft(req.tenant), expiry: req.tenant.expiry,
       features: req.tenant.features, impersonating: req.acting, poster: { ...((await platformGet('dealerPoster', {}))[req.tenant.id] || {}), designerApprove: !!(await platformGet('posterCfg', {})).designerApprove }, news: news ? { id: news.id, text: news.text } : null, supportPhone: await platformGet('supportPhone', '') };
   }
   res.json({ user, tenant });
@@ -435,7 +437,7 @@ app.post('/api/sa/impersonate/:id', auth, superOnly, wrap(async (req, res) => {
 app.post('/api/sa/exit', auth, superOnly, (req, res) => { setSession(req, res, { uid: req.user.id }); res.json({ ok: true }); });
 app.put('/api/sa/plans', auth, superOnly, wrap(async (req, res) => {
   const plans = Array.isArray(req.body?.plans) ? req.body.plans : null; if (!plans || !plans.length) return err(res, 400, 'plans');
-  await platformSet('plans', plans.map(p => ({ id: String(p.id), name: String(p.name || p.id), price: Math.max(0, Number(p.price) || 0), maxCars: Math.max(0, Number(p.maxCars) || 0), maxStaff: Math.max(0, Number(p.maxStaff) || 0), features: { catalog: !!(p.features && p.features.catalog), wa: !!(p.features && p.features.wa) } })));
+  await platformSet('plans', plans.map(p => ({ id: String(p.id), name: String(p.name || p.id), price: Math.max(0, Number(p.price) || 0), maxCars: Math.max(0, Number(p.maxCars) || 0), maxStaff: Math.max(0, Number(p.maxStaff) || 0), rcPerMonth: Math.max(0, Math.round(Number(p.rcPerMonth) || 0)), features: { catalog: !!(p.features && p.features.catalog), wa: !!(p.features && p.features.wa) } })));
   await logIt(req.user.name, 'प्लॅन बदलले', null); res.json({ ok: true });
 }));
 app.put('/api/sa/platform', auth, superOnly, wrap(async (req, res) => {
@@ -491,6 +493,102 @@ app.put('/api/sa/dealerposter/:tid', auth, superOnly, wrap(async (req, res) => {
 }));
 
 app.get('/api/health', (req, res) => res.json({ ok: true }));
+
+/* ================= RC lookup (number plate → vehicle details) ================= */
+// Provider is chosen by env: RC_PROVIDER = surepass | generic | mock (mock = fake data, for development/tests only).
+// RC_API_KEY (secret), RC_API_URL (generic; optional for surepass), RC_API_KEY_HEADER (generic, default Authorization),
+// RC_API_FIELD (generic: JSON body field for the number, default "vehicle_number"). Each plan has rcPerMonth (0 = off).
+// A number already looked up by the same dealer in the last 30 days is answered from cache and not counted again.
+const RC_RE = /^([A-Z]{2}\d{1,2}[A-Z]{0,3}\d{4}|\d{2}BH\d{4}[A-Z]{1,2})$/;
+const normReg = v => String(v || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+const rcProvider = () => String(process.env.RC_PROVIDER || '').trim().toLowerCase();
+const rcConfigured = () => rcProvider() === 'mock' || (['surepass', 'generic'].includes(rcProvider()) && !!process.env.RC_API_KEY && (rcProvider() === 'surepass' || !!process.env.RC_API_URL));
+const rcLimit = plan => Number.isFinite(Number(plan.rcPerMonth)) && plan.rcPerMonth !== undefined ? Math.max(0, Number(plan.rcPerMonth)) : ((DEFAULT_PLANS.find(p => p.id === plan.id) || {}).rcPerMonth || 0);
+const monthStart = () => { const d = new Date(Date.now() + TZ_MIN * 60e3); return Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), 1) - TZ_MIN * 60e3; };
+async function rcUsed(tid) { const [[r]] = await q('SELECT COUNT(DISTINCT reg) AS n FROM rc_lookups WHERE tenant_id = ? AND at >= ?', [tid, monthStart()]); return Number(r.n) || 0; }
+async function rcStatus(tn) { const limit = rcLimit(await planFor(tn)); return { enabled: rcConfigured() && limit > 0, limit, used: limit ? await rcUsed(tn.id) : 0 }; }
+
+// Pick the first non-empty value among many possible key names (providers name fields differently).
+function rcMap(raw) {
+  const flat = {}; const walk = (o, depth) => { if (!o || typeof o !== 'object' || depth > 3) return; for (const [k, v] of Object.entries(o)) { if (v && typeof v === 'object' && !Array.isArray(v)) walk(v, depth + 1); else if (v !== null && v !== '' && flat[k.toLowerCase()] === undefined) flat[k.toLowerCase()] = v; } };
+  walk(raw, 0);
+  const pick = (...ks) => { for (const k of ks) { const v = flat[k]; if (v !== undefined && String(v).trim() && !/^(na|n\/a|null|-)$/i.test(String(v).trim())) return String(v).trim(); } return ''; };
+  const isoDate = v => { if (!v) return ''; let m = String(v).match(/^(\d{4})-(\d{2})-(\d{2})/); if (m) return `${m[1]}-${m[2]}-${m[3]}`; m = String(v).match(/^(\d{1,2})[-/. ](\d{1,2}|[A-Za-z]{3})[-/. ](\d{4})/); if (!m) return '';
+    const mon = isNaN(m[2]) ? ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'].indexOf(m[2].toLowerCase()) + 1 : Number(m[2]); return mon ? `${m[3]}-${String(mon).padStart(2, '0')}-${String(m[1]).padStart(2, '0')}` : ''; };
+  const fuelRaw = pick('fuel_type', 'fueltype', 'fuel', 'fuel_descr', 'fueldesc').toLowerCase();
+  const fuel = /electric|ev\b|battery/.test(fuelRaw) ? 'ev' : /cng|lpg/.test(fuelRaw) ? 'cng' : /diesel/.test(fuelRaw) ? 'diesel' : /petrol|gasoline/.test(fuelRaw) ? 'petrol' : '';
+  const regDate = isoDate(pick('registration_date', 'reg_date', 'regdate', 'registrationdate', 'rc_regn_dt'));
+  const mfg = pick('manufacturing_date_formatted', 'manufacturing_date', 'manufacturingdate', 'mfg_date', 'manufacturing_year', 'mfgyear');
+  const year = (String(mfg).match(/(19|20)\d{2}/) || [])[0] || (regDate ? regDate.slice(0, 4) : '');
+  const financed = pick('financed', 'is_financed', 'hypothecation');
+  const financer = pick('financer', 'financier', 'financer_name', 'financier_name', 'rc_financer', 'hypothecated_to');
+  return {
+    reg: normReg(pick('rc_number', 'registration_number', 'reg_no', 'regno', 'vehicle_number', 'rc_regn_no')),
+    company: pick('maker_description', 'maker', 'make', 'manufacturer', 'vehicle_manufacturer_name', 'maker_name', 'rc_maker_desc'),
+    model: pick('maker_model', 'model', 'vehicle_model', 'model_name', 'rc_maker_model'),
+    year, color: pick('color', 'colour', 'vehicle_color', 'vehicle_colour', 'rc_color'), fuel,
+    ownerNo: Number(pick('owner_number', 'owner_serial_number', 'owner_sr_no', 'ownerserialno', 'owner_count')) || '',
+    owner: pick('owner_name', 'owner', 'ownername', 'rc_owner_name'),
+    chassis: pick('vehicle_chasi_number', 'vehicle_chassis_number', 'chassis_number', 'chassis', 'chassis_no', 'rc_chasi_no'),
+    engine: pick('vehicle_engine_number', 'engine_number', 'engine', 'engine_no', 'rc_eng_no'),
+    insurance: isoDate(pick('insurance_upto', 'insurance_valid_upto', 'insurance_expiry', 'insuranceupto', 'rc_insurance_upto')),
+    insurer: pick('insurance_company', 'insurer', 'insurance_comp', 'rc_insurance_comp'),
+    tax: pick('tax_upto', 'tax_paid_upto', 'taxupto', 'rc_tax_upto'),
+    finance: financer || (/^(true|yes|y|1)$/i.test(financed) ? 'Yes' : ''),
+    regDate, rto: pick('registered_at', 'rto', 'office_name', 'rc_registered_at'),
+    vehicleClass: pick('vehicle_category_description', 'vehicle_class', 'class', 'vehicle_class_desc', 'rc_vh_class_desc'),
+    blacklisted: /^(true|yes|1)$/i.test(pick('blacklist_status', 'blacklisted', 'is_blacklisted')),
+  };
+}
+async function rcFetch(reg) {
+  const prov = rcProvider();
+  if (prov === 'mock') {
+    if (reg.endsWith('0000')) return null;
+    return { data: { rc_number: reg, owner_name: 'Test Owner', maker_description: 'MARUTI SUZUKI INDIA LTD', maker_model: 'SWIFT VXI', color: 'WHITE', fuel_type: 'PETROL',
+      registration_date: '2019-03-14', manufacturing_date_formatted: '2019-02', owner_number: '1', vehicle_chasi_number: 'MA3XXXXXXXX12345', vehicle_engine_number: 'K12MXXXX6789',
+      insurance_upto: '2026-03-13', financed: true, financer: 'HDFC BANK LTD', tax_upto: 'LTT', registered_at: 'AURANGABAD RTO, Maharashtra' } };
+  }
+  const url = prov === 'surepass' ? (process.env.RC_API_URL || 'https://kyc-api.surepass.io/api/v1/rc/rc-full') : process.env.RC_API_URL;
+  const hdr = prov === 'surepass' ? 'Authorization' : (process.env.RC_API_KEY_HEADER || 'Authorization');
+  const key = String(process.env.RC_API_KEY);
+  const val = prov === 'surepass' || (hdr.toLowerCase() === 'authorization' && !/\s/.test(key)) ? 'Bearer ' + key : key;
+  const field = prov === 'surepass' ? 'id_number' : (process.env.RC_API_FIELD || 'vehicle_number');
+  const ctl = new AbortController(); const timer = setTimeout(() => ctl.abort(), 20000);
+  try {
+    const r = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json', [hdr]: val }, body: JSON.stringify({ [field]: reg }), signal: ctl.signal });
+    const j = await r.json().catch(() => null);
+    if (r.status === 404 || r.status === 422) return null;
+    if (!r.ok || !j) throw new Error('rc provider HTTP ' + r.status);
+    return j;
+  } finally { clearTimeout(timer); }
+}
+app.get('/api/rc/status', auth, needTenant, wrap(async (req, res) => res.json(await rcStatus(req.tenant))));
+app.post('/api/rc/lookup', auth, needTenant, writable, wrap(async (req, res) => {
+  const reg = normReg(req.body?.reg);
+  if (!RC_RE.test(reg)) return err(res, 400, 'rc_reg');
+  if (!rcConfigured()) return err(res, 503, 'rc_off');
+  const limit = rcLimit(await planFor(req.tenant)); if (!limit) return err(res, 403, 'rc_plan');
+  const [[hit]] = await q('SELECT data FROM rc_lookups WHERE tenant_id = ? AND reg = ? AND at >= ? ORDER BY at DESC LIMIT 1', [req.tid, reg, Date.now() - 30 * 864e5]);
+  if (hit) return res.json({ rc: JSON.parse(hit.data), cached: true, ...(await rcStatus(req.tenant)) });
+  if ((await rcUsed(req.tid)) >= limit) return err(res, 403, 'rc_limit');
+  let raw; try { raw = await rcFetch(reg); } catch (e) { console.error('RC lookup failed:', e.message); return err(res, 502, 'rc_fail'); }
+  const rc = raw ? rcMap(raw) : null;
+  if (!rc || !(rc.model || rc.company || rc.owner)) return err(res, 404, 'rc_nf');
+  rc.reg = rc.reg || reg;
+  await q('INSERT INTO rc_lookups (tenant_id, reg, at, data) VALUES (?,?,?,?)', [req.tid, reg, Date.now(), JSON.stringify(rc)]);
+  await logIt(req.user.name, 'RC तपासले: ' + reg, req.tid);
+  res.json({ rc, cached: false, ...(await rcStatus(req.tenant)) });
+}));
+
+/* number-plate OCR files (tesseract.js), served from our own server – fetched by the phone only when a dealer taps Scan */
+const ocrDir = (pkg, sub = '') => path.join(path.dirname(require.resolve(pkg + '/package.json')), sub);
+const ocrOpts = { maxAge: '30d', immutable: true };
+try {
+  app.use('/ocr/js', express.static(ocrDir('tesseract.js', 'dist'), ocrOpts));
+  app.use('/ocr/core', express.static(ocrDir('tesseract.js-core'), ocrOpts));
+  app.use('/ocr/lang', express.static(ocrDir('@tesseract.js-data/eng', '4.0.0_best_int'), ocrOpts));
+  app.use('/ocr', (req, res) => err(res, 404, 'nf'));
+} catch (e) { console.warn('OCR files not installed – plate scan will ask dealers to type the number', e.message); }
 
 /* ================= app files ================= */
 // Android app (TWA / APK): proves to Android that the APK and this website belong together, so the app opens full-screen

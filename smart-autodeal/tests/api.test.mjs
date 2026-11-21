@@ -40,7 +40,7 @@ async function login(username, password) { const c = client(); const r = await c
 
 before(async () => {
   await wipeDb();
-  server = spawn(process.execPath, ['server.js'], { cwd: root, env: { ...env, PORT, JWT_SECRET: 'test-secret-test-secret-test-secret-1234', SUPER_USERNAME: SUPER.username, SUPER_PASSWORD: SUPER.password, SUPPORT_PHONE: '9822000000', ANDROID_PACKAGE: 'in.example.autodeal', ANDROID_SHA256: 'ab:'.repeat(31) + 'CD' }, stdio: ['ignore', 'pipe', 'pipe'] });
+  server = spawn(process.execPath, ['server.js'], { cwd: root, env: { ...env, PORT, JWT_SECRET: 'test-secret-test-secret-test-secret-1234', SUPER_USERNAME: SUPER.username, SUPER_PASSWORD: SUPER.password, SUPPORT_PHONE: '9822000000', ANDROID_PACKAGE: 'in.example.autodeal', ANDROID_SHA256: 'ab:'.repeat(31) + 'CD', RC_PROVIDER: 'mock' }, stdio: ['ignore', 'pipe', 'pipe'] });
   let log = ''; server.stdout.on('data', d => (log += d)); server.stderr.on('data', d => (log += d));
   for (let i = 0; i < 60; i++) { try { const r = await fetch(BASE + '/api/health'); if (r.ok) return; } catch (e) {} await new Promise(r => setTimeout(r, 250)); }
   throw new Error('server did not start:\n' + log);
@@ -157,4 +157,48 @@ test('Android app link file (assetlinks.json) is served from the environment set
   assert.equal(j[0].target.package_name, 'in.example.autodeal');
   assert.deepEqual(j[0].target.sha256_cert_fingerprints, ['AB:'.repeat(31) + 'CD']);
   assert.deepEqual(j[0].relation, ['delegate_permission/common.handle_all_urls']);
+});
+
+test('RC lookup: plan limit, per-dealer cache and count, bad numbers rejected', async () => {
+  const mk = b => sa.post('/api/sa/tenants', { city: 'Pune', trialDays: 14, ownerName: 'Owner', password: 'pass1234', ...b });
+  assert.equal((await mk({ name: 'RC Basic', phone: '9822003301', username: 'rcbasic', plan: 'basic' })).status, 200);
+  assert.equal((await mk({ name: 'RC Pro', phone: '9822003302', username: 'rcpro', plan: 'pro' })).status, 200);
+  assert.equal((await mk({ name: 'RC Pro 2', phone: '9822003303', username: 'rcpro2', plan: 'pro' })).status, 200);
+  const basic = await login('rcbasic', 'pass1234'), pro = await login('rcpro', 'pass1234'), pro2 = await login('rcpro2', 'pass1234');
+
+  // basic plan has 0 lookups → feature off
+  assert.deepEqual((await basic.get('/api/me')).body.tenant.rc, { enabled: false, limit: 0, used: 0 });
+  assert.equal((await basic.post('/api/rc/lookup', { reg: 'MH20DV4521' })).body.error, 'rc_plan');
+
+  // pro plan: lookup fills car fields
+  const me = (await pro.get('/api/me')).body.tenant.rc; assert.equal(me.enabled, true); assert.equal(me.limit, 100); assert.equal(me.used, 0);
+  assert.equal((await pro.post('/api/rc/lookup', { reg: 'mh 20 / xx' })).status, 400);
+  const r = await pro.post('/api/rc/lookup', { reg: 'MH-20 DV 4521' });
+  assert.equal(r.status, 200, JSON.stringify(r.body));
+  assert.equal(r.body.rc.reg, 'MH20DV4521'); assert.equal(r.body.rc.model, 'SWIFT VXI'); assert.equal(r.body.rc.fuel, 'petrol');
+  assert.equal(r.body.rc.year, '2019'); assert.equal(r.body.rc.ownerNo, 1); assert.equal(r.body.rc.insurance, '2026-03-13'); assert.equal(r.body.rc.finance, 'HDFC BANK LTD');
+  assert.equal(r.body.cached, false); assert.equal(r.body.used, 1);
+  // same number again: from cache, not counted twice
+  const r2 = await pro.post('/api/rc/lookup', { reg: 'MH20DV4521' }); assert.equal(r2.body.cached, true); assert.equal(r2.body.used, 1);
+  // another dealer: no cache leak, own count
+  const o = await pro2.post('/api/rc/lookup', { reg: 'MH20DV4521' }); assert.equal(o.body.cached, false); assert.equal(o.body.used, 1);
+  assert.equal((await pro.get('/api/rc/status')).body.used, 1);
+  // unknown number → 404, not counted
+  assert.equal((await pro.post('/api/rc/lookup', { reg: 'MH20AB0000' })).body.error, 'rc_nf');
+  assert.equal((await pro.get('/api/rc/status')).body.used, 1);
+
+  // monthly limit set by super admin
+  const plans = (await sa.get('/api/sa/overview')).body.plans;
+  assert.equal((await sa.put('/api/sa/plans', { plans: plans.map(p => (p.id === 'pro' ? { ...p, rcPerMonth: 1 } : p)) })).status, 200);
+  assert.equal((await pro.post('/api/rc/lookup', { reg: 'MH20CS8812' })).body.error, 'rc_limit');
+  assert.equal((await pro.post('/api/rc/lookup', { reg: 'MH20DV4521' })).status, 200, 'cached number still works at the limit');
+  await sa.put('/api/sa/plans', { plans });
+  assert.equal((await client().post('/api/rc/lookup', { reg: 'MH20DV4521' })).status, 401);
+});
+
+test('number-plate OCR files are served from our own server', async () => {
+  for (const f of ['/ocr/js/tesseract.min.js', '/ocr/js/worker.min.js', '/ocr/core/tesseract-core-simd-lstm.wasm.js', '/ocr/lang/eng.traineddata.gz']) {
+    const r = await fetch(BASE + f, { method: 'HEAD' }); assert.equal(r.status, 200, f);
+  }
+  assert.equal((await fetch(BASE + '/ocr/js/nope.js', { method: 'HEAD' })).status, 404);
 });

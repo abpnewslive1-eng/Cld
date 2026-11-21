@@ -37,7 +37,7 @@ function openCar(id) {
   if (num(c.repair)) { c.expenses.unshift({ date: c.buyDate || today(), type: 'repair', amount: num(c.repair), note: '' }); c.repair = 0; }
   c.photos = c.photos || []; c.hideOnline = c.hideOnline ? '1' : '';
   carDraft = c;
-  openSheet(head(id ? t('car_info') : t('new_car')) + photosBlock(c) +
+  openSheet(head(id ? t('car_info') : t('new_car')) + rcBar(c) + photosBlock(c) +
     group('g_car', [{ k:'reg', l:'reg', req:true }, { k:'company', l:'company' }, { k:'model', l:'model', req:true }, { k:'year', l:'year', type:'number' }, { k:'color', l:'color' }, { k:'fuel', l:'fuel', type:'select', opts: opts('fuel') }, { k:'km', l:'km_run', type:'number' }, { k:'ownerNo', l:'owner_no', type:'number' }], c) +
     group('g_papers', [{ k:'chassis', l:'chassis' }, { k:'engine', l:'engine' }, { k:'insurance', l:'insurance_till', type:'date' }, { k:'tax', l:'tax' }, { k:'finance', l:'finance_on_car', full:true }], c) +
     group('g_buy', [{ k:'buySource', l:'buy_source', type:'select', opts: buySrcOpts() }, { k:'buyFrom', l:'buy_from' }, { k:'buyFromPhone', l:'buy_from_phone', type:'tel' }], c) +

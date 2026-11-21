@@ -3675,6 +3675,90 @@
   "support_ph_sub": {
    "en": "Dealers see this number when their trial or plan ends.",
    "mr": "ट्रायल संपताना आणि प्लॅन संपल्यावर डीलरला हा नंबर दाखवला जातो."
+  },
+  "rc_scan": {
+   "en": "📷 Scan number plate",
+   "mr": "📷 नंबर प्लेट स्कॅन करा"
+  },
+  "rc_fill": {
+   "en": "🔎 Fill from RC",
+   "mr": "🔎 RC वरून माहिती भरा"
+  },
+  "rc_parivahan": {
+   "en": "Check on Parivahan ↗",
+   "mr": "mParivahan मध्ये पाहा ↗"
+  },
+  "rc_copied": {
+   "en": "Number copied – paste it on Parivahan",
+   "mr": "नंबर कॉपी केला – Parivahan मध्ये पेस्ट करा"
+  },
+  "rc_reading": {
+   "en": "Reading the number…",
+   "mr": "नंबर वाचत आहे…"
+  },
+  "rc_read_ok": {
+   "en": "Number found: {n} – please check it",
+   "mr": "नंबर सापडला: {n} – एकदा तपासा"
+  },
+  "rc_read_fail": {
+   "en": "Couldn’t read the number – please type it",
+   "mr": "नंबर वाचता आला नाही – हाताने टाका"
+  },
+  "rc_loading": {
+   "en": "Getting RC details…",
+   "mr": "RC माहिती आणत आहे…"
+  },
+  "rc_filled": {
+   "en": "RC details filled – please check them",
+   "mr": "RC माहिती भरली – एकदा तपासा"
+  },
+  "rc_left": {
+   "en": "{n} RC lookups left this month",
+   "mr": "या महिन्यात {n} RC तपासण्या बाकी"
+  },
+  "rc_err_reg": {
+   "en": "Enter a valid vehicle number first",
+   "mr": "आधी बरोबर गाडी नंबर टाका"
+  },
+  "rc_err_nf": {
+   "en": "No RC details found for this number",
+   "mr": "या नंबरची RC माहिती मिळाली नाही"
+  },
+  "rc_err_limit": {
+   "en": "This month’s RC lookups are used up – upgrade your plan",
+   "mr": "या महिन्याच्या RC तपासण्या संपल्या – प्लॅन वाढवा"
+  },
+  "rc_err_plan": {
+   "en": "RC details aren’t part of your plan",
+   "mr": "RC माहिती तुमच्या प्लॅनमध्ये नाही"
+  },
+  "rc_err_fail": {
+   "en": "RC service isn’t available right now – try later",
+   "mr": "RC सेवा सध्या मिळत नाही – नंतर प्रयत्न करा"
+  },
+  "rc_consent": {
+   "en": "Check RC only with the seller’s consent, and use the details only for this purchase.",
+   "mr": "विक्रेत्याच्या परवानगीनेच RC तपासा; माहिती फक्त या खरेदीसाठी वापरा."
+  },
+  "rc_loan": {
+   "en": "⚠ This car has a loan: {f}",
+   "mr": "⚠ या गाडीवर कर्ज आहे: {f}"
+  },
+  "rc_blacklist": {
+   "en": "⚠ This vehicle is blacklisted",
+   "mr": "⚠ ही गाडी ब्लॅकलिस्टेड आहे"
+  },
+  "rc_owner": {
+   "en": "RC owner",
+   "mr": "RC मालक"
+  },
+  "rc_regd": {
+   "en": "Registered",
+   "mr": "नोंदणी"
+  },
+  "rc_per_month": {
+   "en": "RC lookups / month (0 = off)",
+   "mr": "RC तपासण्या / महिना (0 = बंद)"
   }
  },
  "OPT": {

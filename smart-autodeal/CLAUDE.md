@@ -34,12 +34,12 @@ First real customer: *Sevasai Vahan Bazar* (Bidkin, Maharashtra). Target: dealer
 - **server.js** – Express API + static files. Tables: `tenants`, `users` (role `super|admin|staff`, `tenant_id`),
   `docs` (generic JSON documents: PK `tenant_id, col, id`; cols = cars, leads, deals, expenses, settings, chats, broadcasts),
   `photos` (images as LONGBLOB; `_platform` tenant = super-admin assets), `views` (catalogue analytics),
-  `payments`, `logs`, `platform` (key/value: plans, news, supportPhone, posterLib, posterCfg, dealerPoster).
+  `payments`, `logs`, `rc_lookups` (RC cache/usage per dealer), `platform` (key/value: plans, news, supportPhone, posterLib, posterCfg, dealerPoster).
 - Auth: JWT in an httpOnly cookie `sad`. Super admin "open as dealer" = JWT with `act: <tenantId>` (logged).
 - **Tenant isolation is enforced on the server** (`req.tid` in every query). Never trust a tenant id from the client.
 - Plan state: `trial | active | expired | suspended` from `tenants.expiry/trial/suspended`. Expired = read-only (HTTP 402).
   Suspended = cannot log in (403). Limits per plan (`maxCars`, `maxStaff`; 0 = unlimited) → 403 `limit`.
-  Features per dealer: `catalog`, `wa`.
+  Features per dealer: `catalog`, `wa`. Plans also carry `rcPerMonth` (RC lookups; 0 = off).
 - Public pages: `/c/<tenantId>` and `/c/<tenantId>/<carId>` (catalogue, first-visit name/phone/town form → lead with source `qr`).
 - **Frontend** = plain browser JavaScript, no framework, one global scope. Source in `src/frontend/NN-*.js`,
   concatenated in file-name order by `scripts/build.mjs` → `public/app.js` (generated – never edit it).
@@ -50,6 +50,8 @@ First real customer: *Sevasai Vahan Bazar* (Bidkin, Maharashtra). Target: dealer
   (20%), auto-drawn from the dealer's logo/name/phone or designer PNGs uploaded by super admin, `PREVIEW` watermark when locked.
   Categories carry a plan tier; dealer types ("segments") make business-branding posters. Bulk upload parses
   `YYYY-MM-DD_Title.jpg` / `DD-MM-YYYY Title.jpg`.
+- Car form: 📷 plate scan (tesseract.js served from `/ocr/`, `12-rc-scan.js`, `plateFromText` tested in e2e) → `POST /api/rc/lookup`
+  (provider from `RC_PROVIDER`, mapped by `rcMap()` in server.js; demo/mock = fake data). Tests use `window.PLATE_OCR` to skip real OCR.
 - Receipt print = the dealer's paper format (Marathi body text; title/terms/colour editable per dealer).
 
 ## Languages
@@ -60,7 +62,7 @@ Translations were machine-generated – have native speakers review them. Receip
 
 ## Deployment
 Hostinger Business/Cloud "Node.js web app" (entry `server.js`, start `npm start`). See `docs/DEPLOY-HOSTINGER.md`.
-Android APK / Play Store: `docs/ANDROID-APP.md`.
+Android APK / Play Store: `docs/ANDROID-APP.md`. Number plate scan + RC provider setup: `docs/RC-LOOKUP.md`.
 `npm start` builds `public/app.js` first, so the generated file never needs to be committed.
 
 ## Backlog (owner's priorities, roughly in order)
