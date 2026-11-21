@@ -939,7 +939,13 @@
   "rc_blacklist": "⚠ এই গাড়িটি ব্ল্যাকলিস্টেড",
   "rc_owner": "RC মালিক",
   "rc_regd": "রেজিস্ট্রেশন",
-  "rc_per_month": "RC চেক / মাস (0 = বন্ধ)"
+  "rc_per_month": "RC চেক / মাস (0 = বন্ধ)",
+  "rc_inactive": "⚠ RC স্ট্যাটাস: {s}",
+  "rc_card_scan": "📄 RC স্ক্যান করুন (বিনামূল্যে)",
+  "rc_card_reading": "RC পড়া হচ্ছে…",
+  "rc_card_ok": "RC থেকে {n}টি তথ্য ভরা হয়েছে – একবার দেখে নিন",
+  "rc_card_fail": "RC পড়া গেল না – ভালো আলোয় সোজা করে ছবি তুলুন",
+  "rc_card_tip": "RC কার্ডের দুই দিকের ছবি, বা DigiLocker / mParivahan-এর RC-র স্ক্রিনশট বেছে নিন।"
  },
  "OPT": {
   "fuel": {

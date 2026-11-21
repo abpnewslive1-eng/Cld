@@ -939,7 +939,13 @@
   "rc_blacklist": "⚠ ਇਹ ਗੱਡੀ ਬਲੈਕਲਿਸਟ ਹੈ",
   "rc_owner": "RC ਮਾਲਕ",
   "rc_regd": "ਰਜਿਸਟ੍ਰੇਸ਼ਨ",
-  "rc_per_month": "RC ਚੈੱਕ / ਮਹੀਨਾ (0 = ਬੰਦ)"
+  "rc_per_month": "RC ਚੈੱਕ / ਮਹੀਨਾ (0 = ਬੰਦ)",
+  "rc_inactive": "⚠ RC ਸਟੇਟਸ: {s}",
+  "rc_card_scan": "📄 RC ਸਕੈਨ ਕਰੋ (ਮੁਫ਼ਤ)",
+  "rc_card_reading": "RC ਪੜ੍ਹ ਰਹੇ ਹਾਂ…",
+  "rc_card_ok": "RC ਤੋਂ {n} ਜਾਣਕਾਰੀ ਭਰ ਦਿੱਤੀ – ਇੱਕ ਵਾਰ ਚੈੱਕ ਕਰੋ",
+  "rc_card_fail": "RC ਪੜ੍ਹੀ ਨਹੀਂ ਗਈ – ਚੰਗੀ ਰੋਸ਼ਨੀ ਵਿੱਚ ਸਿੱਧੀ ਫੋਟੋ ਲਓ",
+  "rc_card_tip": "RC ਕਾਰਡ ਦੇ ਦੋਵੇਂ ਪਾਸਿਆਂ ਦੀਆਂ ਫੋਟੋਆਂ, ਜਾਂ DigiLocker / mParivahan RC ਦਾ ਸਕ੍ਰੀਨਸ਼ਾਟ ਚੁਣੋ।"
  },
  "OPT": {
   "fuel": {

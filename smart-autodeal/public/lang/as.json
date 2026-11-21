@@ -939,7 +939,13 @@
   "rc_blacklist": "⚠ এই গাড়ীখন ব্লেকলিষ্টেড",
   "rc_owner": "RC মালিক",
   "rc_regd": "ৰেজিষ্ট্ৰেচন",
-  "rc_per_month": "RC চেক / মাহ (0 = বন্ধ)"
+  "rc_per_month": "RC চেক / মাহ (0 = বন্ধ)",
+  "rc_inactive": "⚠ RC স্থিতি: {s}",
+  "rc_card_scan": "📄 RC স্কেন কৰক (বিনামূলীয়া)",
+  "rc_card_reading": "RC পঢ়ি আছে…",
+  "rc_card_ok": "RCৰ পৰা {n} টা বিৱৰণ ভৰোৱা হ'ল – এবাৰ চাই লওক",
+  "rc_card_fail": "RC পঢ়িব পৰা নগ'ল – ভাল পোহৰত পোনকৈ ফটো লওক",
+  "rc_card_tip": "RC কাৰ্ডৰ দুয়োফালৰ ফটো, বা DigiLocker / mParivahan RCৰ স্ক্ৰীণশ্বট বাছি লওক।"
  },
  "OPT": {
   "fuel": {
