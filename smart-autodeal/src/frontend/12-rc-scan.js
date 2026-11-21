@@ -73,16 +73,18 @@ async function readPlate(file) {
   if (window.PLATE_OCR) return plateFromText(await window.PLATE_OCR(file)); // tests / demo hook
   const Tess = await loadTess(); const img = await loadImg(file);
   const worker = await Tess.createWorker('eng', 1, { workerPath: OCR.workerPath, corePath: OCR.corePath, langPath: OCR.langPath, gzip: true });
-  let best = null;
+  const votes = {};
   try {
     await worker.setParameters({ tessedit_char_whitelist: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ' });
-    for (const [psm, deg] of [['3', 0], ['6', 0], ['6', -3], ['6', 3], ['6', -6], ['6', 6], ['6', -9], ['6', 9], ['11', 0]]) {
+    for (const [psm, deg] of [['3', 0], ['6', 0], ['6', -2], ['6', 2], ['6', -4], ['6', 4], ['6', -6], ['6', 6], ['6', -8], ['6', 8], ['6', -11], ['6', 11], ['11', 0]]) {
       await worker.setParameters({ tessedit_pageseg_mode: psm });
       const { data } = await worker.recognize(prepPlate(img, deg)); const r = plateParse(data.text);
-      if (r && (!best || r.cost < best.cost)) best = r;
-      if (best && best.cost < 1) break; // clean read – no need to try more
+      if (!r || r.cost > 2.5) continue;
+      const v = votes[r.text] = votes[r.text] || { text: r.text, n: 0, cost: r.cost }; v.n++; v.cost = Math.min(v.cost, r.cost);
+      if (v.n >= 2) return v.text; // two different readings agree – trust it
     }
-    return best && best.cost <= 2.5 ? best.text : '';
+    // nothing agreed: take the reading seen most, then the cleanest (the dealer still checks the number)
+    const all = Object.values(votes).sort((a, b) => b.n - a.n || a.cost - b.cost); return all.length ? all[0].text : '';
   } finally { worker.terminate(); URL.revokeObjectURL(img.src); }
 }
 async function rcScan(inp) {
