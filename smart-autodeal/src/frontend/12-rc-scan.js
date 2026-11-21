@@ -18,10 +18,11 @@ const OCR = { js: '/ocr/js/tesseract.min.js', workerPath: '/ocr/js/worker.min.js
 const rcOn = () => !!(TEN && TEN.rc && TEN.rc.enabled);
 
 function rcBar(c) {
-  return `<div class="rc-bar"><label class="btn">${t('rc_scan')}<input type="file" accept="image/*" capture="environment" hidden onchange="rcScan(this)"></label>
-    ${rcOn() ? `<button class="btn dark" type="button" onclick="rcLookup()">${t('rc_fill')}</button>` : ''}
+  return `<div class="rc-bar"><label class="btn dark" title="${t('rc_card_tip')}">${t('rc_card_scan')}<input type="file" accept="image/*" multiple hidden onchange="rcCardScan(this)"></label>
+    <label class="btn">${t('rc_scan')}<input type="file" accept="image/*" capture="environment" hidden onchange="rcScan(this)"></label>
+    ${rcOn() ? `<button class="btn" type="button" onclick="rcLookup()">${t('rc_fill')}</button>` : ''}
     <button class="btn" type="button" onclick="rcFree()">${t('rc_parivahan')}</button>
-    <span class="r-meta rc-status" id="rcStatus">${rcOn() ? t('rc_left', { n: Math.max(0, TEN.rc.limit - TEN.rc.used) }) : ''}</span></div>
+    <span class="r-meta rc-status"><span>${t('rc_card_tip')}</span> <span id="rcStatus">${rcOn() ? t('rc_left', { n: Math.max(0, TEN.rc.limit - TEN.rc.used) }) : ''}</span></span></div>
     <div id="rcInfo"></div>`;
 }
 
