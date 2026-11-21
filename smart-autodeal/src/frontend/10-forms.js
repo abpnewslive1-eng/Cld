@@ -10,8 +10,20 @@ function field(f, obj) {
 }
 const group = (title, fs, obj) => `<fieldset><legend>${t(title)}</legend><div class="fields">${fs.map(f => field(f, obj)).join('')}</div></fieldset>`;
 function readForm(base) { const o = clone(base); document.querySelectorAll('#sheet [data-k]').forEach(el => { let v = el.value.trim(); if (el.type === 'number') v = v === '' ? '' : num(v); setP(o, el.dataset.k, v); }); return o; }
-function openSheet(html) { $('#sheet').oninput = null; $('#sheet').innerHTML = html; $('#overlay').classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeSheet() { $('#overlay').classList.remove('open'); document.body.style.overflow = ''; }
+/* An open sheet owns one history entry, so the phone's Back button (and the APK's) closes the sheet instead of leaving the page. */
+let sheetHist = false, sheetBackTimer = 0, sheetHref = '';
+function openSheet(html) {
+  $('#sheet').oninput = null; $('#sheet').innerHTML = html; $('#overlay').classList.add('open'); document.body.style.overflow = 'hidden';
+  if (sheetBackTimer) { clearTimeout(sheetBackTimer); sheetBackTimer = 0; if (location.href === sheetHref && history.state && history.state.sheet) { sheetHist = true; return; } } // closed and reopened at once: reuse its entry
+  if (!sheetHist) { sheetHist = true; history.pushState({ sheet: 1 }, ''); }
+}
+function closeSheet(fromBack) {
+  $('#overlay').classList.remove('open'); document.body.style.overflow = '';
+  if (!sheetHist) return; sheetHist = false; if (fromBack === true) return;
+  const here = sheetHref = location.href; // drop our entry, unless the caller already navigated somewhere else
+  sheetBackTimer = setTimeout(() => { sheetBackTimer = 0; if (location.href === here && history.state && history.state.sheet) history.back(); }, 0);
+}
+addEventListener('popstate', () => { if (sheetHist) closeSheet(true); });
 $('#overlay').addEventListener('click', e => { if (e.target.id === 'overlay') closeSheet(); });
 addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
 const head = title => `<div class="sheet-head"><h2 style="margin:0">${title}</h2><button class="btn ghost" onclick="closeSheet()" aria-label="${t('close')}">✕</button></div>`;

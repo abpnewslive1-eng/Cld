@@ -1,5 +1,5 @@
 // सेवासाई CRM – app files offline cache (data हमेशा server से आता है). App बदलने पर VERSION बढ़ाएँ.
-const VERSION = 'v13';
+const VERSION = 'v14';
 const CACHE = 'smart-autodeal-' + VERSION;
 const SHELL = ['/', '/index.html', '/style.css', '/app.js', '/vendor/qrcode.min.js', '/manifest.webmanifest', '/icons/icon-192.png', '/icons/icon-512.png', '/icons/apple-touch-icon.png'];
 self.addEventListener('install', e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });

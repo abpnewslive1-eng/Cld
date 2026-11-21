@@ -493,6 +493,16 @@ app.put('/api/sa/dealerposter/:tid', auth, superOnly, wrap(async (req, res) => {
 app.get('/api/health', (req, res) => res.json({ ok: true }));
 
 /* ================= app files ================= */
+// Android app (TWA / APK): proves to Android that the APK and this website belong together, so the app opens full-screen
+// without a browser bar. Set ANDROID_PACKAGE (e.g. in.smartautodeal.app) and ANDROID_SHA256 (signing-key fingerprint(s),
+// comma-separated, "AA:BB:…") in the environment. See docs/ANDROID-APP.md.
+app.get('/.well-known/assetlinks.json', (req, res) => {
+  const pkg = String(process.env.ANDROID_PACKAGE || '').trim();
+  const fps = String(process.env.ANDROID_SHA256 || '').split(',').map(s => s.trim().toUpperCase()).filter(s => /^([0-9A-F]{2}:){31}[0-9A-F]{2}$/.test(s));
+  if (!pkg || !fps.length) return res.status(404).json({ error: 'android app not configured' });
+  res.set('Cache-Control', 'public, max-age=3600');
+  res.json([{ relation: ['delegate_permission/common.handle_all_urls'], target: { namespace: 'android_app', package_name: pkg, sha256_cert_fingerprints: fps } }]);
+});
 app.use(express.static(path.join(__dirname, 'public'), { setHeaders(res, file) { if (/(sw\.js|index\.html|app\.js|style\.css|\.json)$/.test(file)) res.set('Cache-Control', 'no-cache'); } }));
 app.get(['/c/:tid', '/c/:tid/:id'], (req, res) => { res.set('Cache-Control', 'no-cache'); res.sendFile(path.join(__dirname, 'public', 'index.html')); });
 app.use('/api', (req, res) => err(res, 404, 'not found'));

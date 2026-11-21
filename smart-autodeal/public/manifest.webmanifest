@@ -1,17 +1,30 @@
 {
+  "id": "/",
   "name": "Smart AutoDeal",
   "short_name": "AutoDeal",
-  "description": "डीलरचा डिजिटल मुनीम – स्टॉक, ग्राहक, पावती, हिशोब आणि WhatsApp",
-  "lang": "mr",
+  "description": "Used-car dealer software – stock, customers, receipts, loans, expenses, posters, online catalogue and WhatsApp. In English and 11 Indian languages.",
+  "lang": "en",
+  "dir": "ltr",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "any",
   "background_color": "#F2F3F7",
   "theme_color": "#3D3BF3",
+  "categories": ["business", "productivity", "finance"],
   "icons": [
     {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
     {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
     {"src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "shortcuts": [
+    {"name": "Cars", "url": "/#cars", "icons": [{"src": "icons/icon-192.png", "sizes": "192x192"}]},
+    {"name": "Customers", "url": "/#leads", "icons": [{"src": "icons/icon-192.png", "sizes": "192x192"}]},
+    {"name": "Receipts", "url": "/#deals", "icons": [{"src": "icons/icon-192.png", "sizes": "192x192"}]}
+  ],
+  "screenshots": [
+    {"src": "screenshots/phone-dashboard.png", "sizes": "824x1830", "type": "image/png", "form_factor": "narrow", "label": "Dashboard on a phone"},
+    {"src": "screenshots/phone-cars.png", "sizes": "824x1830", "type": "image/png", "form_factor": "narrow", "label": "Car stock"},
+    {"src": "screenshots/desktop-dashboard.png", "sizes": "1366x768", "type": "image/png", "form_factor": "wide", "label": "Dashboard on a computer"}
   ]
 }

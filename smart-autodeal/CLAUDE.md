@@ -60,18 +60,22 @@ Translations were machine-generated – have native speakers review them. Receip
 
 ## Deployment
 Hostinger Business/Cloud "Node.js web app" (entry `server.js`, start `npm start`). See `docs/DEPLOY-HOSTINGER.md`.
+Android APK / Play Store: `docs/ANDROID-APP.md`.
 `npm start` builds `public/app.js` first, so the generated file never needs to be committed.
 
 ## Backlog (owner's priorities, roughly in order)
 1. Receipt (delivery note) body text in English and Hindi, chosen per dealer (now Marathi only).
 2. ~~Hindi as a third UI language~~ – done (11 Indian languages). Next: native-speaker review of the packs; Urdu (needs RTL).
 3. WhatsApp Cloud API: webhook `/api/whatsapp/webhook` → real inbox, auto-replies, Meta-ad attribution (`ctwa_clid`), templates.
-4. Play Store app (TWA wrapper around the PWA).
+4. Play Store app (TWA wrapper around the PWA) – app side ready (manifest, Back button, `/.well-known/assetlinks.json` from
+   `ANDROID_PACKAGE`/`ANDROID_SHA256`); APK is built once the site is live on its domain – see `docs/ANDROID-APP.md`.
 5. Online payments (Razorpay) – today super admin records payments by hand on purpose.
 6. Daily automatic database backup; image storage limits.
 
 ## Guardrails
 - Don't break tenant isolation; every new query must filter by `req.tid`.
 - Don't store secrets in the repo; config comes from env vars.
-- Keep the app usable on a cheap Android phone: no heavy libraries, mobile-first CSS.
+- Keep the app usable on a cheap Android phone: no heavy libraries, mobile-first CSS. It must also work well on desktop
+  (sidebar with names) and tablets – the e2e test checks 320px → 1920px for horizontal overflow.
+- Bottom sheets own a history entry (`openSheet`/`closeSheet` in 10-forms.js) so Android Back closes them – keep it that way.
 - Poster artwork must be our own or licensed – no copyrighted film/celebrity/deity images in starter content.

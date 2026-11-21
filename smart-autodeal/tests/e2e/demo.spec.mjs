@@ -107,3 +107,35 @@ test('long words in Indian languages never push the dashboard wider than the scr
   }
   await page.evaluate(() => setLang('en'));
 });
+
+test('phone Back button closes an open form instead of leaving the page', async ({ page }) => {
+  await loginAs(page, 'Sevasai – Owner');
+  await page.evaluate(() => { location.hash = 'cars'; });
+  await page.getByRole('button', { name: /Add car/ }).first().click();
+  await expect(page.locator('#overlay')).toHaveClass(/open/);
+  await page.goBack();
+  await expect(page.locator('#overlay')).not.toHaveClass(/open/);
+  await expect(page).toHaveURL(/#cars$/);
+  // closing with Cancel/✕ leaves no extra Back step behind
+  await page.getByRole('button', { name: /Add car/ }).first().click();
+  await page.keyboard.press('Escape');
+  await expect(page.locator('#overlay')).not.toHaveClass(/open/);
+  await page.evaluate(() => { location.hash = 'leads'; });
+  await page.goBack();
+  await expect(page).toHaveURL(/#cars$/);
+});
+
+test('layout fits every screen from a small phone to a big monitor', async ({ page }) => {
+  await loginAs(page, 'Sevasai – Owner');
+  for (const [width, height] of [[320, 640], [768, 1024], [1024, 768], [1920, 1080]]) {
+    await page.setViewportSize({ width, height });
+    for (const r of ['dashboard', 'cars', 'leads', 'deals', 'posters', 'settings']) {
+      await page.evaluate(h => { location.hash = h; }, r);
+      await expect(page.locator('#main')).not.toBeEmpty();
+      const over = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
+      expect(over, `${width}px ${r}`).toBeLessThanOrEqual(1);
+    }
+    // desktop shows the sidebar with names, phones/tablets the bottom bar
+    if (width > 860) await expect(page.locator('#side .lbl').first()).toBeVisible(); else await expect(page.locator('#bottom')).toBeVisible();
+  }
+});

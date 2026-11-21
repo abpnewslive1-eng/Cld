@@ -40,7 +40,7 @@ async function login(username, password) { const c = client(); const r = await c
 
 before(async () => {
   await wipeDb();
-  server = spawn(process.execPath, ['server.js'], { cwd: root, env: { ...env, PORT, JWT_SECRET: 'test-secret-test-secret-test-secret-1234', SUPER_USERNAME: SUPER.username, SUPER_PASSWORD: SUPER.password, SUPPORT_PHONE: '9822000000' }, stdio: ['ignore', 'pipe', 'pipe'] });
+  server = spawn(process.execPath, ['server.js'], { cwd: root, env: { ...env, PORT, JWT_SECRET: 'test-secret-test-secret-test-secret-1234', SUPER_USERNAME: SUPER.username, SUPER_PASSWORD: SUPER.password, SUPPORT_PHONE: '9822000000', ANDROID_PACKAGE: 'in.example.autodeal', ANDROID_SHA256: 'ab:'.repeat(31) + 'CD' }, stdio: ['ignore', 'pipe', 'pipe'] });
   let log = ''; server.stdout.on('data', d => (log += d)); server.stderr.on('data', d => (log += d));
   for (let i = 0; i < 60; i++) { try { const r = await fetch(BASE + '/api/health'); if (r.ok) return; } catch (e) {} await new Promise(r => setTimeout(r, 250)); }
   throw new Error('server did not start:\n' + log);
@@ -148,4 +148,13 @@ test('language packs are served for every Indian language, without login', async
     const j = await r.json();
     assert.ok(j.T && typeof j.T.nav_dashboard === 'string' && j.T.nav_dashboard.length, `${code} has nav_dashboard`);
   }
+});
+
+test('Android app link file (assetlinks.json) is served from the environment settings', async () => {
+  const r = await fetch(`${BASE}/.well-known/assetlinks.json`);
+  assert.equal(r.status, 200);
+  const j = await r.json();
+  assert.equal(j[0].target.package_name, 'in.example.autodeal');
+  assert.deepEqual(j[0].target.sha256_cert_fingerprints, ['AB:'.repeat(31) + 'CD']);
+  assert.deepEqual(j[0].relation, ['delegate_permission/common.handle_all_urls']);
 });
