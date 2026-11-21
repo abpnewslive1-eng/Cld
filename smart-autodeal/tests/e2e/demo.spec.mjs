@@ -153,7 +153,7 @@ test('scanning a number plate fills the new car form from RC', async ({ page }) 
   await page.getByRole('button', { name: /Add car/ }).first().click();
   const sheet = page.locator('#sheet');
   await expect(sheet.getByText('Check on Parivahan')).toBeVisible();
-  await sheet.locator('.rc-bar input[type=file]').setInputFiles({ name: 'plate.jpg', mimeType: 'image/jpeg', buffer: Buffer.from([0xff, 0xd8, 0xff]) });
+  await sheet.locator('.rc-bar input[capture]').setInputFiles({ name: 'plate.jpg', mimeType: 'image/jpeg', buffer: Buffer.from([0xff, 0xd8, 0xff]) });
   await expect(sheet.locator('#f_reg')).toHaveValue('MH20 DV 4521');
   await expect(sheet.locator('#f_model')).not.toHaveValue('');
   await expect(sheet.locator('#f_company')).not.toHaveValue('');
@@ -163,7 +163,34 @@ test('scanning a number plate fills the new car form from RC', async ({ page }) 
   await expect(sheet.locator('#rcStatus')).toContainText('lookups left this month');
   // a number that cannot be read asks the dealer to type it
   await page.evaluate(() => { window.PLATE_OCR = async () => 'blurry'; });
-  await sheet.locator('.rc-bar input[type=file]').setInputFiles({ name: 'p2.jpg', mimeType: 'image/jpeg', buffer: Buffer.from([0xff, 0xd8, 0xff]) });
+  await sheet.locator('.rc-bar input[capture]').setInputFiles({ name: 'p2.jpg', mimeType: 'image/jpeg', buffer: Buffer.from([0xff, 0xd8, 0xff]) });
   await expect(page.locator('#toast')).toContainText('type it');
+  await page.keyboard.press('Escape');
+});
+
+test('RC card text (smart card, mParivahan screenshot) is turned into car details', async ({ page }) => {
+  const [card, mpv] = await page.evaluate(() => [
+    rcFromText('Certificate of Registration\nRegn. Number   MH20DV4521        Date of Regn.  14/03/2019\nChassis Number  MA3EWDE1S00123456\nEngine / Motor Number  K12MN1234567\nOwner Name   SANJAY DESHMUKH\nFuel  PETROL       Emission Norms  BHARAT STAGE IV\nOwner Serial No  2\nVehicle Class  MOTOR CAR (LMV)\nMaker\'s Name  MARUTI SUZUKI INDIA LTD\nModel Name  SWIFT VXI\nColour  PEARL WHITE      Body Type  SALOON\nMonth - Yr of Mfg  02/2019\nFinancier  HDFC BANK LTD'),
+    rcFromText('mParivahan\nRegistration No\nKAO5MN1234\nOwner Name\nRAJESH KULKARNI\nMaker / Model\nHYUNDAI MOTOR INDIA LTD / I20 SPORTZ\nVehicle Class\nMotor Car(LMV)\nFuel Type\nDIESEL\nRegistration Date\n05-Jul-2018\nInsurance Upto\n12-Aug-2026\nFinancier Name\nNA'),
+  ]);
+  expect(card).toMatchObject({ reg: 'MH20 DV 4521', company: 'MARUTI SUZUKI INDIA LTD', model: 'SWIFT VXI', year: '2019', color: 'PEARL WHITE', fuel: 'petrol', ownerNo: 2, owner: 'SANJAY DESHMUKH',
+    chassis: 'MA3EWDE1S00123456', engine: 'K12MN1234567', finance: 'HDFC BANK LTD', regDate: '2019-03-14', vehicleClass: 'MOTOR CAR (LMV)' });
+  expect(mpv).toMatchObject({ reg: 'KA05 MN 1234', company: 'HYUNDAI MOTOR INDIA LTD', model: 'I20 SPORTZ', year: '2018', fuel: 'diesel', owner: 'RAJESH KULKARNI', insurance: '2026-08-12', finance: '', regDate: '2018-07-05' });
+});
+
+test('free "Scan RC" fills the new car form without any API', async ({ page }) => {
+  await loginAs(page, 'Sevasai – Owner');
+  await page.evaluate(() => { location.hash = 'cars'; window.RC_OCR = async () => 'Regn. Number  MH20 EE 4455\nOwner Name  ANIL PATIL\nMaker\'s Name  TATA MOTORS LTD\nModel Name  NEXON XZ\nColour  FLAME RED\nFuel  DIESEL\nMonth - Yr of Mfg  06/2020\nFinancier  ICICI BANK'; });
+  await page.getByRole('button', { name: /Add car/ }).first().click();
+  const sheet = page.locator('#sheet');
+  await sheet.locator('.rc-bar input[type=file][multiple]').setInputFiles([{ name: 'front.jpg', mimeType: 'image/jpeg', buffer: Buffer.from([0xff, 0xd8, 0xff]) }, { name: 'back.jpg', mimeType: 'image/jpeg', buffer: Buffer.from([0xff, 0xd8, 0xff]) }]);
+  await expect(sheet.locator('#f_reg')).toHaveValue('MH20 EE 4455');
+  await expect(sheet.locator('#f_company')).toHaveValue('Tata');
+  await expect(sheet.locator('#f_model')).toHaveValue('NEXON XZ');
+  await expect(sheet.locator('#f_year')).toHaveValue('2020');
+  await expect(sheet.locator('#f_fuel')).toHaveValue('diesel');
+  await expect(sheet.locator('#f_buyFrom')).toHaveValue('Anil Patil');
+  await expect(sheet.locator('.rc-info')).toContainText('ICICI BANK');
+  await expect(page.locator('#toast')).toContainText('from the RC');
   await page.keyboard.press('Escape');
 });

@@ -3748,6 +3748,10 @@
    "en": "⚠ This vehicle is blacklisted",
    "mr": "⚠ ही गाडी ब्लॅकलिस्टेड आहे"
   },
+  "rc_inactive": {
+   "en": "⚠ RC status: {s}",
+   "mr": "⚠ RC स्थिती: {s}"
+  },
   "rc_owner": {
    "en": "RC owner",
    "mr": "RC मालक"
@@ -3759,6 +3763,26 @@
   "rc_per_month": {
    "en": "RC lookups / month (0 = off)",
    "mr": "RC तपासण्या / महिना (0 = बंद)"
+  },
+  "rc_card_scan": {
+   "en": "📄 Scan RC (free)",
+   "mr": "📄 RC स्कॅन करा (मोफत)"
+  },
+  "rc_card_reading": {
+   "en": "Reading the RC…",
+   "mr": "RC वाचत आहे…"
+  },
+  "rc_card_ok": {
+   "en": "Filled {n} details from the RC – please check them",
+   "mr": "RC मधून {n} माहिती भरली – एकदा तपासा"
+  },
+  "rc_card_fail": {
+   "en": "Couldn’t read the RC – take a straight photo in good light",
+   "mr": "RC वाचता आली नाही – उजेडात, सरळ फोटो घ्या"
+  },
+  "rc_card_tip": {
+   "en": "Pick photos of both sides of the RC card, or a screenshot of the DigiLocker / mParivahan RC.",
+   "mr": "RC कार्डच्या दोन्ही बाजूंचे फोटो किंवा DigiLocker / mParivahan RC चा स्क्रीनशॉट निवडा."
   }
  },
  "OPT": {

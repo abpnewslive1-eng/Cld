@@ -202,3 +202,52 @@ test('number-plate OCR files are served from our own server', async () => {
   }
   assert.equal((await fetch(BASE + '/ocr/js/nope.js', { method: 'HEAD' })).status, 404);
 });
+
+test('RC lookup through Cashfree: headers, VALID mapping, INVALID = not found, errors not counted', async () => {
+  const http = await import('node:http');
+  const seen = [];
+  // fake Cashfree, answering exactly like the example in Cashfree's Vehicle RC docs
+  const fake = http.createServer((req, res) => {
+    let raw = ''; req.on('data', d => (raw += d)); req.on('end', () => {
+      const body = JSON.parse(raw || '{}'); seen.push({ path: req.url, id: req.headers['x-client-id'], secret: req.headers['x-client-secret'], body });
+      const send = (code, j) => { res.writeHead(code, { 'Content-Type': 'application/json' }); res.end(JSON.stringify(j)); };
+      if (req.headers['x-client-secret'] !== 'cf-secret') return send(401, { code: 'authentication_failed', message: 'Invalid client', type: 'authentication_error' });
+      if (body.vehicle_number === 'MH20ZZ0001') return send(200, { verification_id: body.verification_id, reference_id: 89, status: 'INVALID' });
+      if (body.vehicle_number === 'MH20ZZ0002') return send(422, { code: 'insufficient_balance', message: 'Insufficient balance', type: 'validation_error' });
+      send(200, { verification_id: body.verification_id, reference_id: 88, status: 'VALID', reg_no: body.vehicle_number, class: 'Motor Car', chassis: 'XDLKHK511VKL59924', engine: 'L5LCFF4579076',
+        vehicle_manufacturer_name: 'HYUNDAI MOTOR INDIA LTD', model: 'PORCHE GDI DCT', vehicle_colour: 'TITAN GREY', type: 'PETROL', norms_type: 'BHARAT STAGE VI', body_type: 'HATCHBACK',
+        owner_count: '1', owner: 'JOHN DOE', owner_father_name: 'JOHN DOE', mobile_number: null, rc_status: 'ACTIVE', status_as_on: '19/01/2024', reg_authority: 'BENGALURU CENTRAL RTO, Karnataka',
+        reg_date: '24/12/2021', vehicle_manufacturing_month_year: '12/2021', rc_expiry_date: '23/12/2036', vehicle_tax_upto: null, vehicle_insurance_company_name: 'BAJAJ INSURANCE CO. LTD.',
+        vehicle_insurance_upto: '14/12/2024', vehicle_insurance_policy_number: '62000344820000', rc_financer: 'BAJAJ FINANCE', present_address: 'D-901 Sun APARTMENTS',
+        split_present_address: { district: ['BANGALORE'], state: [['KARNATAKA', 'KA']], city: ['BELLANDUR'], pincode: '560103', country: ['IN', 'IND', 'INDIA'] },
+        vehicle_category: 'LMV', blacklist_status: 'NA', blacklist_details: null, is_commercial: false });
+    });
+  });
+  await new Promise(r => fake.listen(0, '127.0.0.1', r));
+  const fakeUrl = `http://127.0.0.1:${fake.address().port}/verification/vehicle-rc`;
+  const PORT2 = String(Number(PORT) + 1), BASE2 = `http://127.0.0.1:${PORT2}`;
+  const srv = spawn(process.execPath, ['server.js'], { cwd: root, env: { ...env, PORT: PORT2, JWT_SECRET: 'test-secret-test-secret-test-secret-1234', SUPER_USERNAME: SUPER.username, SUPER_PASSWORD: SUPER.password,
+    RC_PROVIDER: 'cashfree', CASHFREE_CLIENT_ID: 'cf-id', CASHFREE_CLIENT_SECRET: 'cf-secret', RC_API_URL: fakeUrl }, stdio: 'ignore' });
+  try {
+    for (let i = 0; i < 60; i++) { try { if ((await fetch(BASE2 + '/api/health')).ok) break; } catch (e) {} await new Promise(r => setTimeout(r, 250)); }
+    const c = async (method, p, b, cookie) => { const r = await fetch(BASE2 + p, { method, headers: { 'Content-Type': 'application/json', ...(cookie ? { cookie } : {}) }, body: b ? JSON.stringify(b) : undefined }); return { status: r.status, cookie: (r.headers.get('set-cookie') || '').split(';')[0], body: await r.json().catch(() => null) }; };
+    const sa2 = await c('POST', '/api/login', SUPER);
+    assert.equal((await c('POST', '/api/sa/tenants', { name: 'CF Motors', city: 'Pune', ownerName: 'O', phone: '9822004401', username: 'cfmotors', password: 'pass1234', plan: 'pro', trialDays: 14 }, sa2.cookie)).status, 200);
+    const d = (await c('POST', '/api/login', { username: 'cfmotors', password: 'pass1234' })).cookie;
+
+    const r = await c('POST', '/api/rc/lookup', { reg: 'KA01MW6127' }, d);
+    assert.equal(r.status, 200, JSON.stringify(r.body));
+    assert.deepEqual({ id: seen[0].id, secret: seen[0].secret, num: seen[0].body.vehicle_number }, { id: 'cf-id', secret: 'cf-secret', num: 'KA01MW6127' });
+    assert.match(seen[0].body.verification_id, /^[A-Za-z0-9._-]{1,50}$/);
+    const rc = r.body.rc;
+    assert.equal(rc.company, 'HYUNDAI MOTOR INDIA LTD'); assert.equal(rc.model, 'PORCHE GDI DCT'); assert.equal(rc.color, 'TITAN GREY'); assert.equal(rc.fuel, 'petrol');
+    assert.equal(rc.year, '2021'); assert.equal(rc.regDate, '2021-12-24'); assert.equal(rc.ownerNo, 1); assert.equal(rc.owner, 'JOHN DOE');
+    assert.equal(rc.chassis, 'XDLKHK511VKL59924'); assert.equal(rc.engine, 'L5LCFF4579076'); assert.equal(rc.insurance, '2024-12-14'); assert.equal(rc.insurer, 'BAJAJ INSURANCE CO. LTD.');
+    assert.equal(rc.finance, 'BAJAJ FINANCE'); assert.equal(rc.rto, 'BENGALURU CENTRAL RTO, Karnataka'); assert.equal(rc.vehicleClass, 'Motor Car'); assert.equal(rc.blacklisted, false); assert.equal(rc.rcStatus, 'ACTIVE');
+    assert.equal(r.body.used, 1);
+
+    assert.equal((await c('POST', '/api/rc/lookup', { reg: 'MH20ZZ0001' }, d)).body.error, 'rc_nf', 'INVALID → not found');
+    assert.equal((await c('POST', '/api/rc/lookup', { reg: 'MH20ZZ0002' }, d)).body.error, 'rc_fail', 'low balance → service error');
+    assert.equal((await c('GET', '/api/rc/status', null, d)).body.used, 1, 'failed lookups are not counted');
+  } finally { srv.kill(); fake.close(); }
+});

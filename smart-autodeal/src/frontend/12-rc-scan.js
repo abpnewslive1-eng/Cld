@@ -10,7 +10,7 @@ Object.assign(T, {
   rc_err_limit:['या महिन्याच्या RC तपासण्या संपल्या – प्लॅन वाढवा','This month’s RC lookups are used up – upgrade your plan'],
   rc_err_plan:['RC माहिती तुमच्या प्लॅनमध्ये नाही','RC details aren’t part of your plan'], rc_err_fail:['RC सेवा सध्या मिळत नाही – नंतर प्रयत्न करा','RC service isn’t available right now – try later'],
   rc_consent:['विक्रेत्याच्या परवानगीनेच RC तपासा; माहिती फक्त या खरेदीसाठी वापरा.','Check RC only with the seller’s consent, and use the details only for this purchase.'],
-  rc_loan:['⚠ या गाडीवर कर्ज आहे: {f}','⚠ This car has a loan: {f}'], rc_blacklist:['⚠ ही गाडी ब्लॅकलिस्टेड आहे','⚠ This vehicle is blacklisted'],
+  rc_loan:['⚠ या गाडीवर कर्ज आहे: {f}','⚠ This car has a loan: {f}'], rc_blacklist:['⚠ ही गाडी ब्लॅकलिस्टेड आहे','⚠ This vehicle is blacklisted'], rc_inactive:['⚠ RC स्थिती: {s}','⚠ RC status: {s}'],
   rc_owner:['RC मालक','RC owner'], rc_regd:['नोंदणी','Registered'], rc_per_month:['RC तपासण्या / महिना (0 = बंद)','RC lookups / month (0 = off)'],
 });
 const RC_FREE_URL = 'https://vahan.parivahan.gov.in/nrservices/faces/user/citizen/searchstatus.xhtml'; // official "Know your vehicle" page
@@ -119,7 +119,7 @@ function rcApply(rc) {
   setF('ownerNo', rc.ownerNo); setF('chassis', rc.chassis); setF('engine', rc.engine); setF('insurance', rc.insurance); setF('tax', rc.tax);
   setF('finance', rc.finance === 'Yes' ? t('yes') : rc.finance); setF('buyFrom', titleCase(rc.owner));
   const box = $('#rcInfo'); if (!box) return;
-  box.innerHTML = `<div class="rc-info">${rc.finance ? `<b class="rc-warn">${t('rc_loan', { f: esc(rc.finance === 'Yes' ? t('yes') : rc.finance) })}</b>` : ''}${rc.blacklisted ? `<b class="rc-warn">${t('rc_blacklist')}</b>` : ''}
+  box.innerHTML = `<div class="rc-info">${rc.finance ? `<b class="rc-warn">${t('rc_loan', { f: esc(rc.finance === 'Yes' ? t('yes') : rc.finance) })}</b>` : ''}${rc.blacklisted ? `<b class="rc-warn">${t('rc_blacklist')}</b>` : ''}${rc.rcStatus && !/^active$/i.test(rc.rcStatus) ? `<b class="rc-warn">${t('rc_inactive', { s: esc(rc.rcStatus) })}</b>` : ''}
     <span>${t('rc_owner')}: <b>${esc(titleCase(rc.owner) || '—')}</b>${rc.ownerNo ? ' · ' + esc(String(rc.ownerNo)) : ''}</span>
     <span>${[rc.regDate ? t('rc_regd') + ': ' + esc(rc.regDate) : '', esc(rc.rto || ''), esc(rc.vehicleClass || '')].filter(Boolean).join(' · ')}</span>
     <small class="r-meta">${t('rc_consent')}</small></div>`;

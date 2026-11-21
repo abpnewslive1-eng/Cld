@@ -24,7 +24,7 @@ const RC_FIELDS = [
   ['color', /colou?r/i],
   ['fuel', /fuel(?:\s*(?:type|used))?/i],
   ['chassis', /chas+is\s*(?:no\.?|number)?/i],
-  ['engine', /(?:engine|motor)\s*(?:\/\s*motor\s*)?(?:no\.?|number)?/i],
+  ['engine', /(?:engine\s*(?:\/\s*motor\s*)?(?:no\.?|number)|motor\s*(?:no\.?|number)|engine)/i],
   ['vehicleClass', /(?:vehicle\s*class|class\s*of\s*vehicle)/i],
   ['rto', /(?:registering\s*authority|registered\s*at)/i],
   ['regNo', /(?:reg(?:istration|n)?\.?\s*(?:no\.?|number)|vehicle\s*(?:no\.?|number))/i],
@@ -36,18 +36,19 @@ const rcIsoDate = v => { const s = String(v || ''); let m = s.match(/(\d{4})-(\d
   return mon >= 1 && mon <= 12 ? `${m[3]}-${String(mon).padStart(2, '0')}-${String(m[1]).padStart(2, '0')}` : ''; };
 // Turns OCR text of an RC into the same shape the RC API returns (so rcApply() can fill the form). Empty fields = not found.
 function rcFromText(text) {
-  const lines = String(text || '').split(/\n+/).map(l => l.replace(/[|“”"]/g, ' ').replace(/\s+/g, ' ').trim()).filter(Boolean);
+  // keep runs of spaces: a label only counts at the start of a line or after a wide gap (the next column), not inside a value
+  const lines = String(text || '').split(/\n+/).map(l => l.replace(/[|“”"]/g, ' ').replace(/\t/g, '   ').trim()).filter(Boolean);
   const got = {};
   const hits = lines.map(line => {
     const all = [];
-    for (const [k, re] of RC_FIELDS) { const g = new RegExp(re.source, 'gi'); let m; while ((m = g.exec(line))) { if (m[0].trim()) all.push({ k, at: m.index, end: m.index + m[0].length }); if (!m[0]) g.lastIndex++; } }
+    for (const [k, re] of RC_FIELDS) { const g = new RegExp(re.source, 'gi'); let m; while ((m = g.exec(line))) { if (m[0].trim() && (m.index === 0 || /\s{2,}$|[:;]\s*$/.test(line.slice(0, m.index)))) all.push({ k, at: m.index, end: m.index + m[0].length }); if (!m[0]) g.lastIndex++; } }
     all.sort((a, b) => a.at - b.at || (b.end - b.at) - (a.end - a.at));
     const keep = []; for (const h of all) if (!keep.length || h.at >= keep[keep.length - 1].end) keep.push(h);
     return keep;
   });
   lines.forEach((line, i) => hits[i].forEach((h, j) => {
-    let v = line.slice(h.end, j + 1 < hits[i].length ? hits[i][j + 1].at : undefined).replace(/^[\s:;.\-–=>]+/, '').trim();
-    if (!v && j === hits[i].length - 1 && lines[i + 1] && !hits[i + 1].length) v = lines[i + 1];
+    let v = line.slice(h.end, j + 1 < hits[i].length ? hits[i][j + 1].at : undefined).replace(/^[\s:;.\-–=>]+/, '').replace(/\s+/g, ' ').trim();
+    if (!v && j === hits[i].length - 1 && lines[i + 1] && !hits[i + 1].length) v = lines[i + 1].replace(/\s+/g, ' ');
     if (v && h.k !== 'ignore' && !got[h.k]) got[h.k] = v;
   }));
   const none = v => !v || /^(n\.?\s*a\.?|nil|none|not\s*applicable|-+)$/i.test(v.trim());

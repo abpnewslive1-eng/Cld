@@ -50,8 +50,8 @@ First real customer: *Sevasai Vahan Bazar* (Bidkin, Maharashtra). Target: dealer
   (20%), auto-drawn from the dealer's logo/name/phone or designer PNGs uploaded by super admin, `PREVIEW` watermark when locked.
   Categories carry a plan tier; dealer types ("segments") make business-branding posters. Bulk upload parses
   `YYYY-MM-DD_Title.jpg` / `DD-MM-YYYY Title.jpg`.
-- Car form: 📷 plate scan (tesseract.js served from `/ocr/`, `12-rc-scan.js`, `plateFromText` tested in e2e) → `POST /api/rc/lookup`
-  (provider from `RC_PROVIDER`, mapped by `rcMap()` in server.js; demo/mock = fake data). Tests use `window.PLATE_OCR` to skip real OCR.
+- Car form: 📄 free RC-card scan (`13-rc-card.js`, `rcFromText` – OCR text → fields, no API; tests use `window.RC_OCR`); 📷 plate scan (tesseract.js served from `/ocr/`, `12-rc-scan.js`, `plateFromText` tested in e2e) → `POST /api/rc/lookup`
+  (provider from `RC_PROVIDER` = cashfree | surepass | generic | mock, mapped by `rcMap()` in server.js; demo/mock = fake data). Tests use `window.PLATE_OCR` to skip real OCR.
 - Receipt print = the dealer's paper format (Marathi body text; title/terms/colour editable per dealer).
 
 ## Languages
