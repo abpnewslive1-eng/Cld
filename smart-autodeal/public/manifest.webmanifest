@@ -1,0 +1,17 @@
+{
+  "name": "Smart AutoDeal",
+  "short_name": "AutoDeal",
+  "description": "डीलरचा डिजिटल मुनीम – स्टॉक, ग्राहक, पावती, हिशोब आणि WhatsApp",
+  "lang": "mr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#F2F3F7",
+  "theme_color": "#3D3BF3",
+  "icons": [
+    {"src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png"},
+    {"src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}

@@ -1,0 +1,15 @@
+# Local MySQL for development and tests:  npm run db:up
+services:
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: autodeal
+      MYSQL_USER: autodeal
+      MYSQL_PASSWORD: autodealpass
+    ports: ["3306:3306"]
+    command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
+    volumes: [mysql-data:/var/lib/mysql, ./scripts/init-test-db.sql:/docker-entrypoint-initdb.d/init-test-db.sql:ro]
+volumes:
+  mysql-data:

@@ -1,0 +1,3 @@
+CREATE DATABASE IF NOT EXISTS autodeal_test CHARACTER SET utf8mb4;
+GRANT ALL PRIVILEGES ON autodeal_test.* TO 'autodeal'@'%';
+FLUSH PRIVILEGES;

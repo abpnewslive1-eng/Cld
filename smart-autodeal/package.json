@@ -1,0 +1,33 @@
+{
+  "name": "smart-autodeal",
+  "version": "2.1.0",
+  "description": "Smart AutoDeal \u2013 multi-dealer used-vehicle dealer management (Node.js + Express + MySQL)",
+  "main": "server.js",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "start": "node scripts/build.mjs && node server.js",
+    "dev": "node scripts/build.mjs && node --watch server.js",
+    "build:demo": "node scripts/build.mjs && node scripts/build-demo.mjs",
+    "db:up": "docker compose up -d",
+    "db:down": "docker compose down",
+    "test": "node scripts/build.mjs && node --test --test-concurrency=1 tests/api.test.mjs",
+    "test:e2e": "npm run build:demo && playwright test",
+    "check": "npm run build && node --check public/app.js && node --check server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.11.3"
+  },
+  "private": true,
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.48.0"
+  }
+}
