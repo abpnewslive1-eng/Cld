@@ -1,0 +1,9 @@
+node_modules/
+.env
+.env.test
+dist/
+test-results/
+playwright-report/
+public/app.js
+/screenshots/
+/smart-autodeal-demo.html
