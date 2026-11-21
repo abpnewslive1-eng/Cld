@@ -132,10 +132,10 @@ function render() {
   if (!me) return;
   if (isSuper()) { if (loaded) renderSA(); return; }
   const r = route(), rr = routes();
-  const navLinks = rr.filter(x => x[0] !== 'settings').map(([k, l, i]) => `<a href="#${k}" aria-label="${t(l)}" ${k === r ? 'aria-current="page"' : ''}>${i}${k === 'wa' && unreadTotal() ? `<span class="ubadge navb">${unreadTotal()}</span>` : ''}<span class="tip">${t(l)}</span></a>`).join('');
-  $('#side').innerHTML = `<div class="logo" title="${esc(S.shop.name)}">${esc(initials(S.shop.name).slice(0, 1) || 'S')}</div><nav class="nav">${navLinks}</nav><div class="spacer"></div>
-    <a href="#settings" aria-label="${t('nav_settings')}" ${r === 'settings' ? 'aria-current="page"' : ''}>${IC.gear}<span class="tip">${t('nav_settings')}</span></a>
-    <button onclick="logout()" aria-label="${t('logout')}">${IC.logout}<span class="tip">${t('logout')}</span></button>`;
+  const navLinks = rr.filter(x => x[0] !== 'settings').map(([k, l, i]) => `<a href="#${k}" aria-label="${t(l)}" ${k === r ? 'aria-current="page"' : ''}>${i}${k === 'wa' && unreadTotal() ? `<span class="ubadge navb">${unreadTotal()}</span>` : ''}<span class="lbl">${t(l)}</span></a>`).join('');
+  $('#side').innerHTML = `<div class="side-brand" title="${esc(S.shop.name)}"><div class="logo">${esc(initials(S.shop.name).slice(0, 1) || 'S')}</div><b>${esc(S.shop.name)}</b></div><nav class="nav">${navLinks}</nav><div class="spacer"></div>
+    <a href="#settings" aria-label="${t('nav_settings')}" ${r === 'settings' ? 'aria-current="page"' : ''}>${IC.gear}<span class="lbl">${t('nav_settings')}</span></a>
+    <button onclick="logout()" aria-label="${t('logout')}">${IC.logout}<span class="lbl">${t('logout')}</span></button>`;
   const MAIN = ['dashboard', 'cars', 'leads', 'deals'];
   const extra = rr.filter(x => !MAIN.includes(x[0]));
   $('#bottom').style.gridTemplateColumns = `repeat(${MAIN.length + 1},1fr)`;

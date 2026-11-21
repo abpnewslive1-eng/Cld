@@ -61,8 +61,8 @@ const saRoute = () => { const h = location.hash.slice(1); return saRoutes().some
 Object.assign(ui, { saFilter: 'all', saQ: '' });
 function renderSA() {
   const r = saRoute(), rr = saRoutes();
-  $('#side').innerHTML = `<div class="logo sa-logo">SA</div><nav class="nav">${rr.map(([k, l, i]) => `<a href="#${k}" aria-label="${t(l)}" ${k === r ? 'aria-current="page"' : ''}>${i}<span class="tip">${t(l)}</span></a>`).join('')}</nav><div class="spacer"></div>
-    <button onclick="logout()" aria-label="${t('logout')}">${IC.logout}<span class="tip">${t('logout')}</span></button>`;
+  $('#side').innerHTML = `<div class="side-brand"><div class="logo sa-logo">SA</div><b>${BRAND}</b></div><nav class="nav">${rr.map(([k, l, i]) => `<a href="#${k}" aria-label="${t(l)}" ${k === r ? 'aria-current="page"' : ''}>${i}<span class="lbl">${t(l)}</span></a>`).join('')}</nav><div class="spacer"></div>
+    <button onclick="logout()" aria-label="${t('logout')}">${IC.logout}<span class="lbl">${t('logout')}</span></button>`;
   $('#bottom').style.gridTemplateColumns = `repeat(${rr.length},1fr)`;
   $('#bottom').innerHTML = rr.map(([k, l, i]) => `<a href="#${k}" ${k === r ? 'aria-current="page"' : ''}>${i}<span>${t(l)}</span></a>`).join('');
   $('#topbar').innerHTML = `<div class="tb-brand"><div class="logo sa-logo">SA</div><span>${t('sa_brand')}</span></div><span class="pill blue" style="font-size:13px">${BRAND} · ${t('sa_brand')}</span>

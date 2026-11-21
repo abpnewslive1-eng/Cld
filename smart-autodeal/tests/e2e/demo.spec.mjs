@@ -61,3 +61,15 @@ test('expired dealer is read-only', async ({ page }) => {
   await loginAs(page, 'Shri Ganesh (expired)');
   await expect(page.locator('.tbanner.red')).toContainText('Your plan has ended');
 });
+
+test('desktop sidebar shows full menu names, mobile uses bottom bar', async ({ page, isMobile }) => {
+  await loginAs(page, 'Sevasai – Owner');
+  if (isMobile) { await expect(page.locator('#side')).toBeHidden(); await expect(page.locator('#bottom')).toBeVisible(); return; }
+  const side = page.locator('#side');
+  for (const name of ['Dashboard', 'Cars', 'Customers', 'Settings']) await expect(side.getByRole('link', { name, exact: true }).locator('.lbl')).toBeVisible();
+  await side.getByRole('link', { name: 'Settings', exact: true }).click();
+  await expect(page.locator('#main .lang-switch').first()).toBeVisible();
+  await page.locator('#main').getByRole('button', { name: 'मराठी' }).click();
+  await expect(side.getByRole('link', { name: 'सेटिंग' })).toBeVisible();
+  await page.locator('#main').getByRole('button', { name: 'English' }).click();
+});
