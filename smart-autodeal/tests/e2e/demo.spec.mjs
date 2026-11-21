@@ -76,20 +76,22 @@ test('desktop sidebar shows full menu names, mobile uses bottom bar', async ({ p
   await expect(side.getByRole('link', { name: 'Settings', exact: true })).toBeVisible();
 });
 
-test('every Indian language in the dropdown translates the app and survives a reload', async ({ page }) => {
+test('every Indian language in the dropdown translates the app and survives a reload', async ({ page, isMobile }) => {
   await loginAs(page, 'Sevasai – Owner');
-  await page.goto(DEMO + '#settings');
-  const codes = await page.locator('#main select.lang-select option').evaluateAll(o => o.map(x => x.value));
+  if (isMobile) await page.locator('.tb-actions a[href="#settings"]').click(); else await page.locator('#side').getByRole('link', { name: 'Settings', exact: true }).click();
+  const sel = page.locator('#main select.lang-select');
+  const codes = await sel.locator('option').evaluateAll(o => o.map(x => x.value));
   expect(codes).toEqual(['en', 'hi', 'mr', 'bn', 'te', 'ta', 'gu', 'kn', 'ml', 'or', 'pa', 'as']);
   for (const code of codes.filter(c => c !== 'en' && c !== 'mr')) {
-    await page.locator('#main select.lang-select').selectOption(code);
+    await sel.selectOption(code);
     await expect(page.locator('html')).toHaveAttribute('lang', code);
-    const h1 = await page.locator('#main h1').first().innerText();
-    expect(h1, code).not.toBe('Settings');
+    await expect(page.locator('#main h1').first(), code).not.toHaveText('Settings');
   }
-  await page.locator('#main select.lang-select').selectOption('hi');
+  await sel.selectOption('hi');
+  await expect(page.locator('#main h1').first()).toHaveText('सेटिंग्स');
   await page.reload();
   await expect(page.locator('html')).toHaveAttribute('lang', 'hi');
-  await expect(page.locator('#main h1').first()).not.toHaveText('Settings');
-  await page.locator('#main select.lang-select').selectOption('en');
+  await expect(page.locator('select.lang-select').first()).toHaveValue('hi');
+  await page.locator('select.lang-select').first().selectOption('en');
+  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
 });
