@@ -149,7 +149,7 @@ Object.assign(T, {
 });
 const BUY_SRC = { owner:['थेट मालकाकडून','Direct from owner'], broker:['दलाल / एजंट','Broker / agent'], exchange:['एक्सचेंज (जुनी गाडी बदलून)','Exchange (trade-in)'], dealer:['दुसऱ्या डीलरकडून','Other dealer'], auction:['लिलाव / बँक जप्ती','Auction / bank repossession'], online:['ऑनलाइन (OLX, फेसबुक)','Online (OLX, Facebook)'], other:['इतर','Other'] };
 const customSrc = () => Array.isArray(S.shop.buySources) ? S.shop.buySources : [];
-const bsl = k => BUY_SRC[k] ? BUY_SRC[k][L === 'en' ? 1 : 0] : ((customSrc().find(x => x.key === k) || {}).label || k || '');
+const bsl = k => BUY_SRC[k] ? pick(BUY_SRC[k], PACK && PACK.BUY_SRC && PACK.BUY_SRC[k]) : ((customSrc().find(x => x.key === k) || {}).label || k || '');
 const buySrcOpts = () => [['', t('choose')], ...Object.keys(BUY_SRC).map(k => [k, bsl(k)]), ...customSrc().map(x => [x.key, x.label])];
 async function addSource() {
   const v = $('#srcNew').value.trim(); if (!v) return;

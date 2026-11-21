@@ -1,0 +1,3906 @@
+{
+ "T": {
+  "appSub": {
+   "en": "Used car management",
+   "mr": "गाडी विक्री व्यवस्थापन"
+  },
+  "nav_dashboard": {
+   "en": "Dashboard",
+   "mr": "डॅशबोर्ड"
+  },
+  "nav_cars": {
+   "en": "Cars",
+   "mr": "गाड्या"
+  },
+  "nav_leads": {
+   "en": "Customers",
+   "mr": "ग्राहक"
+  },
+  "nav_deals": {
+   "en": "Deals / Receipts",
+   "mr": "सौदे / पावती"
+  },
+  "nav_expenses": {
+   "en": "Expenses",
+   "mr": "खर्च"
+  },
+  "nav_deals_short": {
+   "en": "Receipts",
+   "mr": "पावती"
+  },
+  "loading": {
+   "en": "Loading data…",
+   "mr": "डेटा लोड होत आहे…"
+  },
+  "login_title": {
+   "en": "Sign in",
+   "mr": "लॉगिन करा"
+  },
+  "username": {
+   "en": "Username",
+   "mr": "युजरनेम"
+  },
+  "password": {
+   "en": "Password",
+   "mr": "पासवर्ड"
+  },
+  "login_btn": {
+   "en": "Sign in",
+   "mr": "लॉगिन"
+  },
+  "login_bad": {
+   "en": "Wrong username or password",
+   "mr": "युजरनेम किंवा पासवर्ड चुकीचा आहे"
+  },
+  "login_wait": {
+   "en": "Too many attempts. Try again in 10 minutes.",
+   "mr": "खूप वेळा चुकीचा पासवर्ड. १० मिनिटांनी पुन्हा प्रयत्न करा."
+  },
+  "net_err": {
+   "en": "Could not reach the server. Check your internet.",
+   "mr": "सर्व्हरशी जोडणी झाली नाही. इंटरनेट तपासा."
+  },
+  "offline": {
+   "en": "Offline",
+   "mr": "ऑफलाइन"
+  },
+  "logout": {
+   "en": "Sign out",
+   "mr": "लॉगआउट"
+  },
+  "settings": {
+   "en": "Settings",
+   "mr": "सेटिंग"
+  },
+  "hello": {
+   "en": "Hello",
+   "mr": "नमस्कार"
+  },
+  "install": {
+   "en": "📲 Install app",
+   "mr": "📲 ॲप इन्स्टॉल करा"
+  },
+  "add_exp": {
+   "en": "+ Expense",
+   "mr": "+ खर्च"
+  },
+  "new_receipt": {
+   "en": "+ New receipt",
+   "mr": "+ नवीन पावती"
+  },
+  "st_stock": {
+   "en": "Cars in stock",
+   "mr": "स्टॉकमधील गाड्या"
+  },
+  "st_invest": {
+   "en": "{x} invested",
+   "mr": "{x} गुंतवणूक"
+  },
+  "st_month_sales": {
+   "en": "Sales this month",
+   "mr": "या महिन्याची विक्री"
+  },
+  "st_turnover": {
+   "en": "{x} turnover",
+   "mr": "{x} व्यवहार"
+  },
+  "st_net": {
+   "en": "Net profit this month",
+   "mr": "या महिन्याचा निव्वळ नफा"
+  },
+  "st_net_note": {
+   "en": "Car profit {a} − shop expenses {b}",
+   "mr": "गाडी नफा {a} − दुकान खर्च {b}"
+  },
+  "st_fin": {
+   "en": "Due from finance",
+   "mr": "फायनान्सकडून येणे"
+  },
+  "st_fin_note": {
+   "en": "{n} loan files",
+   "mr": "{n} लोन फाईल"
+  },
+  "late_n": {
+   "en": "{n} late",
+   "mr": "{n} उशीर"
+  },
+  "st_cust": {
+   "en": "Due from customers",
+   "mr": "ग्राहकांकडून येणे"
+  },
+  "st_cust_note": {
+   "en": "{n} deals",
+   "mr": "{n} सौदे"
+  },
+  "overdue_n": {
+   "en": "{n} overdue",
+   "mr": "{n} मुदत संपली"
+  },
+  "p_followups": {
+   "en": "Today’s follow-ups",
+   "mr": "आजचे फॉलो-अप"
+  },
+  "all_customers": {
+   "en": "All customers",
+   "mr": "सर्व ग्राहक"
+  },
+  "no_followups": {
+   "en": "No calls due today.",
+   "mr": "आज कोणाला फोन करायचा बाकी नाही."
+  },
+  "late": {
+   "en": "Late",
+   "mr": "उशीर"
+  },
+  "budget": {
+   "en": "Budget",
+   "mr": "बजेट"
+  },
+  "call": {
+   "en": "Call",
+   "mr": "कॉल"
+  },
+  "update": {
+   "en": "Update",
+   "mr": "अपडेट"
+  },
+  "p_chart": {
+   "en": "Net profit, last 6 months",
+   "mr": "मागील ६ महिन्यांचा निव्वळ नफा"
+  },
+  "cars_n": {
+   "en": "{n} cars",
+   "mr": "{n} गाड्या"
+  },
+  "p_fin": {
+   "en": "Loan payments pending",
+   "mr": "फायनान्स / लोन येणे बाकी"
+  },
+  "all_deals": {
+   "en": "All deals",
+   "mr": "सर्व सौदे"
+  },
+  "file": {
+   "en": "File",
+   "mr": "फाईल"
+  },
+  "days_late": {
+   "en": "{n} days late",
+   "mr": "{n} दिवस उशीर"
+  },
+  "expected": {
+   "en": "Expected {d}",
+   "mr": "अपेक्षित {d}"
+  },
+  "no_date": {
+   "en": "No date",
+   "mr": "तारीख नाही"
+  },
+  "no_fin": {
+   "en": "No loan payments pending.",
+   "mr": "कोणत्याही लोनची रक्कम बाकी नाही."
+  },
+  "p_cust": {
+   "en": "Pending from customers",
+   "mr": "ग्राहकांकडून बाकी"
+  },
+  "receipt_no": {
+   "en": "Receipt {n}",
+   "mr": "पावती {n}"
+  },
+  "overdue_on": {
+   "en": "Overdue {d}",
+   "mr": "मुदत संपली {d}"
+  },
+  "no_due": {
+   "en": "Nothing pending.",
+   "mr": "कोणतीही रक्कम बाकी नाही."
+  },
+  "p_old": {
+   "en": "Old stock (45+ days)",
+   "mr": "जुना स्टॉक (४५+ दिवस)"
+  },
+  "stock": {
+   "en": "Stock",
+   "mr": "स्टॉक"
+  },
+  "days_n": {
+   "en": "{n} days",
+   "mr": "{n} दिवस"
+  },
+  "no_old": {
+   "en": "All cars are under 45 days in stock.",
+   "mr": "सर्व गाड्या ४५ दिवसांच्या आतल्या आहेत."
+  },
+  "cars_title": {
+   "en": "Cars",
+   "mr": "गाड्या"
+  },
+  "cars_sub": {
+   "en": "{n} cars in stock",
+   "mr": "{n} गाड्या स्टॉकमध्ये"
+  },
+  "add_car": {
+   "en": "+ Add car",
+   "mr": "+ गाडी जोडा"
+  },
+  "search_cars": {
+   "en": "Search number, make or model",
+   "mr": "नंबर, कंपनी किंवा मॉडेल शोधा"
+  },
+  "f_stock": {
+   "en": "In stock",
+   "mr": "स्टॉक"
+  },
+  "f_booked": {
+   "en": "Booked",
+   "mr": "बुक"
+  },
+  "f_sold": {
+   "en": "Sold",
+   "mr": "विकली"
+  },
+  "f_all": {
+   "en": "All",
+   "mr": "सर्व"
+  },
+  "no_number": {
+   "en": "No number",
+   "mr": "नंबर नाही"
+  },
+  "km": {
+   "en": "km",
+   "mr": "किमी"
+  },
+  "margin": {
+   "en": "Margin {x}",
+   "mr": "मार्जिन {x}"
+  },
+  "no_cars": {
+   "en": "No cars here. Add one with the button above.",
+   "mr": "इथे कोणतीही गाडी नाही. वरच्या बटणाने नवीन गाडी जोडा."
+  },
+  "leads_title": {
+   "en": "Customers",
+   "mr": "ग्राहक"
+  },
+  "leads_sub": {
+   "en": "People interested in buying, and follow-ups",
+   "mr": "गाडी घेण्यास इच्छुक लोक आणि फॉलो-अप"
+  },
+  "add_lead": {
+   "en": "+ Add customer",
+   "mr": "+ ग्राहक जोडा"
+  },
+  "search_leads": {
+   "en": "Search name, phone or car",
+   "mr": "नाव, फोन किंवा गाडी शोधा"
+  },
+  "f_open": {
+   "en": "Open",
+   "mr": "चालू"
+  },
+  "f_lost": {
+   "en": "Lost",
+   "mr": "गमावले"
+  },
+  "no_car_chosen": {
+   "en": "No car chosen",
+   "mr": "गाडी ठरली नाही"
+  },
+  "followup_on": {
+   "en": "Follow-up {d}",
+   "mr": "फॉलो-अप {d}"
+  },
+  "receipt": {
+   "en": "Receipt",
+   "mr": "पावती"
+  },
+  "no_leads": {
+   "en": "Nobody here. Add a customer.",
+   "mr": "इथे कोणी नाही. नवीन ग्राहक जोडा."
+  },
+  "deals_title": {
+   "en": "Deals / Receipts",
+   "mr": "सौदे / पावती"
+  },
+  "deals_sub": {
+   "en": "Delivery notes, signatures and dues",
+   "mr": "डिलिव्हरी नोट, सही आणि बाकी रक्कम"
+  },
+  "search_deals": {
+   "en": "Receipt no., name or car number",
+   "mr": "पावती क्र., नाव किंवा गाडी नंबर"
+  },
+  "f_due": {
+   "en": "Pending",
+   "mr": "बाकी"
+  },
+  "f_done": {
+   "en": "Complete",
+   "mr": "पूर्ण"
+  },
+  "due_x": {
+   "en": "Due {x}",
+   "mr": "बाकी {x}"
+  },
+  "loan_x": {
+   "en": "Loan {x}",
+   "mr": "लोन {x}"
+  },
+  "done": {
+   "en": "Complete",
+   "mr": "पूर्ण"
+  },
+  "profit_x": {
+   "en": "Profit {x}",
+   "mr": "नफा {x}"
+  },
+  "no_deals": {
+   "en": "No receipts yet. Create the first one.",
+   "mr": "अजून पावती नाही. पहिली पावती बनवा."
+  },
+  "exp_title": {
+   "en": "Shop expenses",
+   "mr": "दुकान खर्च"
+  },
+  "exp_sub": {
+   "en": "Rent, salary, bills – deducted from net profit",
+   "mr": "भाडे, पगार, बिल – हे निव्वळ नफ्यातून वजा होतात"
+  },
+  "add_expense": {
+   "en": "+ Add expense",
+   "mr": "+ खर्च जोडा"
+  },
+  "month": {
+   "en": "Month",
+   "mr": "महिना"
+  },
+  "shop_exp": {
+   "en": "Shop expenses",
+   "mr": "दुकान खर्च"
+  },
+  "entries_n": {
+   "en": "{n} entries",
+   "mr": "{n} नोंदी"
+  },
+  "car_exp": {
+   "en": "Spent on cars",
+   "mr": "गाड्यांवरील खर्च"
+  },
+  "car_exp_note": {
+   "en": "Counted in each car’s profit",
+   "mr": "हा खर्च त्या-त्या गाडीच्या नफ्यात धरला आहे"
+  },
+  "by_type": {
+   "en": "By type",
+   "mr": "प्रकारानुसार"
+  },
+  "no_exp": {
+   "en": "No expenses recorded this month.",
+   "mr": "या महिन्यात खर्च नोंदवलेला नाही."
+  },
+  "close": {
+   "en": "Close",
+   "mr": "बंद करा"
+  },
+  "cancel": {
+   "en": "Cancel",
+   "mr": "रद्द"
+  },
+  "delete": {
+   "en": "Delete",
+   "mr": "हटवा"
+  },
+  "car_info": {
+   "en": "Car details",
+   "mr": "गाडी माहिती"
+  },
+  "new_car": {
+   "en": "New car",
+   "mr": "नवीन गाडी"
+  },
+  "g_car": {
+   "en": "Car",
+   "mr": "गाडी"
+  },
+  "g_papers": {
+   "en": "Papers",
+   "mr": "कागदपत्रे"
+  },
+  "g_price": {
+   "en": "Price",
+   "mr": "किंमत"
+  },
+  "reg": {
+   "en": "Registration no.",
+   "mr": "रजिस्टर नंबर"
+  },
+  "company": {
+   "en": "Make",
+   "mr": "कंपनी"
+  },
+  "model": {
+   "en": "Model",
+   "mr": "मॉडेल"
+  },
+  "year": {
+   "en": "Year",
+   "mr": "वर्ष"
+  },
+  "color": {
+   "en": "Colour",
+   "mr": "कलर"
+  },
+  "fuel": {
+   "en": "Fuel",
+   "mr": "इंधन"
+  },
+  "km_run": {
+   "en": "Km driven",
+   "mr": "चाललेले किमी"
+  },
+  "owner_no": {
+   "en": "Owner no.",
+   "mr": "कितवा मालक"
+  },
+  "chassis": {
+   "en": "Chassis no.",
+   "mr": "चेसिस नंबर"
+  },
+  "engine": {
+   "en": "Engine no.",
+   "mr": "इंजिन नंबर"
+  },
+  "insurance_till": {
+   "en": "Insurance valid till",
+   "mr": "इन्शुरन्स पर्यंत"
+  },
+  "tax": {
+   "en": "Tax",
+   "mr": "टॅक्स"
+  },
+  "finance_on_car": {
+   "en": "Bank loan / hypothecation",
+   "mr": "बँक लोन / फायनान्स"
+  },
+  "buy_date": {
+   "en": "Purchase date",
+   "mr": "खरेदी दिनांक"
+  },
+  "buy_price": {
+   "en": "Purchase price",
+   "mr": "खरेदी किंमत"
+  },
+  "ask_price": {
+   "en": "Selling price",
+   "mr": "विक्री किंमत"
+  },
+  "status": {
+   "en": "Status",
+   "mr": "स्थिती"
+  },
+  "note": {
+   "en": "Note",
+   "mr": "नोंद"
+  },
+  "car_exp_title": {
+   "en": "Money spent on this car",
+   "mr": "या गाडीवर केलेला खर्च"
+  },
+  "exp_note_ph": {
+   "en": "Note (e.g. garage)",
+   "mr": "नोंद (उदा. गॅरेज)"
+  },
+  "amount": {
+   "en": "Amount",
+   "mr": "रक्कम"
+  },
+  "add": {
+   "en": "+ Add",
+   "mr": "+ जोडा"
+  },
+  "no_car_exp": {
+   "en": "No expenses added yet.",
+   "mr": "अजून खर्च जोडलेला नाही."
+  },
+  "enter_exp_amt": {
+   "en": "Enter the expense amount",
+   "mr": "खर्चाची रक्कम भरा"
+  },
+  "car_calc": {
+   "en": "Purchase {a} + expenses {b} = total",
+   "mr": "खरेदी {a} + खर्च {b} = एकूण"
+  },
+  "exp_profit": {
+   "en": "Expected profit",
+   "mr": "अपेक्षित नफा"
+  },
+  "save_car": {
+   "en": "Save car",
+   "mr": "गाडी सेव्ह करा"
+  },
+  "confirm_del_car": {
+   "en": "Delete this car?",
+   "mr": "ही गाडी हटवायची?"
+  },
+  "need_reg_model": {
+   "en": "Enter registration number and model",
+   "mr": "रजिस्टर नंबर आणि मॉडेल भरा"
+  },
+  "car_saved": {
+   "en": "Car saved",
+   "mr": "गाडी सेव्ह झाली"
+  },
+  "cust_info": {
+   "en": "Customer details",
+   "mr": "ग्राहक माहिती"
+  },
+  "new_cust": {
+   "en": "New customer",
+   "mr": "नवीन ग्राहक"
+  },
+  "g_cust": {
+   "en": "Customer",
+   "mr": "ग्राहक"
+  },
+  "name": {
+   "en": "Name",
+   "mr": "नाव"
+  },
+  "phone": {
+   "en": "Phone",
+   "mr": "फोन नंबर"
+  },
+  "source": {
+   "en": "Source",
+   "mr": "कुठून आला"
+  },
+  "liked_car": {
+   "en": "Car of interest",
+   "mr": "आवडलेली गाडी"
+  },
+  "choose": {
+   "en": "— Choose —",
+   "mr": "— निवडा —"
+  },
+  "next_followup": {
+   "en": "Next follow-up",
+   "mr": "पुढचा फॉलो-अप"
+  },
+  "village": {
+   "en": "Village / address",
+   "mr": "गाव / पत्ता"
+  },
+  "make_receipt": {
+   "en": "Create receipt",
+   "mr": "पावती बनवा"
+  },
+  "save_cust": {
+   "en": "Save customer",
+   "mr": "ग्राहक सेव्ह करा"
+  },
+  "confirm_del_lead": {
+   "en": "Delete this customer?",
+   "mr": "हा ग्राहक हटवायचा?"
+  },
+  "need_name_phone": {
+   "en": "Enter name and phone",
+   "mr": "नाव आणि फोन नंबर भरा"
+  },
+  "cust_saved": {
+   "en": "Customer saved",
+   "mr": "ग्राहक सेव्ह झाला"
+  },
+  "edit_exp": {
+   "en": "Edit expense",
+   "mr": "खर्च बदला"
+  },
+  "new_exp": {
+   "en": "New shop expense",
+   "mr": "नवीन दुकान खर्च"
+  },
+  "g_exp": {
+   "en": "Expense",
+   "mr": "खर्च"
+  },
+  "type": {
+   "en": "Type",
+   "mr": "प्रकार"
+  },
+  "date": {
+   "en": "Date",
+   "mr": "दिनांक"
+  },
+  "save_exp": {
+   "en": "Save expense",
+   "mr": "खर्च सेव्ह करा"
+  },
+  "confirm_del_exp": {
+   "en": "Delete this expense?",
+   "mr": "हा खर्च हटवायचा?"
+  },
+  "need_amt": {
+   "en": "Enter the amount",
+   "mr": "रक्कम भरा"
+  },
+  "exp_saved": {
+   "en": "Expense saved",
+   "mr": "खर्च सेव्ह झाला"
+  },
+  "dn_title": {
+   "en": "Delivery note / Receipt #{n}",
+   "mr": "डिलिव्हरी नोट / पावती #{n}"
+  },
+  "g_buyer": {
+   "en": "Buyer",
+   "mr": "वाहन घेणार (खरेदीदार)"
+  },
+  "g_seller": {
+   "en": "Seller",
+   "mr": "वाहन देणार (विक्रेता)"
+  },
+  "age": {
+   "en": "Age",
+   "mr": "वय"
+  },
+  "occupation": {
+   "en": "Occupation",
+   "mr": "व्यवसाय"
+  },
+  "address": {
+   "en": "Address",
+   "mr": "पत्ता"
+  },
+  "g_vehicle": {
+   "en": "Vehicle",
+   "mr": "वाहन"
+  },
+  "from_stock": {
+   "en": "Car from stock",
+   "mr": "स्टॉकमधील गाडी"
+  },
+  "choose_stock": {
+   "en": "— Choose from stock —",
+   "mr": "— स्टॉकमधून निवडा —"
+  },
+  "g_deal": {
+   "en": "Deal",
+   "mr": "व्यवहार"
+  },
+  "time": {
+   "en": "Time",
+   "mr": "वेळ"
+  },
+  "place": {
+   "en": "Place of delivery",
+   "mr": "डिलिव्हरी व्यवहाराचे ठिकाण"
+  },
+  "deal_amt": {
+   "en": "Deal amount",
+   "mr": "सौदा रक्कम"
+  },
+  "cash_at": {
+   "en": "Cash paid at delivery",
+   "mr": "ताब्यात घेतेवेळी रोख रक्कम"
+  },
+  "due_date": {
+   "en": "Balance due date",
+   "mr": "बाकी रक्कम देण्याचा दिनांक"
+  },
+  "cheque_no": {
+   "en": "Security cheque no.",
+   "mr": "सिक्युरिटी चेक नं."
+  },
+  "cheque_amt": {
+   "en": "Cheque amount",
+   "mr": "चेक रक्कम"
+  },
+  "g_fin": {
+   "en": "Finance / loan (if any)",
+   "mr": "फायनान्स / लोन (असल्यास)"
+  },
+  "fin_bank": {
+   "en": "Bank / finance company",
+   "mr": "बँक / फायनान्स कंपनी"
+  },
+  "fin_file": {
+   "en": "Loan / file no.",
+   "mr": "लोन / फाईल नंबर"
+  },
+  "fin_amt": {
+   "en": "Loan amount (paid by bank)",
+   "mr": "लोन रक्कम (बँकेकडून येणार)"
+  },
+  "fin_exp": {
+   "en": "Expected payout date",
+   "mr": "रक्कम येण्याची अपेक्षित तारीख"
+  },
+  "g_witness": {
+   "en": "Witnesses",
+   "mr": "साक्षीदार"
+  },
+  "witness1": {
+   "en": "Witness 1",
+   "mr": "साक्षीदार १"
+  },
+  "witness2": {
+   "en": "Witness 2",
+   "mr": "साक्षीदार २"
+  },
+  "mobile": {
+   "en": "Mobile",
+   "mr": "मोबाईल"
+  },
+  "g_photo": {
+   "en": "Customer photo",
+   "mr": "ग्राहकाचा फोटो"
+  },
+  "take_photo": {
+   "en": "📷 Take photo",
+   "mr": "📷 फोटो काढा"
+  },
+  "remove_photo": {
+   "en": "Remove photo",
+   "mr": "फोटो हटवा"
+  },
+  "no_photo": {
+   "en": "No photo",
+   "mr": "फोटो नाही"
+  },
+  "g_sign": {
+   "en": "Signatures",
+   "mr": "सही"
+  },
+  "sign_help": {
+   "en": "Sign on screen with a finger, or sign on paper and tap \"📷 Photo of signature\". The signature is cleaned and cropped automatically.",
+   "mr": "स्क्रीनवर बोटाने सही करा, किंवा कागदावर सही घेऊन \"📷 सहीचा फोटो\" दाबा. फोटोमधून सही आपोआप स्वच्छ करून कापली जाते."
+  },
+  "sign_buyer": {
+   "en": "Buyer’s signature / thumb",
+   "mr": "घेणाराची सही / अंगठा"
+  },
+  "sign_seller": {
+   "en": "Seller’s signature",
+   "mr": "देणाराची सही"
+  },
+  "sign_photo": {
+   "en": "📷 Photo of signature",
+   "mr": "📷 सहीचा फोटो"
+  },
+  "erase": {
+   "en": "Clear",
+   "mr": "पुसा"
+  },
+  "save_receipt": {
+   "en": "Save receipt",
+   "mr": "पावती सेव्ह करा"
+  },
+  "need_buyer_amt": {
+   "en": "Enter buyer name and deal amount",
+   "mr": "खरेदीदाराचे नाव आणि सौदा रक्कम भरा"
+  },
+  "receipt_saved": {
+   "en": "Receipt saved",
+   "mr": "पावती सेव्ह झाली"
+  },
+  "calc_deal": {
+   "en": "Deal",
+   "mr": "सौदा"
+  },
+  "calc_cash": {
+   "en": "Paid",
+   "mr": "रोख"
+  },
+  "calc_loan": {
+   "en": "Loan",
+   "mr": "लोन"
+  },
+  "calc_cust_due": {
+   "en": "Due from customer",
+   "mr": "ग्राहकाकडून बाकी"
+  },
+  "in_words": {
+   "en": "In words",
+   "mr": "अक्षरी"
+  },
+  "due_in_words": {
+   "en": "Balance in words",
+   "mr": "बाकी अक्षरी"
+  },
+  "photo_err": {
+   "en": "Could not open the photo",
+   "mr": "फोटो उघडता आला नाही"
+  },
+  "no_sign_found": {
+   "en": "No signature found in the photo, try again",
+   "mr": "फोटोमध्ये सही दिसली नाही, पुन्हा काढा"
+  },
+  "sign_added": {
+   "en": "Signature added",
+   "mr": "सही जोडली"
+  },
+  "receipt_t": {
+   "en": "Receipt #{n}",
+   "mr": "पावती #{n}"
+  },
+  "buyer": {
+   "en": "Buyer",
+   "mr": "खरेदीदार"
+  },
+  "car": {
+   "en": "Car",
+   "mr": "गाडी"
+  },
+  "number": {
+   "en": "Number",
+   "mr": "नंबर"
+  },
+  "received": {
+   "en": "Received",
+   "mr": "मिळालेली रक्कम"
+  },
+  "cust_due": {
+   "en": "Due from customer",
+   "mr": "ग्राहकाकडून बाकी"
+  },
+  "profit": {
+   "en": "Profit",
+   "mr": "नफा"
+  },
+  "instalments": {
+   "en": "Payments received",
+   "mr": "मिळालेले हप्ते"
+  },
+  "g_loan": {
+   "en": "Finance / loan",
+   "mr": "फायनान्स / लोन"
+  },
+  "bank": {
+   "en": "Bank",
+   "mr": "बँक"
+  },
+  "loan_amt": {
+   "en": "Loan amount",
+   "mr": "लोन रक्कम"
+  },
+  "received_on": {
+   "en": "Received {d}",
+   "mr": "मिळाली {d}"
+  },
+  "pending": {
+   "en": "Pending",
+   "mr": "बाकी"
+  },
+  "loan_recv_date": {
+   "en": "Date received",
+   "mr": "रक्कम मिळाल्याचा दिनांक"
+  },
+  "loan_received": {
+   "en": "Loan amount received",
+   "mr": "लोन रक्कम मिळाली"
+  },
+  "loan_saved": {
+   "en": "Loan payment recorded",
+   "mr": "लोन रक्कम जमा झाली"
+  },
+  "collect_due": {
+   "en": "Record a payment",
+   "mr": "बाकी रक्कम जमा करा"
+  },
+  "pay_note_ph": {
+   "en": "Cash / UPI / cheque",
+   "mr": "रोख / UPI / चेक"
+  },
+  "collect": {
+   "en": "Record",
+   "mr": "जमा करा"
+  },
+  "pay_saved": {
+   "en": "Payment recorded",
+   "mr": "रक्कम जमा झाली"
+  },
+  "confirm_del_deal": {
+   "en": "Delete this receipt?",
+   "mr": "ही पावती हटवायची?"
+  },
+  "send_wa": {
+   "en": "Send on WhatsApp",
+   "mr": "WhatsApp पाठवा"
+  },
+  "edit": {
+   "en": "Edit",
+   "mr": "बदला"
+  },
+  "print": {
+   "en": "Print / PDF",
+   "mr": "प्रिंट / PDF"
+  },
+  "print_err": {
+   "en": "Could not open print",
+   "mr": "प्रिंट उघडता आला नाही"
+  },
+  "wa_hello": {
+   "en": "Hello",
+   "mr": "नमस्कार"
+  },
+  "wa_deal": {
+   "en": "Deal amount",
+   "mr": "सौदा रक्कम"
+  },
+  "wa_recv": {
+   "en": "Received",
+   "mr": "मिळालेली रक्कम"
+  },
+  "wa_due": {
+   "en": "Balance",
+   "mr": "बाकी रक्कम"
+  },
+  "wa_till": {
+   "en": "by",
+   "mr": "पर्यंत"
+  },
+  "wa_full": {
+   "en": "Paid in full. Thank you!",
+   "mr": "पूर्ण रक्कम मिळाली. धन्यवाद!"
+  },
+  "set_title": {
+   "en": "Settings",
+   "mr": "सेटिंग"
+  },
+  "language": {
+   "en": "Language",
+   "mr": "भाषा"
+  },
+  "g_shop": {
+   "en": "Details printed on receipts",
+   "mr": "पावतीवर छापली जाणारी माहिती"
+  },
+  "shop_name": {
+   "en": "Shop name",
+   "mr": "दुकानाचे नाव"
+  },
+  "proprietor": {
+   "en": "Proprietor name",
+   "mr": "प्रोप्रायटर नाव"
+  },
+  "first_receipt": {
+   "en": "First receipt no.",
+   "mr": "पहिला पावती क्र."
+  },
+  "save_info": {
+   "en": "Save details",
+   "mr": "माहिती सेव्ह करा"
+  },
+  "info_saved": {
+   "en": "Details saved",
+   "mr": "माहिती सेव्ह झाली"
+  },
+  "g_backup": {
+   "en": "Backup",
+   "mr": "बॅकअप"
+  },
+  "backup_help": {
+   "en": "All data is kept on the server. Still, download a backup file once a month. Backups from the old offline app can be imported here too.",
+   "mr": "सर्व डेटा सर्व्हरवर सुरक्षित आहे. तरीही महिन्यातून एकदा बॅकअप फाईल डाउनलोड करून ठेवा. जुन्या ऑफलाइन ॲपचा बॅकअपही इथे इम्पोर्ट करता येतो."
+  },
+  "backup_dl": {
+   "en": "Download backup",
+   "mr": "बॅकअप डाउनलोड करा"
+  },
+  "backup_imp": {
+   "en": "Import backup",
+   "mr": "बॅकअप इम्पोर्ट करा"
+  },
+  "backup_done": {
+   "en": "Backup downloaded",
+   "mr": "बॅकअप फाईल डाउनलोड झाली"
+  },
+  "imp_confirm": {
+   "en": "Records from the backup will be added to the server (matching ones replaced). Continue?",
+   "mr": "बॅकअपमधील नोंदी सर्व्हरवर जोडल्या जातील (सारख्या नोंदी बदलल्या जातील). पुढे जायचे?"
+  },
+  "imp_done": {
+   "en": "{n} records imported",
+   "mr": "{n} नोंदी इम्पोर्ट झाल्या"
+  },
+  "imp_bad": {
+   "en": "This backup file can’t be used",
+   "mr": "ही बॅकअप फाईल वापरता येत नाही"
+  },
+  "g_users": {
+   "en": "Staff & logins",
+   "mr": "कर्मचारी व लॉगिन"
+  },
+  "manage_users": {
+   "en": "Manage staff",
+   "mr": "कर्मचारी व्यवस्थापन"
+  },
+  "g_mypass": {
+   "en": "Change my password",
+   "mr": "माझा पासवर्ड बदला"
+  },
+  "old_pass": {
+   "en": "Current password",
+   "mr": "जुना पासवर्ड"
+  },
+  "new_pass": {
+   "en": "New password (6+ characters)",
+   "mr": "नवा पासवर्ड (६+ अक्षरे)"
+  },
+  "change_pass": {
+   "en": "Change password",
+   "mr": "पासवर्ड बदला"
+  },
+  "pass_changed": {
+   "en": "Password changed",
+   "mr": "पासवर्ड बदलला"
+  },
+  "pass_short": {
+   "en": "Password must be at least 6 characters",
+   "mr": "पासवर्ड किमान ६ अक्षरांचा हवा"
+  },
+  "pass_old_bad": {
+   "en": "Current password is wrong",
+   "mr": "जुना पासवर्ड चुकीचा आहे"
+  },
+  "users_title": {
+   "en": "Manage staff",
+   "mr": "कर्मचारी व्यवस्थापन"
+  },
+  "role": {
+   "en": "Role",
+   "mr": "भूमिका"
+  },
+  "active": {
+   "en": "Active",
+   "mr": "चालू"
+  },
+  "disabled": {
+   "en": "Disabled",
+   "mr": "बंद"
+  },
+  "disable": {
+   "en": "Disable",
+   "mr": "बंद करा"
+  },
+  "enable": {
+   "en": "Enable",
+   "mr": "चालू करा"
+  },
+  "reset_pass": {
+   "en": "Reset password",
+   "mr": "पासवर्ड रीसेट"
+  },
+  "new_pass_for": {
+   "en": "New password for {n} (6+ characters):",
+   "mr": "{n} साठी नवा पासवर्ड (६+ अक्षरे):"
+  },
+  "g_new_user": {
+   "en": "Create a login",
+   "mr": "नवीन लॉगिन बनवा"
+  },
+  "create_user": {
+   "en": "Create login",
+   "mr": "लॉगिन बनवा"
+  },
+  "user_created": {
+   "en": "Login created",
+   "mr": "लॉगिन तयार झाले"
+  },
+  "user_exists": {
+   "en": "That username is taken",
+   "mr": "हे युजरनेम आधीच आहे"
+  },
+  "user_fields": {
+   "en": "Enter name, username (3+ English letters) and a 6+ character password",
+   "mr": "नाव, युजरनेम (३+ इंग्रजी अक्षरे) आणि ६+ अक्षरी पासवर्ड भरा"
+  },
+  "self_err": {
+   "en": "You can’t disable your own account",
+   "mr": "स्वतःचे खाते बंद करता येत नाही"
+  },
+  "saved": {
+   "en": "Saved",
+   "mr": "सेव्ह झाले"
+  },
+  "save_err": {
+   "en": "Not saved. Check your internet.",
+   "mr": "सेव्ह झाले नाही. इंटरनेट तपासा."
+  },
+  "admin_only": {
+   "en": "Only the owner can do this",
+   "mr": "हे फक्त मालक करू शकतात"
+  },
+  "del_err": {
+   "en": "Could not delete",
+   "mr": "हटवता आले नाही"
+  },
+  "staff_note": {
+   "en": "You are signed in as staff. Profit and shop expenses are visible only to the owner.",
+   "mr": "तुम्ही कर्मचारी म्हणून लॉगिन आहात. नफा आणि दुकान खर्च फक्त मालकाला दिसतात."
+  },
+  "nav_settings": {
+   "en": "Settings",
+   "mr": "सेटिंग"
+  },
+  "search_all": {
+   "en": "Search car number, customer, receipt",
+   "mr": "शोधा: गाडी नंबर, ग्राहक, पावती"
+  },
+  "no_results": {
+   "en": "Nothing found",
+   "mr": "काही सापडले नाही"
+  },
+  "today_is": {
+   "en": "Today, {d}",
+   "mr": "आज, {d}"
+  },
+  "alerts_title": {
+   "en": "Alerts",
+   "mr": "सूचना"
+  },
+  "no_alerts": {
+   "en": "No alerts right now.",
+   "mr": "सध्या कोणतीही सूचना नाही."
+  },
+  "al_followup": {
+   "en": "Follow-up: {n}",
+   "mr": "फॉलो-अप: {n}"
+  },
+  "al_loan": {
+   "en": "{b} – {x}, {d} days late",
+   "mr": "{b} – {x}, {d} दिवस उशीर"
+  },
+  "al_due": {
+   "en": "{n} – {x} overdue",
+   "mr": "{n} – {x} बाकी, मुदत संपली"
+  },
+  "al_ins": {
+   "en": "{c} – insurance ends {d}",
+   "mr": "{c} – इन्शुरन्स {d} ला संपतो"
+  },
+  "hello_sub": {
+   "en": "Here’s what’s happening at your shop this month.",
+   "mr": "या महिन्यात दुकानात काय चालले आहे ते पहा."
+  },
+  "vs_last": {
+   "en": "vs last month",
+   "mr": "मागील महिन्याच्या तुलनेत"
+  },
+  "chart_profit": {
+   "en": "Profit",
+   "mr": "नफा"
+  },
+  "chart_sales": {
+   "en": "Sales",
+   "mr": "विक्री"
+  },
+  "last6": {
+   "en": "Last 6 months",
+   "mr": "मागील ६ महिने"
+  },
+  "mini_receipts": {
+   "en": "receipts",
+   "mr": "पावत्या"
+  },
+  "mini_receipts_note": {
+   "en": "{x} <em>pending</em> from customers",
+   "mr": "{x} ग्राहकांकडून <em>येणे बाकी</em>"
+  },
+  "mini_calls": {
+   "en": "customers",
+   "mr": "ग्राहक"
+  },
+  "mini_calls_note": {
+   "en": "<em>to call</em> today",
+   "mr": "आज <em>फोन करायचा</em> आहे"
+  },
+  "donut_title": {
+   "en": "Stock by make",
+   "mr": "स्टॉक – कंपनीनुसार"
+  },
+  "others": {
+   "en": "Others",
+   "mr": "इतर"
+  },
+  "no_stock": {
+   "en": "No cars in stock",
+   "mr": "स्टॉकमध्ये गाडी नाही"
+  },
+  "export": {
+   "en": "Export",
+   "mr": "एक्सपोर्ट"
+  },
+  "prev": {
+   "en": "Previous",
+   "mr": "मागे"
+  },
+  "next": {
+   "en": "Next",
+   "mr": "पुढे"
+  },
+  "c_receipt": {
+   "en": "Receipt no.",
+   "mr": "पावती क्र."
+  },
+  "c_customer": {
+   "en": "Customer",
+   "mr": "ग्राहक"
+  },
+  "c_car": {
+   "en": "Car",
+   "mr": "गाडी"
+  },
+  "c_amount": {
+   "en": "Amount",
+   "mr": "रक्कम"
+  },
+  "c_date": {
+   "en": "Date",
+   "mr": "दिनांक"
+  },
+  "c_payment": {
+   "en": "Payment",
+   "mr": "पेमेंट"
+  },
+  "c_status": {
+   "en": "Status",
+   "mr": "स्थिती"
+  },
+  "c_number": {
+   "en": "Number",
+   "mr": "नंबर"
+  },
+  "c_km": {
+   "en": "Km",
+   "mr": "किमी"
+  },
+  "c_cost": {
+   "en": "Total cost",
+   "mr": "एकूण खर्च"
+  },
+  "c_price": {
+   "en": "Price",
+   "mr": "विक्री किंमत"
+  },
+  "c_margin": {
+   "en": "Margin",
+   "mr": "मार्जिन"
+  },
+  "c_days": {
+   "en": "Days",
+   "mr": "दिवस"
+  },
+  "c_phone": {
+   "en": "Phone",
+   "mr": "फोन"
+  },
+  "c_interest": {
+   "en": "Interest",
+   "mr": "आवडलेली गाडी"
+  },
+  "c_budget": {
+   "en": "Budget",
+   "mr": "बजेट"
+  },
+  "c_source": {
+   "en": "Source",
+   "mr": "स्रोत"
+  },
+  "c_followup": {
+   "en": "Follow-up",
+   "mr": "फॉलो-अप"
+  },
+  "c_type": {
+   "en": "Type",
+   "mr": "प्रकार"
+  },
+  "c_note": {
+   "en": "Note",
+   "mr": "नोंद"
+  },
+  "pay_cash": {
+   "en": "Cash",
+   "mr": "रोख"
+  },
+  "pay_loan": {
+   "en": "Loan",
+   "mr": "लोन"
+  },
+  "sc_all_receipts": {
+   "en": "All receipts",
+   "mr": "सर्व पावत्या"
+  },
+  "sc_cust_due": {
+   "en": "Customer due",
+   "mr": "ग्राहक बाकी"
+  },
+  "sc_loan_due": {
+   "en": "Loan pending",
+   "mr": "लोन बाकी"
+  },
+  "sc_complete": {
+   "en": "Complete",
+   "mr": "पूर्ण"
+  },
+  "pill_overdue": {
+   "en": "Overdue",
+   "mr": "उशीर"
+  },
+  "pill_due": {
+   "en": "Due",
+   "mr": "बाकी"
+  },
+  "pill_loan": {
+   "en": "Loan pending",
+   "mr": "लोन बाकी"
+  },
+  "pill_done": {
+   "en": "Complete",
+   "mr": "पूर्ण"
+  },
+  "sc_stock": {
+   "en": "In stock",
+   "mr": "स्टॉक"
+  },
+  "sc_booked": {
+   "en": "Booked",
+   "mr": "बुक"
+  },
+  "sc_old": {
+   "en": "Old stock (45+)",
+   "mr": "जुना स्टॉक (४५+)"
+  },
+  "sc_sold": {
+   "en": "Sold",
+   "mr": "विकली"
+  },
+  "sc_new": {
+   "en": "New",
+   "mr": "नवीन"
+  },
+  "sc_follow": {
+   "en": "Follow-up / test",
+   "mr": "फॉलो-अप / टेस्ट"
+  },
+  "sc_calls": {
+   "en": "Call today",
+   "mr": "आज फोन"
+  },
+  "sc_booked_l": {
+   "en": "Booked",
+   "mr": "बुकिंग"
+  },
+  "sc_shop": {
+   "en": "Shop expenses",
+   "mr": "दुकान खर्च"
+  },
+  "sc_carexp": {
+   "en": "Spent on cars",
+   "mr": "गाड्यांवरील खर्च"
+  },
+  "sc_biggest": {
+   "en": "Largest expense",
+   "mr": "सर्वात मोठा खर्च"
+  },
+  "sc_entries": {
+   "en": "Entries",
+   "mr": "नोंदी"
+  },
+  "set_sub": {
+   "en": "Shop, staff, backup and how the app looks",
+   "mr": "दुकान, कर्मचारी, बॅकअप आणि ॲपचे स्वरूप"
+  },
+  "set_appearance": {
+   "en": "Appearance",
+   "mr": "स्वरूप"
+  },
+  "set_appearance_sub": {
+   "en": "These changes apply to this device only.",
+   "mr": "हे बदल फक्त या डिव्हाइसवर लागू होतात."
+  },
+  "theme": {
+   "en": "Theme",
+   "mr": "थीम"
+  },
+  "th_light": {
+   "en": "Light",
+   "mr": "हलका"
+  },
+  "th_dark": {
+   "en": "Dark",
+   "mr": "गडद"
+  },
+  "th_auto": {
+   "en": "Auto",
+   "mr": "फोननुसार"
+  },
+  "accent": {
+   "en": "Accent colour",
+   "mr": "मुख्य रंग"
+  },
+  "col_blue": {
+   "en": "Blue",
+   "mr": "निळा"
+  },
+  "col_red": {
+   "en": "Red",
+   "mr": "लाल"
+  },
+  "col_green": {
+   "en": "Green",
+   "mr": "हिरवा"
+  },
+  "col_purple": {
+   "en": "Purple",
+   "mr": "जांभळा"
+  },
+  "col_orange": {
+   "en": "Orange",
+   "mr": "केशरी"
+  },
+  "set_shop_sub": {
+   "en": "Name, address and phone printed on every receipt.",
+   "mr": "हे नाव, पत्ता आणि फोन पावतीवर छापले जातात."
+  },
+  "set_users_sub": {
+   "en": "Give each staff member their own login. Staff can’t delete records or see profit.",
+   "mr": "कर्मचाऱ्यांना स्वतःचे लॉगिन द्या. कर्मचारी नोंदी हटवू शकत नाहीत आणि नफा पाहू शकत नाहीत."
+  },
+  "set_account": {
+   "en": "My account",
+   "mr": "माझे खाते"
+  },
+  "signed_as": {
+   "en": "{n} · {r}",
+   "mr": "{n} · {r}"
+  },
+  "set_app": {
+   "en": "App",
+   "mr": "ॲप"
+  },
+  "app_help": {
+   "en": "Install as an app on phone or PC. If no button shows, use “Install” / “Add to Home screen” from the browser menu.",
+   "mr": "मोबाईल किंवा PC वर ॲप म्हणून इन्स्टॉल करा. बटण दिसत नसेल तर ब्राउझर मेनूमधून \"Install\" / \"Add to Home screen\" निवडा."
+  },
+  "version": {
+   "en": "Version",
+   "mr": "आवृत्ती"
+  },
+  "user_you": {
+   "en": "(you)",
+   "mr": "(तुम्ही)"
+  },
+  "g_buy": {
+   "en": "Purchase – where the car came from",
+   "mr": "खरेदी माहिती – गाडी कुठून घेतली"
+  },
+  "buy_source": {
+   "en": "Purchase source",
+   "mr": "खरेदी स्रोत"
+  },
+  "buy_from": {
+   "en": "Bought from (name)",
+   "mr": "कोणाकडून (नाव)"
+  },
+  "buy_from_phone": {
+   "en": "Their phone",
+   "mr": "त्यांचा फोन"
+  },
+  "all_sources": {
+   "en": "All sources",
+   "mr": "सर्व स्रोत"
+  },
+  "c_source_buy": {
+   "en": "Source",
+   "mr": "स्रोत"
+  },
+  "no_source": {
+   "en": "Source not set",
+   "mr": "स्रोत भरलेला नाही"
+  },
+  "w_sources": {
+   "en": "Purchase sources",
+   "mr": "गाडी खरेदी स्रोत"
+  },
+  "src_title": {
+   "en": "Purchase sources – where profit comes from",
+   "mr": "खरेदी स्रोत – कुठून जास्त फायदा"
+  },
+  "src_meta": {
+   "en": "Meta ad",
+   "mr": "Meta जाहिरात"
+  },
+  "src_avg": {
+   "en": "Avg profit",
+   "mr": "सरासरी नफा"
+  },
+  "src_days": {
+   "en": "Sells in ~{n} days",
+   "mr": "सरासरी {n} दिवसांत विक्री"
+  },
+  "src_none": {
+   "en": "No sources yet. Open a car and choose “Purchase source”.",
+   "mr": "अजून गाड्यांना स्रोत दिलेला नाही. गाडी उघडून \"खरेदी स्रोत\" निवडा."
+  },
+  "k_bought": {
+   "en": "Bought this month",
+   "mr": "या महिन्यात खरेदी"
+  },
+  "k_bought_note": {
+   "en": "{x} invested",
+   "mr": "{x} गुंतवले"
+  },
+  "g_dash": {
+   "en": "Dashboard",
+   "mr": "डॅशबोर्ड"
+  },
+  "g_dash_sub": {
+   "en": "Choose what appears on the dashboard and reorder with ↑ ↓. Applies to this device.",
+   "mr": "डॅशबोर्डवर काय दिसावे ते निवडा आणि ↑ ↓ ने क्रम बदला. हे या डिव्हाइसवर लागू होते."
+  },
+  "dash_cards": {
+   "en": "Key numbers (top cards)",
+   "mr": "मुख्य आकडे (वरचे कार्ड)"
+  },
+  "dash_sections": {
+   "en": "Sections",
+   "mr": "विभाग"
+  },
+  "dash_reset": {
+   "en": "Reset to default",
+   "mr": "मूळ रचना"
+  },
+  "dash_view": {
+   "en": "View dashboard",
+   "mr": "डॅशबोर्ड पहा"
+  },
+  "move_up": {
+   "en": "Up",
+   "mr": "वर"
+  },
+  "move_down": {
+   "en": "Down",
+   "mr": "खाली"
+  },
+  "w_kpis": {
+   "en": "Key numbers",
+   "mr": "मुख्य आकडे"
+  },
+  "w_chart": {
+   "en": "Profit / sales chart",
+   "mr": "नफा / विक्री आलेख"
+  },
+  "w_mini_due": {
+   "en": "Receipts pending",
+   "mr": "पावत्या बाकी"
+  },
+  "w_mini_calls": {
+   "en": "Customers to call today",
+   "mr": "आज फोन करायचे ग्राहक"
+  },
+  "w_donut": {
+   "en": "Stock by make",
+   "mr": "स्टॉक – कंपनीनुसार"
+  },
+  "w_mkt": {
+   "en": "Catalogue & QR",
+   "mr": "कॅटलॉग व QR"
+  },
+  "w_fin": {
+   "en": "Loan payments pending",
+   "mr": "लोन येणे बाकी"
+  },
+  "w_cust": {
+   "en": "Pending from customers",
+   "mr": "ग्राहकांकडून बाकी"
+  },
+  "w_fups": {
+   "en": "Today’s follow-ups",
+   "mr": "आजचे फॉलो-अप"
+  },
+  "w_old": {
+   "en": "Old stock",
+   "mr": "जुना स्टॉक"
+  },
+  "dash_empty": {
+   "en": "Nothing selected for the dashboard. Turn sections on in Settings.",
+   "mr": "डॅशबोर्डवर काहीही निवडलेले नाही. सेटिंगमध्ये विभाग चालू करा."
+  },
+  "g_srcs": {
+   "en": "Purchase source list",
+   "mr": "गाडी खरेदी स्रोत यादी"
+  },
+  "g_srcs_sub": {
+   "en": "Add sources that fit your business (e.g. “Pune broker – Sunil”).",
+   "mr": "तुमच्या व्यवसायानुसार नवीन स्रोत जोडा (उदा. \"पुणे दलाल – सुनील\")."
+  },
+  "src_new": {
+   "en": "New source",
+   "mr": "नवीन स्रोत"
+  },
+  "src_added": {
+   "en": "Source added",
+   "mr": "स्रोत जोडला"
+  },
+  "builtin": {
+   "en": "Built-in",
+   "mr": "मूळ"
+  },
+  "g_photos": {
+   "en": "Photos",
+   "mr": "फोटो"
+  },
+  "add_photos": {
+   "en": "📷 Add photos",
+   "mr": "📷 फोटो जोडा"
+  },
+  "photos_help": {
+   "en": "The first photo is the cover on the catalogue. Tap ⭐ to make any photo the cover.",
+   "mr": "पहिला फोटो कॅटलॉगवर मुख्य फोटो म्हणून दिसतो. ⭐ दाबून कोणताही फोटो मुख्य करा."
+  },
+  "uploading": {
+   "en": "Uploading photos… {n}",
+   "mr": "फोटो अपलोड होत आहेत… {n}"
+  },
+  "upload_err": {
+   "en": "Photo upload failed",
+   "mr": "फोटो अपलोड झाला नाही"
+  },
+  "make_main": {
+   "en": "Make cover",
+   "mr": "मुख्य फोटो करा"
+  },
+  "remove": {
+   "en": "Remove",
+   "mr": "काढा"
+  },
+  "no_photos": {
+   "en": "No photos yet",
+   "mr": "अजून फोटो नाही"
+  },
+  "features": {
+   "en": "Highlights (shown on catalogue)",
+   "mr": "खास गोष्टी (कॅटलॉगवर दिसतील)"
+  },
+  "show_online": {
+   "en": "Show on online catalogue",
+   "mr": "ऑनलाइन कॅटलॉगमध्ये दाखवा"
+  },
+  "yes": {
+   "en": "Yes",
+   "mr": "हो"
+  },
+  "no": {
+   "en": "No",
+   "mr": "नाही"
+  },
+  "g_qr": {
+   "en": "QR & marketing",
+   "mr": "QR व मार्केटिंग"
+  },
+  "qr_after_save": {
+   "en": "The QR code appears once the car is saved.",
+   "mr": "गाडी सेव्ह केल्यावर हिचा QR तयार होईल."
+  },
+  "views_n": {
+   "en": "👁 Viewed {n} times on the catalogue",
+   "mr": "👁 कॅटलॉगवर {n} वेळा पाहिली"
+  },
+  "copy_link": {
+   "en": "Copy link",
+   "mr": "लिंक कॉपी"
+  },
+  "copied": {
+   "en": "Link copied",
+   "mr": "लिंक कॉपी झाली"
+  },
+  "share_wa": {
+   "en": "Share on WhatsApp",
+   "mr": "WhatsApp वर शेअर"
+  },
+  "print_sticker": {
+   "en": "🏷 Print QR sticker",
+   "mr": "🏷 QR स्टिकर प्रिंट"
+  },
+  "all_stickers": {
+   "en": "🏷 All stickers",
+   "mr": "🏷 सर्व स्टिकर"
+  },
+  "open_catalog": {
+   "en": "View catalogue",
+   "mr": "कॅटलॉग पहा"
+  },
+  "no_stock_print": {
+   "en": "No cars in stock to print",
+   "mr": "प्रिंट करण्यासाठी स्टॉकमध्ये गाडी नाही"
+  },
+  "stk_scan": {
+   "en": "📷 Scan me",
+   "mr": "📷 स्कॅन करा"
+  },
+  "stk_scan_sub": {
+   "en": "See photos, price and full details",
+   "mr": "फोटो, किंमत आणि पूर्ण माहिती पहा"
+  },
+  "price_ask": {
+   "en": "Ask for price",
+   "mr": "किंमत विचारा"
+  },
+  "poster_title": {
+   "en": "See all our cars on your phone",
+   "mr": "आमच्या सर्व गाड्या मोबाईलवर पहा"
+  },
+  "poster_sub": {
+   "en": "Scan the QR – photos, prices and details",
+   "mr": "QR स्कॅन करा – फोटो, किंमत आणि माहिती"
+  },
+  "mkt_title": {
+   "en": "Catalogue & QR – last 30 days",
+   "mr": "कॅटलॉग व QR – मागील ३० दिवस"
+  },
+  "mkt_views": {
+   "en": "car views",
+   "mr": "वेळा गाड्या पाहिल्या"
+  },
+  "mkt_leads": {
+   "en": "new customers (QR form)",
+   "mr": "नवीन ग्राहक (QR फॉर्म)"
+  },
+  "mkt_top": {
+   "en": "Most viewed",
+   "mr": "सर्वात जास्त पाहिलेली"
+  },
+  "share_catalog": {
+   "en": "Share catalogue",
+   "mr": "कॅटलॉग शेअर करा"
+  },
+  "qr_poster": {
+   "en": "Print QR poster",
+   "mr": "QR पोस्टर प्रिंट"
+  },
+  "g_mkt": {
+   "en": "Marketing & online catalogue",
+   "mr": "मार्केटिंग व ऑनलाइन कॅटलॉग"
+  },
+  "g_mkt_sub": {
+   "en": "Customers see your cars by scanning a QR or opening the link. The first time, they’re asked for name, number and town, and they appear in your customer list automatically.",
+   "mr": "ग्राहक QR स्कॅन करून किंवा लिंकवरून तुमच्या गाड्या पाहतात. पहिल्यांदा त्यांचे नाव, नंबर आणि गाव विचारले जाते आणि ते ग्राहक यादीत आपोआप येतात."
+  },
+  "wa_number": {
+   "en": "WhatsApp number",
+   "mr": "WhatsApp नंबर"
+  },
+  "map_url": {
+   "en": "Google Maps link (shop)",
+   "mr": "Google Maps लिंक (दुकान)"
+  },
+  "cat_intro": {
+   "en": "Catalogue tagline",
+   "mr": "कॅटलॉगवरील ओळ"
+  },
+  "show_price": {
+   "en": "Show prices on catalogue",
+   "mr": "कॅटलॉगवर किंमत दाखवा"
+  },
+  "require_form": {
+   "en": "Ask name & number first time",
+   "mr": "पहिल्यांदा नाव-नंबर फॉर्म"
+  },
+  "cat_color": {
+   "en": "Catalogue colour",
+   "mr": "कॅटलॉगचा रंग"
+  },
+  "save_mkt": {
+   "en": "Save",
+   "mr": "सेव्ह करा"
+  },
+  "catalog_link": {
+   "en": "Catalogue link",
+   "mr": "कॅटलॉग लिंक"
+  },
+  "pub_cars": {
+   "en": "Our cars",
+   "mr": "आमच्या गाड्या"
+  },
+  "pub_avail": {
+   "en": "{n} cars available",
+   "mr": "{n} गाड्या उपलब्ध"
+  },
+  "pub_call": {
+   "en": "📞 Call",
+   "mr": "📞 कॉल करा"
+  },
+  "pub_map": {
+   "en": "📍 Directions",
+   "mr": "📍 पत्ता"
+  },
+  "pub_all": {
+   "en": "All",
+   "mr": "सर्व"
+  },
+  "pub_search": {
+   "en": "Search make or model",
+   "mr": "कंपनी किंवा मॉडेल शोधा"
+  },
+  "pub_none": {
+   "en": "No cars of this kind right now.",
+   "mr": "सध्या या प्रकारची गाडी नाही."
+  },
+  "pub_back": {
+   "en": "← All cars",
+   "mr": "← सर्व गाड्या"
+  },
+  "pub_booked": {
+   "en": "Booked",
+   "mr": "बुक झाली"
+  },
+  "pub_sold": {
+   "en": "This car has been sold. See our other cars.",
+   "mr": "ही गाडी विकली गेली आहे. आमच्या इतर गाड्या पहा."
+  },
+  "pub_nf": {
+   "en": "Car not found.",
+   "mr": "ही गाडी सापडली नाही."
+  },
+  "pub_year": {
+   "en": "Year",
+   "mr": "वर्ष"
+  },
+  "pub_km": {
+   "en": "Km driven",
+   "mr": "चाललेले किमी"
+  },
+  "pub_fuel": {
+   "en": "Fuel",
+   "mr": "इंधन"
+  },
+  "pub_color": {
+   "en": "Colour",
+   "mr": "कलर"
+  },
+  "pub_owner": {
+   "en": "Owner",
+   "mr": "मालक"
+  },
+  "pub_reg": {
+   "en": "Number",
+   "mr": "नंबर"
+  },
+  "pub_ins": {
+   "en": "Insurance",
+   "mr": "इन्शुरन्स"
+  },
+  "pub_owner_n": {
+   "en": "Owner {n}",
+   "mr": "{n} रा मालक"
+  },
+  "pub_owner_1": {
+   "en": "First owner",
+   "mr": "पहिला मालक"
+  },
+  "pub_more": {
+   "en": "More cars",
+   "mr": "इतर गाड्या"
+  },
+  "pub_ask_wa": {
+   "en": "Ask on WhatsApp",
+   "mr": "WhatsApp वर विचारा"
+  },
+  "pub_wa_msg": {
+   "en": "Hello, I’d like details about {c} ({r}).",
+   "mr": "नमस्कार, मला {c} ({r}) बद्दल माहिती हवी आहे."
+  },
+  "pub_wa_shop": {
+   "en": "Hello, I’m looking to buy a car.",
+   "mr": "नमस्कार, मला गाडी घ्यायची आहे."
+  },
+  "gate_title": {
+   "en": "Welcome! 🙏",
+   "mr": "स्वागत आहे! 🙏"
+  },
+  "gate_sub": {
+   "en": "Fill in your details once to see photos and prices.",
+   "mr": "गाड्यांचे फोटो आणि किंमत पाहण्यासाठी एकदाच तुमची माहिती भरा."
+  },
+  "gate_name": {
+   "en": "Your name",
+   "mr": "तुमचे नाव"
+  },
+  "gate_phone": {
+   "en": "Mobile number",
+   "mr": "मोबाईल नंबर"
+  },
+  "gate_loc": {
+   "en": "Town / city",
+   "mr": "गाव / शहर"
+  },
+  "gate_gps": {
+   "en": "📍 Use my location",
+   "mr": "📍 माझे लोकेशन वापरा"
+  },
+  "gate_gps_ok": {
+   "en": "📍 Location added",
+   "mr": "📍 लोकेशन मिळाले"
+  },
+  "gate_gps_err": {
+   "en": "Couldn’t get location, type your town",
+   "mr": "लोकेशन मिळाले नाही, गाव लिहा"
+  },
+  "gate_btn": {
+   "en": "See cars",
+   "mr": "गाड्या पहा"
+  },
+  "gate_privacy": {
+   "en": "Your details stay only with {s}, used only to contact you about cars.",
+   "mr": "तुमची माहिती फक्त {s} कडे राहील. फक्त गाडीसंबंधी संपर्कासाठी."
+  },
+  "gate_err_name": {
+   "en": "Enter your name",
+   "mr": "नाव भरा"
+  },
+  "gate_err_phone": {
+   "en": "Enter a 10-digit mobile number",
+   "mr": "१० अंकी मोबाईल नंबर भरा"
+  },
+  "gate_err_loc": {
+   "en": "Enter your town or use location",
+   "mr": "गाव लिहा किंवा लोकेशन वापरा"
+  },
+  "gate_wait": {
+   "en": "Please try again in a while",
+   "mr": "थोड्या वेळाने पुन्हा प्रयत्न करा"
+  },
+  "demo_back": {
+   "en": "⬅ Back to CRM",
+   "mr": "⬅ CRM वर परत"
+  },
+  "nav_wa": {
+   "en": "WhatsApp",
+   "mr": "WhatsApp"
+  },
+  "wa_title": {
+   "en": "WhatsApp",
+   "mr": "WhatsApp"
+  },
+  "wa_sub": {
+   "en": "All chats, ad leads and auto-replies in one place",
+   "mr": "सर्व चॅट, जाहिरातीतून आलेले ग्राहक आणि आपोआप उत्तरे एका ठिकाणी"
+  },
+  "tab_inbox": {
+   "en": "Inbox",
+   "mr": "इनबॉक्स"
+  },
+  "tab_bc": {
+   "en": "Broadcast",
+   "mr": "ब्रॉडकास्ट"
+  },
+  "tab_ads": {
+   "en": "Ads",
+   "mr": "जाहिराती"
+  },
+  "tab_auto": {
+   "en": "Automation",
+   "mr": "स्वयंचलित"
+  },
+  "f_mine": {
+   "en": "Mine",
+   "mr": "माझे"
+  },
+  "f_unread": {
+   "en": "Unread",
+   "mr": "न वाचलेले"
+  },
+  "f_closed": {
+   "en": "Closed",
+   "mr": "बंद"
+  },
+  "f_ads": {
+   "en": "From ads",
+   "mr": "जाहिरात"
+  },
+  "search_chats": {
+   "en": "Search name or number",
+   "mr": "नाव किंवा नंबर शोधा"
+  },
+  "no_chats": {
+   "en": "No chats here.",
+   "mr": "इथे कोणतेही चॅट नाही."
+  },
+  "pick_chat": {
+   "en": "Pick a chat on the left",
+   "mr": "डावीकडून एखादे चॅट निवडा"
+  },
+  "from_ad": {
+   "en": "Ad: {a}",
+   "mr": "जाहिरात: {a}"
+  },
+  "assign_to": {
+   "en": "Assigned to",
+   "mr": "कोणाकडे"
+  },
+  "nobody": {
+   "en": "Unassigned",
+   "mr": "कोणीही नाही"
+  },
+  "close_chat": {
+   "en": "✓ Close",
+   "mr": "✓ बंद करा"
+  },
+  "reopen_chat": {
+   "en": "Reopen",
+   "mr": "पुन्हा उघडा"
+  },
+  "open_lead": {
+   "en": "Open in CRM",
+   "mr": "CRM मध्ये पहा"
+  },
+  "type_msg": {
+   "en": "Type a message…",
+   "mr": "मेसेज लिहा…"
+  },
+  "type_note": {
+   "en": "Internal note (customer won’t see)…",
+   "mr": "अंतर्गत नोंद (ग्राहकाला दिसणार नाही)…"
+  },
+  "send": {
+   "en": "Send",
+   "mr": "पाठवा"
+  },
+  "note_mode": {
+   "en": "Note",
+   "mr": "नोंद"
+  },
+  "quick": {
+   "en": "Quick replies",
+   "mr": "तयार उत्तरे"
+  },
+  "send_car": {
+   "en": "Send a car",
+   "mr": "गाडी पाठवा"
+  },
+  "send_tpl": {
+   "en": "Send template",
+   "mr": "Template पाठवा"
+  },
+  "window_closed": {
+   "en": "The customer’s last message is over 24 hours old. WhatsApp only allows an approved template now.",
+   "mr": "ग्राहकाचा शेवटचा मेसेज २४ तासांपूर्वीचा आहे. WhatsApp च्या नियमानुसार आता फक्त मंजूर Template पाठवता येईल."
+  },
+  "window_left": {
+   "en": "{h}h left to reply freely",
+   "mr": "उत्तर देण्यासाठी {h} तास बाकी"
+  },
+  "dnc": {
+   "en": "Do not contact (STOP)",
+   "mr": "संपर्क नको (STOP)"
+  },
+  "dnc_on": {
+   "en": "This customer said STOP. Don’t message them.",
+   "mr": "या ग्राहकाने STOP म्हटले आहे. मेसेज पाठवू नका."
+  },
+  "internal": {
+   "en": "Internal note",
+   "mr": "अंतर्गत नोंद"
+  },
+  "auto_tag": {
+   "en": "Auto",
+   "mr": "आपोआप"
+  },
+  "sim_in": {
+   "en": "📩 Sample message (demo)",
+   "mr": "📩 नमुना मेसेज (डेमो)"
+  },
+  "sim_note": {
+   "en": "Demo: simulates a new customer messaging from an ad.",
+   "mr": "डेमो: जाहिरातीतून नवीन ग्राहकाचा मेसेज आल्यासारखे दाखवते."
+  },
+  "labels": {
+   "en": "Labels",
+   "mr": "लेबल"
+  },
+  "lb_hot": {
+   "en": "Hot",
+   "mr": "गरम"
+  },
+  "lb_test": {
+   "en": "Test drive",
+   "mr": "टेस्ट ड्राइव्ह"
+  },
+  "lb_loan": {
+   "en": "Needs loan",
+   "mr": "लोन हवे"
+  },
+  "lb_exchange": {
+   "en": "Exchange",
+   "mr": "एक्सचेंज"
+  },
+  "lb_price": {
+   "en": "Asked price",
+   "mr": "किंमत विचारली"
+  },
+  "pick_tpl": {
+   "en": "Choose a template",
+   "mr": "Template निवडा"
+  },
+  "pick_car": {
+   "en": "Choose a car to send",
+   "mr": "पाठवायची गाडी निवडा"
+  },
+  "car_msg": {
+   "en": "🚗 {c} {y}\n{p}\nPhotos & details: {u}",
+   "mr": "🚗 {c} {y}\n{p}\nफोटो आणि माहिती: {u}"
+  },
+  "bc_title": {
+   "en": "New broadcast",
+   "mr": "नवीन ब्रॉडकास्ट"
+  },
+  "bc_name": {
+   "en": "Campaign name",
+   "mr": "मोहिमेचे नाव"
+  },
+  "bc_tpl": {
+   "en": "Template",
+   "mr": "Template"
+  },
+  "bc_aud": {
+   "en": "Audience",
+   "mr": "कोणाला"
+  },
+  "bc_status": {
+   "en": "Customer status",
+   "mr": "ग्राहक स्थिती"
+  },
+  "bc_source": {
+   "en": "Source",
+   "mr": "स्रोत"
+  },
+  "aud_open": {
+   "en": "All open customers",
+   "mr": "सर्व चालू ग्राहक"
+  },
+  "aud_all": {
+   "en": "All customers",
+   "mr": "सर्व ग्राहक"
+  },
+  "aud_n": {
+   "en": "Goes to {n} customers",
+   "mr": "{n} ग्राहकांना जाईल"
+  },
+  "aud_skip": {
+   "en": "{n} skipped (STOP / no number)",
+   "mr": "{n} वगळले (STOP / नंबर नाही)"
+  },
+  "bc_send": {
+   "en": "Send broadcast",
+   "mr": "ब्रॉडकास्ट पाठवा"
+  },
+  "bc_confirm": {
+   "en": "Send to {n} customers?",
+   "mr": "{n} ग्राहकांना मेसेज पाठवायचा?"
+  },
+  "bc_sent": {
+   "en": "Broadcast sent",
+   "mr": "ब्रॉडकास्ट पाठवला"
+  },
+  "bc_hist": {
+   "en": "Past broadcasts",
+   "mr": "मागील ब्रॉडकास्ट"
+  },
+  "bc_none": {
+   "en": "No broadcasts yet.",
+   "mr": "अजून ब्रॉडकास्ट नाही."
+  },
+  "bc_stats": {
+   "en": "{s} sent · {d} delivered · {r} read · {p} replied",
+   "mr": "{s} पाठवले · {d} पोहोचले · {r} वाचले · {p} उत्तर"
+  },
+  "bc_rule": {
+   "en": "Broadcasts use only Meta-approved templates. Don’t blast too many at once; STOP contacts are skipped automatically.",
+   "mr": "ब्रॉडकास्ट फक्त Meta-मंजूर Template ने जातो. एकदम खूप लोकांना पाठवू नका; STOP म्हणणारे आपोआप वगळले जातात."
+  },
+  "ads_title": {
+   "en": "Results by ad",
+   "mr": "जाहिरातनिहाय निकाल"
+  },
+  "ads_sub": {
+   "en": "Chats, test drives and sales from Meta (Click-to-WhatsApp) ads. Enter spend to see cost per sale.",
+   "mr": "Meta (Click-to-WhatsApp) जाहिरातीतून आलेले चॅट, टेस्ट ड्राइव्ह आणि विक्री. खर्च टाकला की एका विक्रीमागे खर्च दिसतो."
+  },
+  "c_ad": {
+   "en": "Ad",
+   "mr": "जाहिरात"
+  },
+  "c_chats": {
+   "en": "Chats",
+   "mr": "चॅट"
+  },
+  "c_tests": {
+   "en": "Test drives",
+   "mr": "टेस्ट ड्राइव्ह"
+  },
+  "c_sales": {
+   "en": "Sales",
+   "mr": "विक्री"
+  },
+  "c_spend": {
+   "en": "Spend ₹",
+   "mr": "खर्च ₹"
+  },
+  "c_cpc": {
+   "en": "Per chat",
+   "mr": "प्रति चॅट"
+  },
+  "c_cps": {
+   "en": "Per sale",
+   "mr": "प्रति विक्री"
+  },
+  "ads_none": {
+   "en": "No chats from ads yet.",
+   "mr": "अजून जाहिरातीतून चॅट आलेले नाहीत."
+  },
+  "ads_total": {
+   "en": "Total",
+   "mr": "एकूण"
+  },
+  "au_title": {
+   "en": "Automations",
+   "mr": "आपोआप होणारी कामे"
+  },
+  "au_welcome": {
+   "en": "Welcome message (on first message)",
+   "mr": "स्वागत संदेश (पहिला मेसेज आल्यावर)"
+  },
+  "au_away": {
+   "en": "Away reply (outside hours)",
+   "mr": "दुकान बंद असताना उत्तर"
+  },
+  "au_hours": {
+   "en": "Shop hours",
+   "mr": "दुकानाची वेळ"
+  },
+  "au_lead": {
+   "en": "Auto-create customer in CRM from new chats",
+   "mr": "नवीन चॅटवरून ग्राहक आपोआप CRM मध्ये"
+  },
+  "au_stop": {
+   "en": "Mark “do not contact” when they write STOP",
+   "mr": "STOP लिहिल्यावर \"संपर्क नको\" करा"
+  },
+  "au_kw": {
+   "en": "Keyword replies",
+   "mr": "शब्दानुसार उत्तरे"
+  },
+  "au_kw_sub": {
+   "en": "When a customer’s message contains the word, this reply goes automatically.",
+   "mr": "ग्राहकाच्या मेसेजमध्ये हा शब्द आला की हे उत्तर आपोआप जाते."
+  },
+  "kw_word": {
+   "en": "Word",
+   "mr": "शब्द"
+  },
+  "kw_reply": {
+   "en": "Reply",
+   "mr": "उत्तर"
+  },
+  "au_quick": {
+   "en": "Quick replies",
+   "mr": "तयार उत्तरे"
+  },
+  "qr_short": {
+   "en": "Shortcut",
+   "mr": "शॉर्टकट"
+  },
+  "au_tpl": {
+   "en": "Templates (Meta approval)",
+   "mr": "Templates (Meta मंजुरी)"
+  },
+  "tpl_name": {
+   "en": "Name",
+   "mr": "नाव"
+  },
+  "tpl_cat": {
+   "en": "Category",
+   "mr": "प्रकार"
+  },
+  "tpl_text": {
+   "en": "Text ({{1}} = customer name)",
+   "mr": "मजकूर ({{1}} = ग्राहकाचे नाव)"
+  },
+  "tpl_mkt": {
+   "en": "Marketing",
+   "mr": "मार्केटिंग"
+  },
+  "tpl_util": {
+   "en": "Utility",
+   "mr": "सेवा / आठवण"
+  },
+  "tpl_ok": {
+   "en": "Approved",
+   "mr": "मंजूर"
+  },
+  "tpl_wait": {
+   "en": "Pending",
+   "mr": "मंजुरी बाकी"
+  },
+  "add_tpl": {
+   "en": "+ Template",
+   "mr": "+ Template"
+  },
+  "save_auto": {
+   "en": "Save",
+   "mr": "सेव्ह करा"
+  },
+  "vars_help": {
+   "en": "In text, {name} = customer name, {link} = catalogue link, {shop} = shop name",
+   "mr": "मजकुरात {name} = ग्राहकाचे नाव, {link} = कॅटलॉग लिंक, {shop} = दुकानाचे नाव"
+  },
+  "src_wa": {
+   "en": "WhatsApp",
+   "mr": "WhatsApp"
+  },
+  "src_group": {
+   "en": "WhatsApp group",
+   "mr": "WhatsApp ग्रुप"
+  },
+  "src_import": {
+   "en": "Import",
+   "mr": "इम्पोर्ट"
+  },
+  "st_cold": {
+   "en": "Cold",
+   "mr": "थंड"
+  },
+  "imp_title": {
+   "en": "Import customers",
+   "mr": "ग्राहक इम्पोर्ट"
+  },
+  "imp_btn": {
+   "en": "⬆ Import",
+   "mr": "⬆ इम्पोर्ट"
+  },
+  "imp_csv": {
+   "en": "Excel / CSV file",
+   "mr": "Excel / CSV फाईल"
+  },
+  "imp_csv_help": {
+   "en": "First row = column names: Name, Phone, City. In Excel use “Save as CSV”.",
+   "mr": "पहिल्या ओळीत कॉलमची नावे: नाव, मोबाईल, गाव (Name, Phone, City). Excel मधून \"Save as CSV\" करा."
+  },
+  "imp_wa": {
+   "en": "WhatsApp group “Export chat” file",
+   "mr": "WhatsApp ग्रुप \"Export chat\" फाईल"
+  },
+  "imp_wa_help": {
+   "en": "Open the group → ⋮ → More → Export chat → Without media. Upload the .txt here. Only numbers of people who messaged (and aren’t saved) appear.",
+   "mr": "ग्रुप उघडा → ⋮ → More → Export chat → Without media. आलेली .txt फाईल इथे द्या. फक्त मेसेज केलेले, सेव्ह न केलेले नंबर मिळतात."
+  },
+  "imp_group": {
+   "en": "Group name",
+   "mr": "ग्रुपचे नाव"
+  },
+  "imp_file": {
+   "en": "Choose file",
+   "mr": "फाईल निवडा"
+  },
+  "imp_prev": {
+   "en": "{a} new · {b} already exist · {c} invalid numbers",
+   "mr": "{a} नवीन · {b} आधीपासून आहेत · {c} चुकीचे नंबर"
+  },
+  "imp_go": {
+   "en": "Import {n} customers",
+   "mr": "{n} ग्राहक इम्पोर्ट करा"
+  },
+  "imp_ok": {
+   "en": "{n} customers imported",
+   "mr": "{n} ग्राहक इम्पोर्ट झाले"
+  },
+  "imp_none": {
+   "en": "No new numbers found in the file",
+   "mr": "फाईलमध्ये नवीन नंबर सापडले नाहीत"
+  },
+  "imp_cold_note": {
+   "en": "Imported customers come in as “Cold”. Don’t blast them; message one by one.",
+   "mr": "इम्पोर्ट केलेले ग्राहक \"थंड\" स्थितीत येतात. त्यांना एकदम मेसेज पाठवू नका; एकेकाला वैयक्तिक मेसेज करा."
+  },
+  "open_chat": {
+   "en": "WhatsApp chat",
+   "mr": "WhatsApp चॅट"
+  },
+  "wa_badge": {
+   "en": "{n} unread",
+   "mr": "{n} न वाचलेले"
+  },
+  "sa_brand": {
+   "en": "Super Admin",
+   "mr": "Super Admin"
+  },
+  "sa_dash": {
+   "en": "Dashboard",
+   "mr": "डॅशबोर्ड"
+  },
+  "sa_dealers": {
+   "en": "Dealers",
+   "mr": "डीलर्स"
+  },
+  "sa_plans": {
+   "en": "Plans",
+   "mr": "प्लॅन"
+  },
+  "sa_news": {
+   "en": "Announcements",
+   "mr": "सूचना"
+  },
+  "sa_log": {
+   "en": "Activity log",
+   "mr": "नोंदवही"
+  },
+  "sa_hello": {
+   "en": "Hello {n} 👋",
+   "mr": "नमस्कार {n} 👋"
+  },
+  "sa_hello_sub": {
+   "en": "All dealers, trials and payments in one place.",
+   "mr": "सर्व डीलर, ट्रायल आणि पेमेंट एका ठिकाणी."
+  },
+  "k_dealers": {
+   "en": "Total dealers",
+   "mr": "एकूण डीलर"
+  },
+  "k_trial": {
+   "en": "On trial",
+   "mr": "ट्रायलवर"
+  },
+  "k_trial_note": {
+   "en": "{n} ending in 3 days",
+   "mr": "{n} जण ३ दिवसांत संपणार"
+  },
+  "k_active": {
+   "en": "Active (paid)",
+   "mr": "चालू (पेड)"
+  },
+  "k_mrr": {
+   "en": "Expected monthly revenue",
+   "mr": "अपेक्षित मासिक कमाई"
+  },
+  "k_month_in": {
+   "en": "Received this month",
+   "mr": "या महिन्यात मिळाले"
+  },
+  "k_expired": {
+   "en": "Expired / suspended",
+   "mr": "संपलेले / बंद"
+  },
+  "p_trial_end": {
+   "en": "Trials ending soon",
+   "mr": "ट्रायल लवकर संपणारे"
+  },
+  "p_renew": {
+   "en": "Renewals due soon",
+   "mr": "रिन्युअल जवळ आलेले"
+  },
+  "p_idle": {
+   "en": "Low usage (no login in 7 days)",
+   "mr": "कमी वापर (७ दिवस लॉगिन नाही)"
+  },
+  "none_here": {
+   "en": "Nobody right now.",
+   "mr": "सध्या कोणी नाही."
+  },
+  "add7": {
+   "en": "+7 days",
+   "mr": "+७ दिवस"
+  },
+  "add14": {
+   "en": "+14 days",
+   "mr": "+१४ दिवस"
+  },
+  "rec_pay": {
+   "en": "Record payment",
+   "mr": "पेमेंट नोंदवा"
+  },
+  "st_trial": {
+   "en": "Trial",
+   "mr": "ट्रायल"
+  },
+  "st_active": {
+   "en": "Active",
+   "mr": "चालू"
+  },
+  "st_expired": {
+   "en": "Expired",
+   "mr": "संपला"
+  },
+  "st_suspended": {
+   "en": "Suspended",
+   "mr": "बंद केला"
+  },
+  "days_left": {
+   "en": "{n} days left",
+   "mr": "{n} दिवस बाकी"
+  },
+  "ended_ago": {
+   "en": "Ended {n} days ago",
+   "mr": "{n} दिवसांपूर्वी संपला"
+  },
+  "till": {
+   "en": "till {d}",
+   "mr": "{d} पर्यंत"
+  },
+  "new_dealer": {
+   "en": "+ New dealer",
+   "mr": "+ नवीन डीलर"
+  },
+  "dealer_name": {
+   "en": "Shop name",
+   "mr": "दुकानाचे नाव"
+  },
+  "city": {
+   "en": "City / town",
+   "mr": "शहर / गाव"
+  },
+  "owner_name": {
+   "en": "Owner name",
+   "mr": "मालकाचे नाव"
+  },
+  "owner_login": {
+   "en": "Owner login (username)",
+   "mr": "मालकाचे लॉगिन (युजरनेम)"
+  },
+  "trial_days": {
+   "en": "Trial days",
+   "mr": "ट्रायल दिवस"
+  },
+  "plan": {
+   "en": "Plan",
+   "mr": "प्लॅन"
+  },
+  "create_dealer": {
+   "en": "Create dealer",
+   "mr": "डीलर तयार करा"
+  },
+  "dealer_created": {
+   "en": "Dealer created. Login: {u}",
+   "mr": "डीलर तयार झाला. लॉगिन: {u}"
+  },
+  "c_dealer": {
+   "en": "Dealer",
+   "mr": "डीलर"
+  },
+  "c_owner": {
+   "en": "Owner",
+   "mr": "मालक"
+  },
+  "c_plan": {
+   "en": "Plan",
+   "mr": "प्लॅन"
+  },
+  "c_cars": {
+   "en": "Cars",
+   "mr": "गाड्या"
+  },
+  "c_staff": {
+   "en": "Staff",
+   "mr": "स्टाफ"
+  },
+  "c_last": {
+   "en": "Last login",
+   "mr": "शेवटचे लॉगिन"
+  },
+  "never": {
+   "en": "Never",
+   "mr": "कधीच नाही"
+  },
+  "sc_trial": {
+   "en": "Trial",
+   "mr": "ट्रायल"
+  },
+  "sc_active": {
+   "en": "Active",
+   "mr": "चालू"
+  },
+  "sc_soon": {
+   "en": "Ending in 7 days",
+   "mr": "७ दिवसांत संपणारे"
+  },
+  "sc_off": {
+   "en": "Expired / off",
+   "mr": "संपलेले / बंद"
+  },
+  "open_as": {
+   "en": "🔑 Open as dealer",
+   "mr": "🔑 डीलर म्हणून उघडा"
+  },
+  "suspend": {
+   "en": "Suspend",
+   "mr": "बंद करा"
+  },
+  "activate": {
+   "en": "Activate",
+   "mr": "चालू करा"
+  },
+  "reset_owner": {
+   "en": "Reset owner password",
+   "mr": "मालकाचा पासवर्ड रीसेट"
+  },
+  "g_details": {
+   "en": "Details",
+   "mr": "माहिती"
+  },
+  "g_features": {
+   "en": "Features",
+   "mr": "सुविधा"
+  },
+  "f_catalog": {
+   "en": "Photos, QR & online catalogue",
+   "mr": "फोटो, QR व ऑनलाइन कॅटलॉग"
+  },
+  "f_wa": {
+   "en": "WhatsApp module",
+   "mr": "WhatsApp मॉड्यूल"
+  },
+  "notes": {
+   "en": "Internal notes",
+   "mr": "अंतर्गत नोंद"
+  },
+  "g_pay": {
+   "en": "Record payment (manual)",
+   "mr": "पेमेंट नोंदवा (मॅन्युअल)"
+  },
+  "months": {
+   "en": "Months",
+   "mr": "किती महिने"
+  },
+  "pay_amount": {
+   "en": "Amount ₹",
+   "mr": "रक्कम ₹"
+  },
+  "pay_mode": {
+   "en": "Received via",
+   "mr": "कसे मिळाले"
+  },
+  "pay_hist": {
+   "en": "Payment history",
+   "mr": "पेमेंट इतिहास"
+  },
+  "no_pay": {
+   "en": "No payments yet.",
+   "mr": "अजून पेमेंट नाही."
+  },
+  "pay_done": {
+   "en": "Payment recorded. Valid till {d}",
+   "mr": "पेमेंट नोंदले. नवीन मुदत: {d}"
+  },
+  "saved_ok": {
+   "en": "Saved",
+   "mr": "सेव्ह झाले"
+  },
+  "extended": {
+   "en": "Extended till {d}",
+   "mr": "मुदत वाढवली: {d}"
+  },
+  "g_activity": {
+   "en": "Recent activity",
+   "mr": "अलीकडील नोंदी"
+  },
+  "plans_sub": {
+   "en": "Set prices and limits. \"0\" means unlimited. These are sample prices.",
+   "mr": "किंमती आणि मर्यादा तुम्ही ठरवा. \"0\" म्हणजे मर्यादा नाही. या नमुना किंमती आहेत."
+  },
+  "plan_name": {
+   "en": "Name",
+   "mr": "नाव"
+  },
+  "plan_price": {
+   "en": "Monthly price ₹",
+   "mr": "महिन्याची किंमत ₹"
+  },
+  "max_cars": {
+   "en": "Max cars",
+   "mr": "जास्तीत जास्त गाड्या"
+  },
+  "max_staff": {
+   "en": "Max staff",
+   "mr": "जास्तीत जास्त स्टाफ"
+  },
+  "save_plans": {
+   "en": "Save plans",
+   "mr": "प्लॅन सेव्ह करा"
+  },
+  "news_sub": {
+   "en": "Shows at the top of every dealer’s dashboard (new features, maintenance).",
+   "mr": "सर्व डीलरच्या डॅशबोर्डवर वर दिसेल (उदा. नवीन सुविधा, देखभाल)."
+  },
+  "news_text": {
+   "en": "Message",
+   "mr": "सूचना"
+  },
+  "send_news": {
+   "en": "Send to all",
+   "mr": "सर्वांना पाठवा"
+  },
+  "hide": {
+   "en": "Hide",
+   "mr": "लपवा"
+  },
+  "news_none": {
+   "en": "No announcements yet.",
+   "mr": "अजून सूचना नाही."
+  },
+  "c_when": {
+   "en": "When",
+   "mr": "केव्हा"
+  },
+  "c_who": {
+   "en": "Who",
+   "mr": "कोणी"
+  },
+  "c_what": {
+   "en": "What",
+   "mr": "काय"
+  },
+  "log_none": {
+   "en": "No activity yet.",
+   "mr": "अजून नोंद नाही."
+  },
+  "imp_bar": {
+   "en": "You are viewing “{n}” as Super Admin. Changes here affect the dealer’s account.",
+   "mr": "तुम्ही Super Admin म्हणून \"{n}\" पाहत आहात. येथे केलेले बदल डीलरच्या खात्यात होतील."
+  },
+  "imp_exit": {
+   "en": "Back to Super Admin",
+   "mr": "Super Admin वर परत"
+  },
+  "t_trial": {
+   "en": "Trial: {n} days left. To continue, contact {p}.",
+   "mr": "ट्रायल: {n} दिवस बाकी. पुढे वापरण्यासाठी {p} वर संपर्क करा."
+  },
+  "t_expired": {
+   "en": "Your plan has ended. You can view data but not add new records. Contact: {p}",
+   "mr": "तुमचा प्लॅन संपला आहे. माहिती पाहता येईल, पण नवीन नोंदी करता येणार नाहीत. संपर्क: {p}"
+  },
+  "t_susp": {
+   "en": "Account suspended. Contact: {p}",
+   "mr": "खाते बंद आहे. संपर्क: {p}"
+  },
+  "t_limit": {
+   "en": "You’ve reached your plan’s limit. Contact us to upgrade.",
+   "mr": "तुमच्या प्लॅनची मर्यादा पूर्ण झाली. प्लॅन वाढवण्यासाठी संपर्क करा."
+  },
+  "t_exp_short": {
+   "en": "Plan ended – can’t add new records",
+   "mr": "प्लॅन संपला – नवीन नोंद करता येत नाही"
+  },
+  "susp_login": {
+   "en": "This account is suspended. Please contact support.",
+   "mr": "हे खाते बंद केले आहे. सपोर्टशी संपर्क करा."
+  },
+  "demo_logins": {
+   "en": "Demo logins",
+   "mr": "डेमो लॉगिन"
+  },
+  "nav_posters": {
+   "en": "Posters",
+   "mr": "पोस्टर"
+  },
+  "pst_title": {
+   "en": "Poster studio",
+   "mr": "पोस्टर स्टुडिओ"
+  },
+  "pst_sub": {
+   "en": "Ready posters for cars, new stock, festivals and offers – with your name, phone and QR. For WhatsApp Status, Instagram and Facebook.",
+   "mr": "गाडी, नवीन स्टॉक, सण आणि ऑफरचे तयार पोस्टर – तुमचे नाव, फोन आणि QR सह. WhatsApp Status, Instagram आणि Facebook साठी."
+  },
+  "pst_tpl": {
+   "en": "Poster type",
+   "mr": "पोस्टरचा प्रकार"
+  },
+  "tpl_car": {
+   "en": "Car for sale",
+   "mr": "गाडी विक्रीसाठी"
+  },
+  "tpl_stock": {
+   "en": "New stock",
+   "mr": "नवीन स्टॉक"
+  },
+  "tpl_fest": {
+   "en": "Festival greeting",
+   "mr": "सणाच्या शुभेच्छा"
+  },
+  "tpl_offer": {
+   "en": "Offer / sale",
+   "mr": "ऑफर / सेल"
+  },
+  "pst_fmt": {
+   "en": "Size",
+   "mr": "आकार"
+  },
+  "fmt_sq": {
+   "en": "Square (post)",
+   "mr": "चौकोनी (पोस्ट)"
+  },
+  "fmt_story": {
+   "en": "Tall (Status / Story)",
+   "mr": "उभा (Status / Story)"
+  },
+  "pst_lang": {
+   "en": "Poster language",
+   "mr": "पोस्टरची भाषा"
+  },
+  "pst_style": {
+   "en": "Style",
+   "mr": "शैली"
+  },
+  "st_light": {
+   "en": "Light",
+   "mr": "हलकी"
+  },
+  "st_dark": {
+   "en": "Dark",
+   "mr": "गडद"
+  },
+  "st_bold": {
+   "en": "Bold",
+   "mr": "रंगीत"
+  },
+  "pst_color": {
+   "en": "Colour",
+   "mr": "रंग"
+  },
+  "pst_car": {
+   "en": "Car",
+   "mr": "गाडी"
+  },
+  "pst_cars": {
+   "en": "Cars (up to 4)",
+   "mr": "गाड्या (४ पर्यंत)"
+  },
+  "pst_photo": {
+   "en": "Photo",
+   "mr": "फोटो"
+  },
+  "pst_head": {
+   "en": "Headline",
+   "mr": "मुख्य ओळ"
+  },
+  "pst_head_ph": {
+   "en": "Leave empty for default",
+   "mr": "रिकामे ठेवल्यास आपोआप"
+  },
+  "pst_price": {
+   "en": "Show price",
+   "mr": "किंमत दाखवा"
+  },
+  "pst_qr": {
+   "en": "Show catalogue QR",
+   "mr": "कॅटलॉग QR दाखवा"
+  },
+  "pst_fest": {
+   "en": "Festival",
+   "mr": "सण"
+  },
+  "pst_msg": {
+   "en": "Message",
+   "mr": "संदेश"
+  },
+  "pst_offer_t": {
+   "en": "Offer title",
+   "mr": "ऑफरचे शीर्षक"
+  },
+  "pst_offer_s": {
+   "en": "Offer details",
+   "mr": "ऑफर तपशील"
+  },
+  "pst_valid": {
+   "en": "Valid till",
+   "mr": "ऑफर तारखेपर्यंत"
+  },
+  "pst_download": {
+   "en": "⬇ Download",
+   "mr": "⬇ डाउनलोड"
+  },
+  "pst_share": {
+   "en": "📤 Share",
+   "mr": "📤 शेअर करा"
+  },
+  "pst_share_na": {
+   "en": "Direct share not supported here – the poster was downloaded; add it in WhatsApp.",
+   "mr": "हा फोन थेट शेअरला सपोर्ट करत नाही – पोस्टर डाउनलोड झाले, आता WhatsApp मध्ये जोडा."
+  },
+  "pst_no_cars": {
+   "en": "No cars in stock for a poster",
+   "mr": "पोस्टरसाठी स्टॉकमध्ये गाडी नाही"
+  },
+  "pst_make": {
+   "en": "🖼 Make poster",
+   "mr": "🖼 पोस्टर बनवा"
+  },
+  "pst_tip": {
+   "en": "Tip: on mobile, tap “Share” to post straight to WhatsApp Status.",
+   "mr": "टीप: मोबाईलवर \"शेअर करा\" दाबून थेट WhatsApp Status वर टाका."
+  },
+  "nav_more": {
+   "en": "More",
+   "mr": "अधिक"
+  },
+  "pl_daily": {
+   "en": "Daily posters",
+   "mr": "रोजचे पोस्टर"
+  },
+  "pl_create": {
+   "en": "Create",
+   "mr": "स्वतः बनवा"
+  },
+  "pl_today": {
+   "en": "Today",
+   "mr": "आज"
+  },
+  "pl_tomorrow": {
+   "en": "Tomorrow",
+   "mr": "उद्या"
+  },
+  "pl_always": {
+   "en": "Always available",
+   "mr": "कधीही वापरा"
+  },
+  "pl_all": {
+   "en": "All",
+   "mr": "सर्व"
+  },
+  "pl_no_today": {
+   "en": "Nothing special today.",
+   "mr": "आज कोणताही खास दिवस नाही."
+  },
+  "pl_empty_t": {
+   "en": "No posters here",
+   "mr": "येथे पोस्टर नाहीत"
+  },
+  "pl_empty_b": {
+   "en": "Pick another category or check back tomorrow.",
+   "mr": "दुसरी श्रेणी निवडा किंवा उद्या पुन्हा पहा."
+  },
+  "pl_see_all": {
+   "en": "See all",
+   "mr": "सर्व पहा"
+  },
+  "pl_regular": {
+   "en": "Regular",
+   "mr": "नियमित"
+  },
+  "pl_business": {
+   "en": "My business",
+   "mr": "व्यवसाय"
+  },
+  "pl_locked": {
+   "en": "Locked",
+   "mr": "लॉक"
+  },
+  "pl_up_t": {
+   "en": "This is in a higher plan",
+   "mr": "हा मोठ्या प्लॅनचा भाग आहे"
+  },
+  "pl_up_b": {
+   "en": "Offers and business posters come with a higher plan.",
+   "mr": "ऑफर आणि व्यवसायाचे खास पोस्टर मोठ्या प्लॅनमध्ये मिळतात."
+  },
+  "pl_up_btn": {
+   "en": "Upgrade plan",
+   "mr": "प्लॅन वाढवा"
+  },
+  "pl_change_patti": {
+   "en": "⇄ Change patti",
+   "mr": "⇄ पट्टी बदला"
+  },
+  "pl_pick_patti": {
+   "en": "Choose patti",
+   "mr": "पट्टी निवडा"
+  },
+  "pl_designer": {
+   "en": "Designer",
+   "mr": "डिझायनर"
+  },
+  "st_approved": {
+   "en": "Approved",
+   "mr": "मंजूर"
+  },
+  "st_pending": {
+   "en": "Being made",
+   "mr": "तयार होत आहे"
+  },
+  "st_rejected": {
+   "en": "Needs changes",
+   "mr": "बदल हवा"
+  },
+  "lk_blocked_t": {
+   "en": "Account suspended",
+   "mr": "खाते बंद आहे"
+  },
+  "lk_blocked_b": {
+   "en": "Talk to support to reactivate.",
+   "mr": "पुन्हा सुरू करण्यासाठी सपोर्टशी बोला."
+  },
+  "lk_blocked_c": {
+   "en": "WhatsApp support",
+   "mr": "WhatsApp वर सपोर्ट"
+  },
+  "lk_expired_t": {
+   "en": "Plan ended",
+   "mr": "प्लॅन संपला"
+  },
+  "lk_expired_b": {
+   "en": "Renew your plan to download posters.",
+   "mr": "पोस्टर डाउनलोड करण्यासाठी प्लॅन रिन्यू करा."
+  },
+  "lk_expired_c": {
+   "en": "Renew on WhatsApp",
+   "mr": "WhatsApp वर रिन्यू करा"
+  },
+  "lk_tier_t": {
+   "en": "Higher plan needed",
+   "mr": "मोठा प्लॅन लागेल"
+  },
+  "lk_tier_b": {
+   "en": "This poster is part of a higher plan.",
+   "mr": "हे पोस्टर मोठ्या प्लॅनमध्ये आहे."
+  },
+  "lk_tier_c": {
+   "en": "Upgrade on WhatsApp",
+   "mr": "WhatsApp वर प्लॅन वाढवा"
+  },
+  "lk_pending_t": {
+   "en": "Your patti is being made",
+   "mr": "तुमची पट्टी तयार होत आहे"
+  },
+  "lk_pending_b": {
+   "en": "Our designer is preparing your patti. You can download posters once it is approved.",
+   "mr": "आमचा डिझायनर तुमची पट्टी बनवत आहे. मंजूर होताच पोस्टर डाउनलोड करता येतील."
+  },
+  "lk_rejected_t": {
+   "en": "Patti needs changes",
+   "mr": "पट्टीत बदल हवा"
+  },
+  "lk_rejected_b": {
+   "en": "Tell us what to change on WhatsApp.",
+   "mr": "काय बदलायचे ते WhatsApp वर सांगा."
+  },
+  "lk_rejected_c": {
+   "en": "Request change",
+   "mr": "बदल सांगा"
+  },
+  "tl_title": {
+   "en": "Patti progress",
+   "mr": "पट्टीची प्रगती"
+  },
+  "tl_request": {
+   "en": "Request received",
+   "mr": "विनंती मिळाली"
+  },
+  "tl_design": {
+   "en": "Designing",
+   "mr": "डिझाइन होत आहे"
+  },
+  "tl_approval": {
+   "en": "Approval",
+   "mr": "मंजुरी"
+  },
+  "tl_ready": {
+   "en": "Ready",
+   "mr": "तयार"
+  },
+  "pl_downloaded": {
+   "en": "Poster downloaded",
+   "mr": "पोस्टर डाउनलोड झाले"
+  },
+  "pl_attach": {
+   "en": "Poster saved – now attach it in WhatsApp",
+   "mr": "पोस्टर सेव्ह झाले – आता WhatsApp मध्ये जोडा"
+  },
+  "pl_brand": {
+   "en": "Poster branding",
+   "mr": "पोस्टर ब्रँडिंग"
+  },
+  "pl_brand_sub": {
+   "en": "This logo/photo and tagline appear on the auto-made patti.",
+   "mr": "हा लोगो/फोटो आणि ओळ आपोआप बनणाऱ्या पट्टीवर येते."
+  },
+  "pl_logo_up": {
+   "en": "📷 Choose logo",
+   "mr": "📷 लोगो निवडा"
+  },
+  "pl_tagline": {
+   "en": "Tagline (e.g. Trusted used cars)",
+   "mr": "ओळ (उदा. विश्वासू जुन्या गाड्या)"
+  },
+  "tpl_delivery": {
+   "en": "Delivery congrats",
+   "mr": "डिलिव्हरी अभिनंदन"
+  },
+  "pst_deal": {
+   "en": "Deal",
+   "mr": "सौदा"
+  },
+  "pst_no_deals": {
+   "en": "No deals yet",
+   "mr": "अजून सौदे नाहीत"
+  },
+  "sa_posters": {
+   "en": "Posters",
+   "mr": "पोस्टर"
+  },
+  "sa_pl_sub": {
+   "en": "Upload and schedule posters. Each poster gets its plan from its category.",
+   "mr": "पोस्टर अपलोड व वेळापत्रक. प्रत्येक पोस्टरचा प्लॅन त्याच्या श्रेणीवरून ठरतो."
+  },
+  "sa_t_posters": {
+   "en": "Posters",
+   "mr": "पोस्टर"
+  },
+  "sa_t_cats": {
+   "en": "Categories",
+   "mr": "श्रेणी"
+  },
+  "sa_t_segs": {
+   "en": "Dealer types",
+   "mr": "डीलर प्रकार"
+  },
+  "sa_t_set": {
+   "en": "Settings",
+   "mr": "सेटिंग"
+  },
+  "bulk": {
+   "en": "⇪ Bulk upload",
+   "mr": "⇪ बल्क अपलोड"
+  },
+  "up_poster": {
+   "en": "＋ Upload poster",
+   "mr": "＋ पोस्टर अपलोड"
+  },
+  "starter": {
+   "en": "Load starter posters",
+   "mr": "नमुना पोस्टर भरा"
+  },
+  "starter_done": {
+   "en": "{n} starter posters added",
+   "mr": "{n} नमुना पोस्टर जोडले"
+  },
+  "f_search_p": {
+   "en": "Search posters…",
+   "mr": "पोस्टर शोधा…"
+  },
+  "f_allcats": {
+   "en": "All categories",
+   "mr": "सर्व श्रेणी"
+  },
+  "f_allplans": {
+   "en": "All plans",
+   "mr": "सर्व प्लॅन"
+  },
+  "f_allstat": {
+   "en": "All statuses",
+   "mr": "सर्व स्थिती"
+  },
+  "f_live": {
+   "en": "Published",
+   "mr": "चालू"
+  },
+  "f_hidden": {
+   "en": "Hidden",
+   "mr": "लपवलेले"
+  },
+  "v_grid": {
+   "en": "▦ Grid",
+   "mr": "▦ ग्रिड"
+  },
+  "v_table": {
+   "en": "☷ Table",
+   "mr": "☷ टेबल"
+  },
+  "live": {
+   "en": "Live",
+   "mr": "चालू"
+  },
+  "hidden": {
+   "en": "Hidden",
+   "mr": "लपवले"
+  },
+  "always": {
+   "en": "♾ Always",
+   "mr": "♾ नेहमी"
+  },
+  "hide_b": {
+   "en": "Hide",
+   "mr": "लपवा"
+  },
+  "show_b": {
+   "en": "Show",
+   "mr": "दाखवा"
+  },
+  "showing": {
+   "en": "Showing {a} of {b} posters",
+   "mr": "{a} पैकी {b} पोस्टर"
+  },
+  "c_poster": {
+   "en": "Poster",
+   "mr": "पोस्टर"
+  },
+  "c_brand_for": {
+   "en": "Branding for",
+   "mr": "कोणासाठी"
+  },
+  "everyone": {
+   "en": "Everyone",
+   "mr": "सर्वांसाठी"
+  },
+  "no_posters": {
+   "en": "No posters found",
+   "mr": "पोस्टर सापडले नाहीत"
+  },
+  "no_posters_b": {
+   "en": "Change the filters or upload a new poster.",
+   "mr": "फिल्टर बदला किंवा नवीन पोस्टर अपलोड करा."
+  },
+  "pf_new": {
+   "en": "Upload poster",
+   "mr": "पोस्टर अपलोड"
+  },
+  "pf_edit": {
+   "en": "Edit poster",
+   "mr": "पोस्टर बदला"
+  },
+  "pf_choose": {
+   "en": "Choose poster image",
+   "mr": "पोस्टर इमेज निवडा"
+  },
+  "pf_choose_s": {
+   "en": "1080 × 1350 px (4:5) · JPG / PNG / WebP. Optional: without it, artwork is generated from the title.",
+   "mr": "1080 × 1350 px (4:5) · JPG / PNG / WebP. इमेज नसल्यास शीर्षकावरून डिझाइन बनते."
+  },
+  "pf_title": {
+   "en": "Title *",
+   "mr": "शीर्षक *"
+  },
+  "pf_cat": {
+   "en": "Category *",
+   "mr": "श्रेणी *"
+  },
+  "pf_date": {
+   "en": "Poster date",
+   "mr": "पोस्टरची तारीख"
+  },
+  "pf_nodate": {
+   "en": "No date, always available (never expires)",
+   "mr": "तारीख नाही, नेहमी उपलब्ध (कधीच संपत नाही)"
+  },
+  "pf_sub": {
+   "en": "Subtitle",
+   "mr": "उपशीर्षक"
+  },
+  "pf_eyebrow": {
+   "en": "Top line",
+   "mr": "वरची ओळ"
+  },
+  "pf_glyph": {
+   "en": "Symbol (emoji)",
+   "mr": "चिन्ह (इमोजी)"
+  },
+  "pf_theme": {
+   "en": "Colour theme",
+   "mr": "रंगसंगती"
+  },
+  "pf_plan": {
+   "en": "Plan",
+   "mr": "प्लॅन"
+  },
+  "pf_plan_note": {
+   "en": "(set by the category)",
+   "mr": "(श्रेणीवरून)"
+  },
+  "pf_brand": {
+   "en": "Branding design for dealer types",
+   "mr": "डीलर प्रकारासाठी ब्रँडिंग डिझाइन"
+  },
+  "pf_brand_n": {
+   "en": "Leave empty for a regular poster. Pick types to make it a branding design only higher-plan dealers of those types see.",
+   "mr": "सर्वांसाठी असल्यास रिकामे ठेवा. प्रकार निवडल्यास फक्त त्या प्रकारचे मोठ्या प्लॅनचे डीलर पाहतील."
+  },
+  "pf_publish": {
+   "en": "Publish poster",
+   "mr": "पोस्टर प्रकाशित करा"
+  },
+  "pf_publish_n": {
+   "en": "Live posters are visible to dealers on their date.",
+   "mr": "चालू पोस्टर त्याच्या तारखेला डीलरना दिसतात."
+  },
+  "pf_save": {
+   "en": "Save poster",
+   "mr": "पोस्टर सेव्ह करा"
+  },
+  "pf_title_req": {
+   "en": "Poster title is required",
+   "mr": "शीर्षक आवश्यक आहे"
+  },
+  "pf_added": {
+   "en": "Poster added – it is live for dealers",
+   "mr": "पोस्टर जोडले – डीलरना दिसत आहे"
+  },
+  "pf_saved": {
+   "en": "Poster saved",
+   "mr": "पोस्टर सेव्ह झाले"
+  },
+  "pf_deleted": {
+   "en": "Poster deleted",
+   "mr": "पोस्टर हटवले"
+  },
+  "pf_vis": {
+   "en": "Poster visibility updated",
+   "mr": "पोस्टरची दृश्यता बदलली"
+  },
+  "pf_del_c": {
+   "en": "Delete \"{t}\"? This cannot be undone.",
+   "mr": "\"{t}\" हटवायचे? हे परत आणता येणार नाही."
+  },
+  "remove_img": {
+   "en": "Remove image",
+   "mr": "इमेज काढा"
+  },
+  "img_err": {
+   "en": "Could not read that image",
+   "mr": "ही इमेज वाचता आली नाही"
+  },
+  "bu_title": {
+   "en": "Bulk upload posters",
+   "mr": "बल्क अपलोड"
+  },
+  "bu_tip": {
+   "en": "Tip: name files to set the date and title automatically",
+   "mr": "टीप: फाईलच्या नावाने तारीख व शीर्षक आपोआप येते"
+  },
+  "bu_tip2": {
+   "en": "2026-11-05_Diwali-1.jpg → date 5 Nov 2026, title \"Diwali 1\". Five designs for one festival = five files with the same date. Up to {n} images at once. Size 1080 × 1350 px.",
+   "mr": "2026-11-05_Diwali-1.jpg → तारीख 5 नोव्हें 2026, शीर्षक \"Diwali 1\". एका सणाचे 5 डिझाइन = एकाच तारखेच्या 5 फाईल. एकावेळी {n} इमेज. आकार 1080 × 1350 px."
+  },
+  "bu_cat": {
+   "en": "Category (applies to all)",
+   "mr": "श्रेणी (सर्वांना लागू)"
+  },
+  "bu_defdate": {
+   "en": "Date for files without a date in the name",
+   "mr": "नावात तारीख नसलेल्या फाईलसाठी तारीख"
+  },
+  "bu_nodate": {
+   "en": "No date, always available",
+   "mr": "तारीख नाही, नेहमी उपलब्ध"
+  },
+  "bu_nodate_n": {
+   "en": "For business designs: no date, never expire. Dates in file names are ignored.",
+   "mr": "व्यवसाय डिझाइनसाठी: तारीख नाही, कधी संपत नाहीत. नावातील तारीख दुर्लक्षित."
+  },
+  "bu_brand": {
+   "en": "Branding for dealer types (applies to all)",
+   "mr": "डीलर प्रकारासाठी ब्रँडिंग (सर्वांना लागू)"
+  },
+  "bu_choose": {
+   "en": "Choose images (select many at once)",
+   "mr": "इमेज निवडा (एकावेळी अनेक)"
+  },
+  "bu_more": {
+   "en": "Add more images",
+   "mr": "आणखी इमेज जोडा"
+  },
+  "bu_reading": {
+   "en": "Reading images…",
+   "mr": "इमेज वाचत आहे…"
+  },
+  "bu_skipped": {
+   "en": "{n} file(s) could not be read and were skipped.",
+   "mr": "{n} फाईल वाचता आल्या नाहीत, वगळल्या."
+  },
+  "bu_spread": {
+   "en": "Spread over days from",
+   "mr": "या तारखेपासून दिवसांत वाटा"
+  },
+  "bu_perday": {
+   "en": "Posters per day",
+   "mr": "दिवसाला पोस्टर"
+  },
+  "bu_assign": {
+   "en": "Assign dates in order",
+   "mr": "क्रमाने तारखा द्या"
+  },
+  "bu_count": {
+   "en": "{n} posters",
+   "mr": "{n} पोस्टर"
+  },
+  "bu_dates": {
+   "en": "{n} different date(s)",
+   "mr": "{n} वेगवेगळ्या तारखा"
+  },
+  "bu_publish": {
+   "en": "Publish all",
+   "mr": "सर्व प्रकाशित करा"
+  },
+  "bu_publish_n": {
+   "en": "Off = save them hidden, publish later.",
+   "mr": "बंद = लपवून सेव्ह, नंतर प्रकाशित करा."
+  },
+  "bu_save": {
+   "en": "Save {n} posters",
+   "mr": "{n} पोस्टर सेव्ह करा"
+  },
+  "bu_need": {
+   "en": "Choose some images first.",
+   "mr": "आधी इमेज निवडा."
+  },
+  "bu_notitle": {
+   "en": "{n} poster(s) have no title. ",
+   "mr": "{n} पोस्टरना शीर्षक नाही. "
+  },
+  "bu_nodatev": {
+   "en": "{n} poster(s) have no valid date.",
+   "mr": "{n} पोस्टरना योग्य तारीख नाही."
+  },
+  "bu_uploading": {
+   "en": "Uploading… {a}/{b}",
+   "mr": "अपलोड होत आहे… {a}/{b}"
+  },
+  "bu_done": {
+   "en": "{n} posters added{x}",
+   "mr": "{n} पोस्टर जोडले{x}"
+  },
+  "bu_live": {
+   "en": " and live",
+   "mr": " व चालू"
+  },
+  "bu_hidden": {
+   "en": " (hidden)",
+   "mr": " (लपवलेले)"
+  },
+  "cat_sub": {
+   "en": "Each category belongs to a plan: lower plans get their categories; higher plans get all.",
+   "mr": "प्रत्येक श्रेणी एका प्लॅनची आहे: छोट्या प्लॅनला त्याच्या श्रेणी, मोठ्या प्लॅनला सर्व."
+  },
+  "add_cat": {
+   "en": "＋ Add category",
+   "mr": "＋ श्रेणी"
+  },
+  "c_hi_mr": {
+   "en": "Hindi · Marathi",
+   "mr": "हिंदी · मराठी"
+  },
+  "c_order": {
+   "en": "Order",
+   "mr": "क्रम"
+  },
+  "c_visible": {
+   "en": "Visible",
+   "mr": "दिसते"
+  },
+  "cat_has": {
+   "en": "\"{n}\" still has {c} posters. Move or delete them first.",
+   "mr": "\"{n}\" मध्ये अजून {c} पोस्टर आहेत. आधी ते हलवा किंवा हटवा."
+  },
+  "cat_del_c": {
+   "en": "Delete category \"{n}\"?",
+   "mr": "श्रेणी \"{n}\" हटवायची?"
+  },
+  "cat_saved": {
+   "en": "Category saved",
+   "mr": "श्रेणी सेव्ह झाली"
+  },
+  "cat_en_req": {
+   "en": "English name is required",
+   "mr": "इंग्रजी नाव आवश्यक"
+  },
+  "name_en": {
+   "en": "Name (English) *",
+   "mr": "नाव (English) *"
+  },
+  "name_hi": {
+   "en": "Name (Hindi)",
+   "mr": "नाव (हिंदी)"
+  },
+  "name_mr": {
+   "en": "Name (Marathi)",
+   "mr": "नाव (मराठी)"
+  },
+  "seg_sub": {
+   "en": "Kinds of dealers you serve. Branding posters show only to dealers of that type.",
+   "mr": "तुम्ही कोणत्या प्रकारच्या डीलरना सेवा देता. ब्रँडिंग पोस्टर फक्त त्या प्रकारच्या डीलरना दिसतात."
+  },
+  "add_seg": {
+   "en": "＋ Add dealer type",
+   "mr": "＋ डीलर प्रकार"
+  },
+  "set_da": {
+   "en": "Designer patti approval",
+   "mr": "डिझायनर पट्टी मंजुरी"
+  },
+  "set_da_n": {
+   "en": "On: a designer makes every dealer’s patti and posters unlock only after you approve it. Off: the patti is drawn automatically from the dealer’s details.",
+   "mr": "चालू: प्रत्येक डीलरची पट्टी डिझायनर बनवतो, तुम्ही मंजूर केल्यावरच पोस्टर डाउनलोड होतात. बंद: पट्टी डीलरच्या माहितीवरून आपोआप बनते."
+  },
+  "dp_title": {
+   "en": "Poster patti",
+   "mr": "पोस्टर पट्टी"
+  },
+  "dp_seg": {
+   "en": "Dealer type",
+   "mr": "डीलर प्रकार"
+  },
+  "dp_none": {
+   "en": "— Choose —",
+   "mr": "— निवडा —"
+  },
+  "dp_slot": {
+   "en": "Patti {n}",
+   "mr": "पट्टी {n}"
+  },
+  "dp_up": {
+   "en": "⇧ Upload",
+   "mr": "⇧ अपलोड"
+  },
+  "dp_status": {
+   "en": "Status",
+   "mr": "स्थिती"
+  },
+  "dp_approve": {
+   "en": "✓ Mark patti approved",
+   "mr": "✓ पट्टी मंजूर करा"
+  },
+  "dp_back": {
+   "en": "Move back to pending",
+   "mr": "पुन्हा pending करा"
+  },
+  "dp_reject": {
+   "en": "Needs changes",
+   "mr": "बदल हवा"
+  },
+  "dp_wa": {
+   "en": "WhatsApp the dealer",
+   "mr": "डीलरला WhatsApp"
+  },
+  "dp_msg": {
+   "en": "Namaskar {n}, your Smart AutoDeal poster patti is ready for approval. Please check.",
+   "mr": "नमस्कार {n}, तुमची Smart AutoDeal पोस्टर पट्टी मंजुरीसाठी तयार आहे. कृपया पहा."
+  },
+  "dp_ratio": {
+   "en": "Patti {i} not uploaded: the image is {w} × {h} px. It must be 1080 × 270 px (or 2160 × 540).",
+   "mr": "पट्टी {i} अपलोड झाली नाही: इमेज {w} × {h} px आहे. ती 1080 × 270 px (किंवा 2160 × 540) हवी."
+  },
+  "dp_ok": {
+   "en": "Patti {i} uploaded",
+   "mr": "पट्टी {i} अपलोड झाली"
+  },
+  "wa_renew": {
+   "en": "Hello, I want to renew my Smart AutoDeal plan. Dealer: {n}",
+   "mr": "नमस्कार, मला Smart AutoDeal चा प्लॅन रिन्यू करायचा आहे. डीलर: {n}"
+  },
+  "wa_upgrade": {
+   "en": "Hello, I want to upgrade my Smart AutoDeal plan. Dealer: {n}",
+   "mr": "नमस्कार, मला Smart AutoDeal चा प्लॅन वाढवायचा आहे. डीलर: {n}"
+  },
+  "wa_change": {
+   "en": "Hello, I need changes in my poster patti. Dealer: {n}",
+   "mr": "नमस्कार, माझ्या पोस्टर पट्टीत बदल हवा आहे. डीलर: {n}"
+  },
+  "brand_tag": {
+   "en": "Your dealership’s digital munim",
+   "mr": "डीलरचा डिजिटल मुनीम"
+  },
+  "g_rcpt": {
+   "en": "Receipt format",
+   "mr": "पावती फॉरमॅट"
+  },
+  "g_rcpt_sub": {
+   "en": "Match your paper receipt: title, terms and colour. In terms, {cheque}, {chequeAmt} and {reg} are filled with cheque no., cheque amount and car number.",
+   "mr": "तुमच्या कागदी पावतीप्रमाणे शीर्षक, नियम-अटी आणि रंग बदला. नियमात {cheque}, {chequeAmt}, {reg} लिहिल्यास तिथे चेक नंबर, चेक रक्कम आणि गाडी नंबर आपोआप भरले जातात."
+  },
+  "r_title": {
+   "en": "Receipt title",
+   "mr": "पावतीचे शीर्षक"
+  },
+  "r_terms": {
+   "en": "Terms (one per line)",
+   "mr": "नियम व अटी (एका ओळीत एक)"
+  },
+  "r_banner": {
+   "en": "Bottom line",
+   "mr": "खालची ओळ"
+  },
+  "r_color": {
+   "en": "Print colour",
+   "mr": "छपाईचा रंग"
+  },
+  "r_default": {
+   "en": "Restore default terms",
+   "mr": "मूळ नियम परत आणा"
+  },
+  "r_test": {
+   "en": "Test-print the last receipt",
+   "mr": "शेवटची पावती प्रिंट करून पहा"
+  },
+  "r_none": {
+   "en": "No receipts yet",
+   "mr": "अजून पावती नाही"
+  },
+  "pc_red": {
+   "en": "Red",
+   "mr": "लाल"
+  },
+  "pc_blue": {
+   "en": "Blue",
+   "mr": "निळा"
+  },
+  "pc_green": {
+   "en": "Green",
+   "mr": "हिरवा"
+  },
+  "pc_black": {
+   "en": "Black",
+   "mr": "काळा"
+  },
+  "pc_purple": {
+   "en": "Purple",
+   "mr": "जांभळा"
+  },
+  "pub_off": {
+   "en": "This catalogue isn’t available right now.",
+   "mr": "हा कॅटलॉग सध्या उपलब्ध नाही."
+  },
+  "support_ph": {
+   "en": "Support number (shown to dealers)",
+   "mr": "सपोर्ट नंबर (डीलरना दिसेल)"
+  },
+  "support_ph_sub": {
+   "en": "Dealers see this number when their trial or plan ends.",
+   "mr": "ट्रायल संपताना आणि प्लॅन संपल्यावर डीलरला हा नंबर दाखवला जातो."
+  }
+ },
+ "OPT": {
+  "fuel": {
+   "petrol": {
+    "en": "Petrol",
+    "mr": "पेट्रोल"
+   },
+   "diesel": {
+    "en": "Diesel",
+    "mr": "डिझेल"
+   },
+   "cng": {
+    "en": "CNG",
+    "mr": "CNG"
+   },
+   "ev": {
+    "en": "Electric",
+    "mr": "इलेक्ट्रिक"
+   }
+  },
+  "source": {
+   "walkin": {
+    "en": "Walk-in",
+    "mr": "शोरूम भेट"
+   },
+   "olx": {
+    "en": "OLX",
+    "mr": "OLX"
+   },
+   "facebook": {
+    "en": "Facebook",
+    "mr": "फेसबुक"
+   },
+   "instagram": {
+    "en": "Instagram",
+    "mr": "इंस्टाग्राम"
+   },
+   "referral": {
+    "en": "Referral",
+    "mr": "ओळखीतून"
+   },
+   "old": {
+    "en": "Old customer",
+    "mr": "जुना ग्राहक"
+   },
+   "other": {
+    "en": "Other",
+    "mr": "इतर"
+   },
+   "qr": {
+    "en": "QR / catalogue",
+    "mr": "QR / कॅटलॉग"
+   },
+   "meta_ad": {
+    "en": "Meta ad",
+    "mr": "Meta जाहिरात"
+   },
+   "whatsapp": {
+    "en": "WhatsApp",
+    "mr": "WhatsApp"
+   },
+   "wa_group": {
+    "en": "WhatsApp group",
+    "mr": "WhatsApp ग्रुप"
+   },
+   "import": {
+    "en": "Import",
+    "mr": "इम्पोर्ट"
+   }
+  },
+  "leadSt": {
+   "new": {
+    "en": "New",
+    "mr": "नवीन"
+   },
+   "follow": {
+    "en": "Follow-up",
+    "mr": "फॉलो-अप"
+   },
+   "test": {
+    "en": "Test drive",
+    "mr": "टेस्ट ड्राइव्ह"
+   },
+   "booked": {
+    "en": "Booked",
+    "mr": "बुकिंग"
+   },
+   "lost": {
+    "en": "Lost",
+    "mr": "गमावला"
+   },
+   "cold": {
+    "en": "Cold",
+    "mr": "थंड"
+   }
+  },
+  "carSt": {
+   "stock": {
+    "en": "In stock",
+    "mr": "स्टॉक"
+   },
+   "booked": {
+    "en": "Booked",
+    "mr": "बुक"
+   },
+   "sold": {
+    "en": "Sold",
+    "mr": "विकली"
+   }
+  },
+  "carExp": {
+   "repair": {
+    "en": "Repair",
+    "mr": "दुरुस्ती"
+   },
+   "denting": {
+    "en": "Denting-painting",
+    "mr": "डेंटिंग-पेंटिंग"
+   },
+   "tyre": {
+    "en": "Tyre / battery",
+    "mr": "टायर / बॅटरी"
+   },
+   "service": {
+    "en": "Service",
+    "mr": "सर्व्हिस"
+   },
+   "rto": {
+    "en": "RTO / transfer",
+    "mr": "RTO / ट्रान्सफर"
+   },
+   "commission": {
+    "en": "Commission",
+    "mr": "कमिशन / दलाली"
+   },
+   "polish": {
+    "en": "Wash / polish",
+    "mr": "धुलाई / पॉलिश"
+   },
+   "transport": {
+    "en": "Transport",
+    "mr": "वाहतूक"
+   },
+   "other": {
+    "en": "Other",
+    "mr": "इतर"
+   }
+  },
+  "shopExp": {
+   "rent": {
+    "en": "Shop rent",
+    "mr": "दुकान भाडे"
+   },
+   "salary": {
+    "en": "Salary",
+    "mr": "पगार"
+   },
+   "electricity": {
+    "en": "Electricity bill",
+    "mr": "लाईट बिल"
+   },
+   "phone": {
+    "en": "Phone / internet",
+    "mr": "फोन / इंटरनेट"
+   },
+   "ads": {
+    "en": "Ads (OLX, Facebook)",
+    "mr": "जाहिरात (OLX, फेसबुक)"
+   },
+   "tea": {
+    "en": "Tea / snacks",
+    "mr": "चहा-पाणी"
+   },
+   "fuel": {
+    "en": "Fuel / travel",
+    "mr": "पेट्रोल / प्रवास"
+   },
+   "interest": {
+    "en": "Bank interest",
+    "mr": "बँक व्याज"
+   },
+   "other": {
+    "en": "Other",
+    "mr": "इतर"
+   }
+  },
+  "role": {
+   "admin": {
+    "en": "Owner",
+    "mr": "मालक"
+   },
+   "staff": {
+    "en": "Staff",
+    "mr": "कर्मचारी"
+   }
+  }
+ },
+ "BUY_SRC": {
+  "owner": {
+   "en": "Direct from owner",
+   "mr": "थेट मालकाकडून"
+  },
+  "broker": {
+   "en": "Broker / agent",
+   "mr": "दलाल / एजंट"
+  },
+  "exchange": {
+   "en": "Exchange (trade-in)",
+   "mr": "एक्सचेंज (जुनी गाडी बदलून)"
+  },
+  "dealer": {
+   "en": "Other dealer",
+   "mr": "दुसऱ्या डीलरकडून"
+  },
+  "auction": {
+   "en": "Auction / bank repossession",
+   "mr": "लिलाव / बँक जप्ती"
+  },
+  "online": {
+   "en": "Online (OLX, Facebook)",
+   "mr": "ऑनलाइन (OLX, फेसबुक)"
+  },
+  "other": {
+   "en": "Other",
+   "mr": "इतर"
+  }
+ }
+}

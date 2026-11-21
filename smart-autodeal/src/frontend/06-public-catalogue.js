@@ -14,7 +14,7 @@ async function pubApi(method, url, body) {
   const j = await r.json().catch(() => ({})); if (!r.ok) throw { code: r.status, ...j }; return j;
 }
 async function bootPublic() {
-  pubActive = true; document.documentElement.lang = L === 'en' ? 'en' : 'mr';
+  pubActive = true; document.documentElement.lang = htmlLang();
   ['#app', '#login', '#bottom'].forEach(s => { $(s).hidden = true; }); closeSheet(); $('#pub').hidden = false;
   $('#pub').innerHTML = `<p class="empty" style="padding:40px;text-align:center">${t('loading')}</p>`;
   try { PUB = await pubApi('GET', pubPath('/catalog')); PUB.tid = pubTid(); } catch (e) { $('#pub').innerHTML = `<p class="empty" style="padding:40px;text-align:center">${e.code === 404 ? t('pub_off') : t('net_err')}</p>`; return; }

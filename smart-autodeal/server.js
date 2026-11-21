@@ -493,7 +493,7 @@ app.put('/api/sa/dealerposter/:tid', auth, superOnly, wrap(async (req, res) => {
 app.get('/api/health', (req, res) => res.json({ ok: true }));
 
 /* ================= app files ================= */
-app.use(express.static(path.join(__dirname, 'public'), { setHeaders(res, file) { if (/(sw\.js|index\.html|app\.js|style\.css)$/.test(file)) res.set('Cache-Control', 'no-cache'); } }));
+app.use(express.static(path.join(__dirname, 'public'), { setHeaders(res, file) { if (/(sw\.js|index\.html|app\.js|style\.css|\.json)$/.test(file)) res.set('Cache-Control', 'no-cache'); } }));
 app.get(['/c/:tid', '/c/:tid/:id'], (req, res) => { res.set('Cache-Control', 'no-cache'); res.sendFile(path.join(__dirname, 'public', 'index.html')); });
 app.use('/api', (req, res) => err(res, 404, 'not found'));
 app.use((e, req, res, next) => { console.error(e); err(res, 500, 'server'); });

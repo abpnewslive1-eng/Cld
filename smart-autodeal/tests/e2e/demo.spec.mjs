@@ -68,8 +68,28 @@ test('desktop sidebar shows full menu names, mobile uses bottom bar', async ({ p
   const side = page.locator('#side');
   for (const name of ['Dashboard', 'Cars', 'Customers', 'Settings']) await expect(side.getByRole('link', { name, exact: true }).locator('.lbl')).toBeVisible();
   await side.getByRole('link', { name: 'Settings', exact: true }).click();
-  await expect(page.locator('#main .lang-switch').first()).toBeVisible();
-  await page.locator('#main').getByRole('button', { name: 'मराठी' }).click();
+  const lang = page.locator('#main select.lang-select');
+  await expect(lang.locator('option')).toHaveCount(12);
+  await lang.selectOption('mr');
   await expect(side.getByRole('link', { name: 'सेटिंग' })).toBeVisible();
-  await page.locator('#main').getByRole('button', { name: 'English' }).click();
+  await page.locator('#main select.lang-select').selectOption('en');
+  await expect(side.getByRole('link', { name: 'Settings', exact: true })).toBeVisible();
+});
+
+test('every Indian language in the dropdown translates the app and survives a reload', async ({ page }) => {
+  await loginAs(page, 'Sevasai – Owner');
+  await page.goto(DEMO + '#settings');
+  const codes = await page.locator('#main select.lang-select option').evaluateAll(o => o.map(x => x.value));
+  expect(codes).toEqual(['en', 'hi', 'mr', 'bn', 'te', 'ta', 'gu', 'kn', 'ml', 'or', 'pa', 'as']);
+  for (const code of codes.filter(c => c !== 'en' && c !== 'mr')) {
+    await page.locator('#main select.lang-select').selectOption(code);
+    await expect(page.locator('html')).toHaveAttribute('lang', code);
+    const h1 = await page.locator('#main h1').first().innerText();
+    expect(h1, code).not.toBe('Settings');
+  }
+  await page.locator('#main select.lang-select').selectOption('hi');
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('lang', 'hi');
+  await expect(page.locator('#main h1').first()).not.toHaveText('Settings');
+  await page.locator('#main select.lang-select').selectOption('en');
 });

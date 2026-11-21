@@ -13,7 +13,8 @@ function nextReceipt() { const m = S.deals.reduce((a, d) => Math.max(a, num(d.re
 const carLabel = c => c ? [c.company, c.model].filter(Boolean).join(' ') || t('car') : '—';
 
 /* ================= login ================= */
-function langSwitch() { return `<span class="lang-switch" role="group" aria-label="Language"><button type="button" aria-pressed="${L === 'mr'}" onclick="setLang('mr')">मराठी</button><button type="button" aria-pressed="${L === 'en'}" onclick="setLang('en')">English</button></span>`; }
+function langSwitch() { return `<select class="lang-select" aria-label="Language / भाषा" onchange="setLang(this.value)">${LANGS.map(([c, n]) => `<option value="${c}" ${c === L ? 'selected' : ''}>${n}${c === 'en' ? '' : ' – ' + LANG_EN[c]}</option>`).join('')}</select>`; }
+const LANG_EN = { hi:'Hindi', mr:'Marathi', bn:'Bengali', te:'Telugu', ta:'Tamil', gu:'Gujarati', kn:'Kannada', ml:'Malayalam', or:'Odia', pa:'Punjabi', as:'Assamese' };
 function showLogin() { $('#app').hidden = true; $('#bottom').hidden = true; $('#login').hidden = false; closeSheet(); renderLogin(); }
 function renderLogin() {
   const keepL = L; L = 'en';
@@ -46,7 +47,7 @@ async function startApp() {
 }
 async function boot() {
   if (isPublic()) { bootPublic(); return; }
-  document.documentElement.lang = L === 'en' ? 'en' : 'mr';
+  document.documentElement.lang = htmlLang();
   try { const j = await api('GET', '/api/me'); me = j.user; startApp(); } catch (e) { if (e.code !== 401) { showLogin(); $('#lerr').textContent = tEn('net_err'); } }
 }
 

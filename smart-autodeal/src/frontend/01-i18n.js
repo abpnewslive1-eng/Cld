@@ -75,11 +75,34 @@ const T = {
   staff_note:['तुम्ही कर्मचारी म्हणून लॉगिन आहात. नफा आणि दुकान खर्च फक्त मालकाला दिसतात.','You are signed in as staff. Profit and shop expenses are visible only to the owner.'],
 };
 let L = 'en';
-try { if (localStorage.getItem('scrm-lang') === 'mr') L = 'mr'; } catch (e) {}
+/* Languages: English + Marathi are built in (T entries are ['मराठी','English']).
+   Every other language is a pack in public/lang/<code>.json ({T, OPT, BUY_SRC}), fetched only when chosen;
+   anything missing in a pack falls back to English. Packs are generated from i18n/source-strings.json. */
+const LANGS = [['en','English'],['hi','हिन्दी'],['mr','मराठी'],['bn','বাংলা'],['te','తెలుగు'],['ta','தமிழ்'],['gu','ગુજરાતી'],['kn','ಕನ್ನಡ'],['ml','മലയാളം'],['or','ଓଡ଼ିଆ'],['pa','ਪੰਜਾਬੀ'],['as','অসমীয়া']];
+const LANG_PACKS = (typeof window !== 'undefined' && window.LANG_PACKS) || {};
+let PACK = null;
+try { const s = localStorage.getItem('scrm-lang'); if (LANGS.some(x => x[0] === s)) L = s; } catch (e) {}
 const tEn = (k, p) => { const keep = L; L = 'en'; const s = t(k, p); L = keep; return s; };
-const t = (k, p) => { let s = (T[k] || [k, k])[L === 'en' ? 1 : 0]; if (p) for (const [a, b] of Object.entries(p)) s = s.split('{' + a + '}').join(b); return s; };
-const loc = () => (L === 'en' ? 'en-IN' : 'mr-IN');
-function setLang(l) { L = l; try { localStorage.setItem('scrm-lang', l); } catch (e) {} document.documentElement.lang = l === 'en' ? 'en' : 'mr'; document.title = (S.shop.name ? S.shop.name + ' – ' : '') + BRAND; if (pubActive) { if (PUB) pubRefresh(); return; } if (me) { render(); if ($('#overlay').classList.contains('open')) closeSheet(); } else renderLogin(); }
+const pick = (pair, pk) => L === 'en' ? pair[1] : L === 'mr' ? pair[0] : (PACK && pk != null && pk !== '' ? pk : pair[1]);
+const t = (k, p) => { let s = pick(T[k] || [k, k], PACK && PACK.T && PACK.T[k]); if (p) for (const [a, b] of Object.entries(p)) s = s.split('{' + a + '}').join(b); return s; };
+const loc = () => (L === 'en' ? 'en-IN' : L + '-IN');
+const htmlLang = () => L;
+async function loadPack(l) {
+  if (l === 'en' || l === 'mr') return null;
+  if (LANG_PACKS[l]) return LANG_PACKS[l];
+  try { const r = await fetch('/lang/' + l + '.json'); if (r.ok) return (LANG_PACKS[l] = await r.json()); } catch (e) {}
+  return null;
+}
+function applyLang() { document.documentElement.lang = htmlLang(); document.title = (S.shop.name ? S.shop.name + ' – ' : '') + BRAND; if (pubActive) { if (PUB) pubRefresh(); return; } if (me) { render(); if ($('#overlay').classList.contains('open')) closeSheet(); } else if (!$('#login').hidden) renderLogin(); }
+async function setLang(l) {
+  if (!LANGS.some(x => x[0] === l)) l = 'en';
+  const pack = await loadPack(l);
+  if (l !== 'en' && l !== 'mr' && !pack) { if (typeof toast === 'function') toast(tEn('net_err')); return; }
+  L = l; PACK = pack; try { localStorage.setItem('scrm-lang', l); } catch (e) {}
+  applyLang();
+}
+/* a language chosen earlier on this device: fetch its pack at start-up, show English until it arrives */
+if (L !== 'en' && L !== 'mr') { const want = L; L = 'en'; loadPack(want).then(p => { if (p) { L = want; PACK = p; if (typeof S !== 'undefined' && S.shop) applyLang(); } }); }
 
 const OPT = {
   fuel: { petrol:['पेट्रोल','Petrol'], diesel:['डिझेल','Diesel'], cng:['CNG','CNG'], ev:['इलेक्ट्रिक','Electric'] },
@@ -90,7 +113,7 @@ const OPT = {
   shopExp: { rent:['दुकान भाडे','Shop rent'], salary:['पगार','Salary'], electricity:['लाईट बिल','Electricity bill'], phone:['फोन / इंटरनेट','Phone / internet'], ads:['जाहिरात (OLX, फेसबुक)','Ads (OLX, Facebook)'], tea:['चहा-पाणी','Tea / snacks'], fuel:['पेट्रोल / प्रवास','Fuel / travel'], interest:['बँक व्याज','Bank interest'], other:['इतर','Other'] },
   role: { admin:['मालक','Owner'], staff:['कर्मचारी','Staff'] },
 };
-const ol = (g, v) => { const o = OPT[g][v]; return o ? o[L === 'en' ? 1 : 0] : (v || ''); };
+const ol = (g, v) => { const o = OPT[g][v]; return o ? pick(o, PACK && PACK.OPT && PACK.OPT[g] && PACK.OPT[g][v]) : (v || ''); };
 const opts = g => Object.keys(OPT[g]).map(k => [k, ol(g, k)]);
 const CAR_TAG = { stock:'', booked:'amber', sold:'green' };
 const LEAD_TAG = { new:'', follow:'amber', test:'amber', booked:'green', lost:'red' };
@@ -129,7 +152,7 @@ function enWords(n) {
   if (lk) p.push(en99(lk) + ' lakh'); if (th) p.push(en99(th) + ' thousand'); if (hu) p.push(ONES[hu] + ' hundred'); if (r) p.push((p.length ? 'and ' : '') + en99(r));
   const s = p.join(' ') + ' rupees only'; return s.charAt(0).toUpperCase() + s.slice(1);
 }
-const words = n => (L === 'en' ? enWords(n) : mrWords(n));
+const words = n => (L === 'mr' ? mrWords(n) : enWords(n));
 
 /* ================= data + server ================= */
 const BRAND = 'Smart AutoDeal';

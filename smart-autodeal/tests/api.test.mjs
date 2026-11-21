@@ -139,3 +139,13 @@ test('backup and restore stay inside one dealer', async () => {
   assert.ok((await A.get('/api/data')).body.rows.some(x => x.id === 'imp1'));
   assert.ok(!(await B.get('/api/data')).body.rows.some(x => x.id === 'imp1'));
 });
+
+test('language packs are served for every Indian language, without login', async () => {
+  for (const code of ['hi', 'bn', 'te', 'ta', 'gu', 'kn', 'ml', 'or', 'pa', 'as']) {
+    const r = await fetch(`${BASE}/lang/${code}.json`);
+    assert.equal(r.status, 200, code);
+    assert.equal(r.headers.get('cache-control'), 'no-cache', code);
+    const j = await r.json();
+    assert.ok(j.T && typeof j.T.nav_dashboard === 'string' && j.T.nav_dashboard.length, `${code} has nav_dashboard`);
+  }
+});
